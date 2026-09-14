@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mng crea — attitude branding</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --purple:#422e7c;
+    --pink-name:#efbcd6;
+    --teal-name:#0086b2;
+    --navy-subtitle:#004b54;
+    --rust-cta:#cc3922;
+    --gold:#f4e34a;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#fff;}
+  body{font-family:'Nunito',sans-serif;}
+
+  .poster-frame{
+    position:relative;
+    width:100%;
+    max-width:1320px;
+    margin:0 auto;
+  }
+  .poster-frame::before{
+    content:"";
+    display:block;
+    padding-top:85.686%; /* 599.017 / 699.104 — mantiene le proporzioni esatte della pagina originale */
+  }
+  .poster{
+    position:absolute;
+    left:0; top:0; right:0; bottom:0;
+    background:#ffffff;
+    overflow:hidden;
+    container-type:inline-size;
+  }
+
+  .abs{position:absolute;}
+  .abs img, img.abs{display:block; object-fit:fill;}
+
+  /* ---------- foto di sfondo ---------- */
+
+  .bg-ocean{ left:2.42%; top:2.90%; width:45.88%; height:66.94%; object-fit:cover; z-index:1; }
+
+  .bg-boat-wrap{ left:69.60%; top:20.50%; width:27.98%; height:64.13%; z-index:1; overflow:hidden; }
+  .bg-boat-wrap img{ width:100%; height:100%; object-fit:cover; }
+  .bg-boat-wrap::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 18%);
+  }
+
+  /* ---------- headline (pezzo originale) ---------- */
+
+  .headline{ left:4.91%; top:19.50%; width:70.72%; height:14.78%; z-index:3; }
+
+  /* ---------- logo (pezzo originale) ---------- */
+
+  .logo{ left:7.15%; top:4.07%; width:20.80%; height:14.83%; z-index:3; }
+
+  /* ---------- nome ---------- */
+
+  .name{
+    left:57.86%; top:2.55%; width:39.45%; height:6.58%;
+    margin:0; z-index:4;
+    font-family:'Libre Baskerville',serif;
+    font-size:clamp(18px, 4.6cqw, 50px);
+    white-space:nowrap;
+    display:flex; align-items:center;
+  }
+  .name .n1{color:var(--pink-name);}
+  .name .n2{color:var(--teal-name); margin-left:.35em;}
+
+  /* ---------- nav (pennellate originali) ---------- */
+
+  .nav-item{
+    z-index:3; display:flex; align-items:center; justify-content:center;
+    text-decoration:none;
+  }
+  .nav-item img{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
+  .nav-text{
+    position:relative; z-index:1;
+    display:flex; align-items:baseline; gap:.35em;
+    font-family:'Nunito',sans-serif; font-weight:800;
+    white-space:nowrap;
+  }
+  .nav-blog{ left:76.5%; top:9.3%; width:22.50%; height:4.95%; }
+  .nav-rosso{ left:76.4%; top:14.2%; width:22.00%; height:4.94%; color:#fff; }
+  .nav-giallo{ left:75.3%; top:18.3%; width:24.50%; height:6.12%; color:var(--purple); }
+  .nav-grigio{ left:74.9%; top:24.6%; width:24.30%; height:6.03%; color:var(--purple); }
+
+  .nav-text .w1{font-size:1.15em;}
+  .nav-text .w2{font-size:.62em; font-weight:600;}
+  .nav-blog .w1{color:var(--gold);}
+  .nav-blog .w2{color:#fff;}
+
+  /* ---------- subtitle ---------- */
+
+  .subtitle{
+    left:15.22%; top:37.3%; width:34%; height:1.8%;
+    z-index:2; color:var(--navy-subtitle);
+    font-family:'Nunito',sans-serif; font-weight:600;
+    font-size:clamp(7px, 1.15cqw, 13px);
+    letter-spacing:.35em;
+    white-space:nowrap;
+  }
+
+  /* ---------- card collage (pezzi originali) ---------- */
+
+  .card{ z-index:5; }
+  .card-mission{ left:5.42%; top:33.51%; width:11.60%; height:16.69%; }
+  .card-vision{ left:20.21%; top:32.89%; width:11.75%; height:16.91%; }
+  .card-purpose{ left:34.05%; top:33.26%; width:11.61%; height:16.67%; }
+  .card-q1{ left:46.06%; top:33.22%; width:7.29%; height:10.08%; }
+  .card-q2{ left:52.64%; top:33.03%; width:7.28%; height:10.11%; }
+  .card-q3{ left:59.22%; top:32.85%; width:7.29%; height:10.09%; }
+
+  /* ---------- immaginazione libera (pezzo originale) ---------- */
+
+  .imm{ left:44.0%; top:44.9%; width:19.0%; height:1.79%; z-index:5; }
+
+  /* ---------- paragrafo ---------- */
+
+  .paragraph-bg{ left:0; top:53.5%; width:66%; height:46.5%; background:#fff; z-index:2; }
+
+  .paragraph{
+    left:19.14%; top:56.6%; width:44%; height:20.5%;
+    z-index:5; color:#111;
+    font-family:'Nunito',sans-serif; font-weight:400;
+    font-size:clamp(10px, 1.55cqw, 17px);
+    line-height:1.45;
+  }
+  .paragraph p{margin:0 0 .85em;}
+  .paragraph p:last-child{margin-bottom:0;}
+
+  .divider{ left:16.04%; top:81.4%; width:40.13%; height:.56%; z-index:5; }
+
+  .cta{
+    left:21.30%; top:84.4%; width:40%; height:3.2%;
+    margin:0; z-index:5;
+    font-family:'Patrick Hand',cursive;
+    color:var(--rust-cta);
+    font-size:clamp(15px, 2.3cqw, 26px);
+    white-space:nowrap;
+  }
+
+  /* ================= BLOCCO 2 — sezione "linguaggi" ================= */
+
+  .poster-frame2{
+    position:relative; width:100%; max-width:1320px; margin:0 auto;
+  }
+  .poster-frame2::before{
+    content:""; display:block;
+    padding-top:50.264%; /* proporzioni esatte di questa sezione */
+  }
+  .poster2{
+    position:absolute; left:0; top:0; right:0; bottom:0;
+    background:#ffffff; overflow:hidden; container-type:inline-size;
+  }
+
+  .b2-bw{ left:2.63%; top:0; width:30.87%; height:100%; object-fit:cover; z-index:1; }
+  .b2-color{ left:18.92%; top:26.72%; width:18.37%; height:46.38%; z-index:2; }
+
+  .b2-heading{
+    left:40.88%; top:33.18%; width:35%;
+    margin:0; z-index:2; color:#111;
+    font-family:'Nunito',sans-serif; font-weight:800; letter-spacing:.03em;
+    font-size:clamp(20px, 3.1cqw, 32px);
+  }
+
+  .b2-paragraph{
+    left:40.34%; top:47.3%; width:46.5%;
+    z-index:2; color:#111;
+    font-family:'Nunito',sans-serif; font-weight:400;
+    font-size:clamp(10px, 1.55cqw, 17px);
+    line-height:1.45;
+  }
+  .b2-paragraph p{margin:0 0 1.3em;}
+  .b2-paragraph p:last-child{margin-bottom:0;}
+
+  /* ================= BLOCCO 3 — footer ================= */
+
+  .site-footer{
+    background:#fff; border-top:1px solid #e6e1d2;
+    padding:2.4em 4%;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    gap:1.6em;
+    font-family:'Nunito',sans-serif;
+    max-width:1320px; margin:0 auto;
+  }
+  .footer-menu{ display:flex; flex-wrap:wrap; gap:1.6em; list-style:none; margin:0; padding:0; }
+  .footer-menu li{ margin-right:1.6em; }
+  .footer-menu li:last-child{ margin-right:0; }
+  .footer-menu a{ color:var(--purple); text-decoration:none; font-weight:700; font-size:.95rem; }
+  .footer-menu a:hover{ text-decoration:underline; }
+
+  .footer-social{ display:flex; gap:1em; align-items:center; }
+  .footer-social a{ color:var(--purple); display:flex; }
+  .footer-social svg{ width:22px; height:22px; fill:currentColor; }
+  .footer-social a:hover{ color:var(--rust-cta); }
+
+  .footer-legal{
+    width:100%; text-align:center;
+    font-size:.78rem; color:#777;
+    border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em;
+  }
+  .footer-legal a{ color:#777; }
+</style>
+</head>
+<body>
+
+<div class="poster-frame"><div class="poster">
+
+  <img class="abs bg-ocean" src="assets/ocean.jpg" alt="">
+  <div class="abs bg-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
+
+  <img class="abs headline" src="assets/headline.png" alt="attitude branding">
+  <img class="abs logo" src="assets/logo.png" alt="mng crea">
+
+  <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
+
+  <a class="abs nav-item nav-blog" href="#">
+    <img src="assets/nav-blu.png" alt="">
+    <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
+  </a>
+  <a class="abs nav-item nav-rosso" href="#">
+    <img src="assets/nav-rosso.png" alt="">
+    <span class="nav-text">progetti</span>
+  </a>
+  <a class="abs nav-item nav-giallo" href="#">
+    <img src="assets/nav-giallo.png" alt="">
+    <span class="nav-text">sogni</span>
+  </a>
+  <a class="abs nav-item nav-grigio" href="#">
+    <img src="assets/nav-grigio.png" alt="">
+    <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
+  </a>
+
+  <div class="abs subtitle">m a r k e t i n g&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;c o m u n i c a z i o n e</div>
+
+  <img class="abs card card-mission" src="assets/mission.png" alt="mission">
+  <img class="abs card card-vision" src="assets/vision.png" alt="vision">
+  <img class="abs card card-purpose" src="assets/purpose.png" alt="purpose">
+  <img class="abs card card-q1" src="assets/q1.png" alt="">
+  <img class="abs card card-q2" src="assets/q2.png" alt="">
+  <img class="abs card card-q3" src="assets/q3.png" alt="">
+
+  <img class="abs imm" src="assets/immaginazione.png" alt="immaginazione libera">
+
+  <div class="abs paragraph-bg"></div>
+  <div class="abs paragraph">
+    <p>MNG-crea percorsi di marketing e comunicazione. Lo scopo è dotarsi di una identità solida, connotata, consapevole.</p>
+    <p>Poi vale tutto.</p>
+    <p>I tool sono i linguaggi, tutti i linguaggi, in sinergia con i media e il pubblico di riferimento.</p>
+    <p>L'approccio è linguistico e narrativo: prima l'alfabeto, poi le parole. E infine le storie.… da vivere</p>
+  </div>
+
+  <img class="abs divider" src="assets/divider.png" alt="">
+  <p class="abs cta">scopri cosa possiamo fare insieme</p>
+
+</div></div>
+
+<!-- ================= BLOCCO 2 — sezione "linguaggi" ================= -->
+<div class="poster-frame2"><div class="poster2">
+
+  <img class="abs b2-bw" src="assets/fiume-bn.png" alt="">
+  <img class="abs b2-color" src="assets/fiume-color.png" alt="">
+
+  <h2 class="abs b2-heading">LINGUAGGI</h2>
+  <div class="abs b2-paragraph">
+    <p>La creatività ha bisogno di argini. Come per un fiume, consentono alle idee di scorrere più veloci e nella direzione giusta. Uno di questi argini sono i linguaggi e le regole antichissime che li governano.</p>
+    <p>Solidità linguistica significa solidità di pensiero, la cosa più efficace per trasmettere sempre il giusto messaggio.</p>
+  </div>
+
+</div></div>
+
+<!-- ================= BLOCCO 3 — footer ================= -->
+<footer class="site-footer">
+  <ul class="footer-menu">
+    <li><a href="#">blog</a></li>
+    <li><a href="#">progetti</a></li>
+    <li><a href="#">sogni</a></li>
+    <li><a href="#">AI</a></li>
+  </ul>
+
+  <div class="footer-social">
+    <a href="#" aria-label="LinkedIn" title="LinkedIn — inserisci il tuo link">
+      <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.9 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21H9z"/></svg>
+    </a>
+    <a href="#" aria-label="Tumblr" title="Tumblr — inserisci il tuo link">
+      <svg viewBox="0 0 24 24"><path d="M14.5 3v4.2h4V11h-4v5.2c0 1.5.75 2 1.9 2 .7 0 1.4-.15 2-.4l.6 3.3c-.85.4-2.1.7-3.4.7-3.3 0-5.1-1.9-5.1-5.2V11H8v-3.6c2.4-.6 3.7-2.6 4-4.4h2.5z"/></svg>
+    </a>
+  </div>
+
+  <p class="footer-legal">
+    © 2026 mng·crea — Daniele Mingucci · [P.IVA e sede da inserire] · <a href="#">Privacy</a> · <a href="#">Cookie policy</a>
+  </p>
+</footer>
+
+</body>
+</html>
