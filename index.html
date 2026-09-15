@@ -215,69 +215,171 @@
   }
   .footer-legal a{ color:#777; }
 </style>
+<style>
+  /* ================= RESPONSIVE (logica "HOME RESPONSIVE.pdf") ================= */
+
+  /* desktop: i contenitori mobile non esistono come box */
+  .m-hero, .m-nav, .m-cards, .m-photos{ display:contents; }
+  .m-cta-box{ display:none; }
+
+  @media (max-width: 820px){
+
+    .poster-frame::before, .poster-frame2::before{ display:none; }
+    .poster, .poster2{ position:relative; overflow:hidden; }
+
+    /* reset delle posizioni del poster desktop */
+    .poster .abs, .poster2 .abs{
+      position:relative; left:auto; top:auto; right:auto; bottom:auto;
+      width:auto; height:auto;
+    }
+
+    /* ---------- blocco 1: mare + marchio + attitude branding + testo ---------- */
+    .poster .m-hero{ display:block; position:relative; padding-top:5.2cqw; }
+    .poster .bg-ocean{
+      position:absolute; left:0; top:0; width:100%; height:100%;
+      object-fit:cover; object-position:center top; z-index:0;
+    }
+    .poster .logo{ display:block; width:46%; margin-left:6%; z-index:3; }
+    .poster .headline{ display:block; width:88%; margin:5cqw 0 0 8.7%; z-index:3; }
+    .poster .subtitle{ display:none; }
+
+    .poster .m-cards{ display:block; position:relative; height:16.5cqw; margin:3.5cqw 0 9cqw; z-index:5; }
+    .poster .m-cards .abs{ position:absolute; top:0; height:auto; }
+    .poster .card-mission{ left:7.3%;  width:12.3%; }
+    .poster .card-vision{  left:26.6%; width:12.5%; }
+    .poster .card-purpose{ left:44.7%; width:12.5%; }
+    .poster .card-q1{ left:60.5%; width:6.7%; }
+    .poster .card-q2{ left:69.2%; width:6.7%; }
+    .poster .card-q3{ left:78.0%; width:6.7%; }
+    .poster .m-cards .imm{ left:59.7%; top:13cqw; width:33.3%; }
+
+    .poster .paragraph-bg{ display:none; }
+    .poster .paragraph{
+      margin-left:9%; background:#fff; z-index:2;
+      padding:4.5cqw 7cqw 15cqw 7cqw;
+      font-size:clamp(14px, 3.9cqw, 17px); line-height:1.5;
+    }
+    .poster .divider{
+      position:absolute; left:9.8%; bottom:8cqw; width:72.7%; height:.9cqw; z-index:3;
+    }
+
+    /* ---------- blocco 2: nome + menu + barca ---------- */
+    .poster .m-nav{ display:block; position:relative; height:110cqw; }
+    .poster .m-nav .abs{ position:absolute; }
+    .poster .bg-boat-wrap{ left:38.5%; top:7.3cqw; width:61.5%; height:103cqw; }
+    .poster .name{
+      left:11.9%; top:12.5cqw; width:auto; height:auto;
+      font-size:6.6cqw;
+    }
+    .poster .nav-item{ justify-content:flex-start; height:9.6cqw; }
+    .poster .nav-text{ font-size:5cqw; }
+    .poster .nav-blog{   left:29%; top:18.7cqw; width:52%; padding-left:12cqw; }
+    .poster .nav-rosso{  left:29%; top:28.1cqw; width:50.3%; padding-left:12cqw; }
+    .poster .nav-giallo{ left:26%; top:37.2cqw; width:57%; height:10cqw; padding-left:15cqw; }
+    .poster .nav-grigio{ left:26%; top:47.2cqw; width:57%; height:10cqw; padding-left:15cqw; }
+
+    /* ---------- blocco 3: linguaggi ---------- */
+    .poster2 .b2-heading{ margin:4cqw 0 0 12.9%; font-size:7.4cqw; }
+    .poster2 .b2-paragraph{
+      margin:6cqw 13% 0 22%;
+      font-size:clamp(14px, 3.9cqw, 17px); line-height:1.5;
+    }
+    .poster2 .b2-paragraph p{ margin:0 0 1.1em; }
+
+    /* ---------- blocco 4: invito + foto del fiume ---------- */
+    .poster2 .m-photos{ display:block; position:relative; height:110cqw; margin-top:7.5cqw; }
+    .poster2 .m-photos .abs{ position:absolute; }
+    .poster2 .b2-bw{ left:0; top:0; width:67.8%; height:110cqw; object-fit:cover; }
+    .poster2 .b2-color{ left:37.4%; top:30.4cqw; width:37%; height:auto; z-index:3; }
+    .poster2 .m-cta-box{
+      display:block; position:absolute; left:9%; right:0; top:0; height:21cqw;
+      background:#fff; z-index:2;
+    }
+    .m-cta-divider{ position:absolute; left:0; top:5.8cqw; width:73%; height:.9cqw; }
+    .m-cta{
+      position:absolute; right:13%; top:11cqw; white-space:nowrap;
+      font-family:'Patrick Hand',cursive; color:var(--rust-cta); text-decoration:none;
+      font-size:4.4cqw; letter-spacing:.06em;
+    }
+
+    .cta-bottom{ display:none; }
+
+    /* ---------- footer ---------- */
+    .site-footer{ justify-content:center; text-align:center; margin-top:8cqw; }
+    .footer-menu{ justify-content:center; }
+  }
+</style>
 </head>
 <body>
 
 <div class="poster-frame"><div class="poster">
 
-  <img class="abs bg-ocean" src="assets/ocean.jpg" alt="">
-  <div class="abs bg-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
-
-  <img class="abs headline" src="assets/headline.png" alt="attitude branding">
-  <img class="abs logo" src="assets/logo.png" alt="mng crea">
-
-  <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
-
-  <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
-    <img src="assets/nav-blu.png" alt="">
-    <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
-  </a>
-  <a class="abs nav-item nav-rosso" href="progetti.html">
-    <img src="assets/nav-rosso.png" alt="">
-    <span class="nav-text">progetti</span>
-  </a>
-  <a class="abs nav-item nav-giallo" href="scrittura.html">
-    <img src="assets/nav-giallo.png" alt="">
-    <span class="nav-text">scrittura</span>
-  </a>
-  <a class="abs nav-item nav-grigio" href="ai.html">
-    <img src="assets/nav-grigio.png" alt="">
-    <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
-  </a>
-
-  <div class="abs subtitle">m a r k e t i n g&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;c o m u n i c a z i o n e</div>
-
-  <img class="abs card card-mission" src="assets/mission.png" alt="mission">
-  <img class="abs card card-vision" src="assets/vision.png" alt="vision">
-  <img class="abs card card-purpose" src="assets/purpose.png" alt="purpose">
-  <img class="abs card card-q1" src="assets/q1.png" alt="">
-  <img class="abs card card-q2" src="assets/q2.png" alt="">
-  <img class="abs card card-q3" src="assets/q3.png" alt="">
-
-  <img class="abs imm" src="assets/immaginazione.png" alt="immaginazione libera">
-
-  <div class="abs paragraph-bg"></div>
-  <div class="abs paragraph">
-    <p>MNG-crea percorsi di marketing e comunicazione. Lo scopo è dotarsi di <b>un'identità solida</b>, connotata, consapevole.</p>
-    <p>Poi vale tutto.</p>
-    <p>I <i>tool</i> sono i linguaggi, tutti i linguaggi, in sinergia con i media e il pubblico di riferimento.</p>
-    <p><b>L'approccio è linguistico e narrativo</b>: prima l'alfabeto, poi le parole. E infine le storie.… da vivere.</p>
+  <!-- mobile: blocco 1 — mare, marchio, attitude branding, testo -->
+  <div class="m-hero">
+    <img class="abs bg-ocean" src="assets/ocean.jpg" alt="">
+    <img class="abs logo" src="assets/logo.png" alt="mng crea">
+    <img class="abs headline" src="assets/headline.png" alt="attitude branding">
+    <div class="abs subtitle">m a r k e t i n g&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;c o m u n i c a z i o n e</div>
+    <div class="m-cards">
+      <img class="abs card card-mission" src="assets/mission.png" alt="mission">
+      <img class="abs card card-vision" src="assets/vision.png" alt="vision">
+      <img class="abs card card-purpose" src="assets/purpose.png" alt="purpose">
+      <img class="abs card card-q1" src="assets/q1.png" alt="">
+      <img class="abs card card-q2" src="assets/q2.png" alt="">
+      <img class="abs card card-q3" src="assets/q3.png" alt="">
+      <img class="abs imm" src="assets/immaginazione.png" alt="immaginazione libera">
+    </div>
+    <div class="abs paragraph-bg"></div>
+    <div class="abs paragraph">
+      <p>MNG-crea percorsi di marketing e comunicazione. Lo scopo è dotarsi di <b>un'identità solida</b>, connotata, consapevole.</p>
+      <p>Poi vale tutto.</p>
+      <p>I <i>tool</i> sono i linguaggi, tutti i linguaggi, in sinergia con i media e il pubblico di riferimento.</p>
+      <p><b>L'approccio è linguistico e narrativo</b>: prima l'alfabeto, poi le parole. E infine le storie.… da vivere.</p>
+    </div>
+    <img class="abs divider" src="assets/divider.png" alt="">
   </div>
 
-  <img class="abs divider" src="assets/divider.png" alt="">
+  <!-- mobile: blocco 2 — nome, menu, barca -->
+  <div class="m-nav">
+    <div class="abs bg-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
+    <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
+    <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
+      <img src="assets/nav-blu.png" alt="">
+      <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
+    </a>
+    <a class="abs nav-item nav-rosso" href="progetti.html">
+      <img src="assets/nav-rosso.png" alt="">
+      <span class="nav-text">progetti</span>
+    </a>
+    <a class="abs nav-item nav-giallo" href="scrittura.html">
+      <img src="assets/nav-giallo.png" alt="">
+      <span class="nav-text">scrittura</span>
+    </a>
+    <a class="abs nav-item nav-grigio" href="ai.html">
+      <img src="assets/nav-grigio.png" alt="">
+      <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
+    </a>
+  </div>
 
 </div></div>
 
 <!-- ================= BLOCCO 2 — sezione "linguaggi" ================= -->
 <div class="poster-frame2"><div class="poster2">
 
-  <img class="abs b2-bw" src="assets/fiume-bn.png" alt="">
-  <img class="abs b2-color" src="assets/fiume-color.png" alt="">
 
   <h2 class="abs b2-heading">LINGUAGGI</h2>
   <div class="abs b2-paragraph">
     <p>La creatività ha bisogno di argini. Come per un fiume, <b>consentono alle idee di scorrere più veloci</b> e nella direzione giusta. Uno di questi argini sono i linguaggi e le norme antichissime che li governano.</p>
     <p><b>Solidità linguistica significa solidità di pensiero</b>, la cosa più efficace per trasmettere sempre il giusto messaggio.</p>
+  </div>
+
+  <div class="m-photos">
+    <img class="abs b2-bw" src="assets/fiume-bn.png" alt="">
+    <img class="abs b2-color" src="assets/fiume-color.png" alt="">
+    <div class="m-cta-box">
+      <img class="m-cta-divider" src="assets/divider.png" alt="">
+      <a class="m-cta" href="contatti.html">scopri cosa possiamo fare insieme</a>
+    </div>
   </div>
 
 </div></div>

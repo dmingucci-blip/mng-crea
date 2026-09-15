@@ -70,7 +70,7 @@
   .project-divider{ left:38.78%; width:40.14%; height:2px; z-index:2; background:linear-gradient(to right,#1a1a1a,rgba(0,0,0,0)); }
 
   /* posizioni (top % e altezza thumb %) */
-  .p1-thumb{top:10.52%; height:6.29%;} .p1-title{top:8.48%;} .p1-text{top:10.45%; width:33%;} .p1-div{top:17.62%;}
+  .p1-thumb{top:10.52%; height:6.29%;} .p1-title{top:8.48%;} .p1-text{top:10.45%;} .p1-div{top:17.62%;}
   .p2-thumb{top:21.36%; height:5.58%;} .p2-title{top:19.52%;} .p2-text{top:21.30%;} .p2-div{top:28.84%;}
   .p3-thumb{top:33.92%; height:5.57%;} .p3-title{top:31.79%;} .p3-text{top:33.85%;} .p3-div{top:41.10%;}
   .p4-thumb{top:45.75%; height:5.58%;} .p4-title{top:43.62%;} .p4-text{top:45.68%;} .p4-div{top:52.90%;}
@@ -90,105 +90,209 @@
   .footer-legal{ width:100%; text-align:center; font-size:.78rem; color:#777; border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em; }
   .footer-legal a{ color:#777; }
 </style>
+<style>
+  /* ================= riquadri sfumati + contenitori responsive ================= */
+  .m-top, .m-nav, .proj{ display:contents; }
+
+  /* foto di testata intera, nelle sue proporzioni (come nell'originale) */
+  .poster img.hero-photo{ height:auto; object-fit:initial; }
+
+  .proj-card{ z-index:2; }
+  .tone-a .proj-card{ background:linear-gradient(to right, #fff 30%, #e6f02e 100%); }   /* bianco → giallo */
+  .tone-b .proj-card{ background:linear-gradient(to left,  #fff 45%, #45c1ee 100%); }   /* azzurro → bianco */
+  .tone-c .proj-card{ background:linear-gradient(to left,  #fff 45%, #e6f02e 100%); }   /* giallo → bianco */
+  .project-title{ white-space:nowrap; }
+  .proj-card{ left:22.1%; width:73.4%; }
+  .proj-card.c1{ top:7.38%; height:10.04%; }
+  .proj-card.c2{ top:18.42%; height:9.81%; }
+  .proj-card.c3{ top:30.69%; height:10.21%; }
+  .proj-card.c4{ top:42.52%; height:9.82%; }
+  .proj-card.c5{ top:54.75%; height:9.49%; }
+  .proj-card.c6{ top:67.73%; height:9.82%; }
+  .proj-card.c7{ top:79.56%; height:9.61%; }
+</style>
+<style>
+  /* ================= RESPONSIVE (stessa logica della home) ================= */
+  @media (max-width: 820px){
+
+    .poster-frame::before{ display:none; }
+    .poster{ position:relative; overflow:hidden; padding-bottom:8cqw; }
+    .poster .abs{
+      position:relative; left:auto; top:auto; right:auto; bottom:auto;
+      width:auto; height:auto;
+    }
+
+    /* ---------- testata: foto + marchio + titolo ---------- */
+    .poster .m-top{ display:block; position:relative; }
+    .poster .m-top .abs{ position:absolute; }
+    .poster .m-top img.hero-photo{
+      position:relative; display:block; width:100%; height:92cqw;
+      object-fit:cover; object-position:center 38%; box-shadow:none;
+    }
+    .poster .home-logo{ left:3%; top:3cqw; width:42%; }
+    .poster .home-logo img{ height:auto !important; }
+    .poster .title-brush{ left:0; top:62cqw; width:96%; height:9cqw; }
+    .poster .page-title{ left:16%; top:57.5cqw; font-size:12cqw; }
+
+    /* ---------- nome + menu + barca ---------- */
+    .poster .m-nav{ display:block; position:relative; height:46cqw; }
+    .poster .m-nav .abs{ position:absolute; }
+    .poster .hero-boat-wrap{ left:38.5%; top:4cqw; width:61.5%; height:80cqw; }
+    .poster .name{ left:9%; top:5cqw; font-size:6.6cqw; }
+    .poster .m-nav .nav-item{ justify-content:flex-start; height:9.6cqw; }
+    .poster .m-nav .nav-text{ font-size:5cqw; }
+    .poster .m-nav a.nav-item:nth-of-type(1){ left:29%; top:14cqw;   width:52%;   padding-left:12cqw; }
+    .poster .m-nav a.nav-item:nth-of-type(2){ left:29%; top:23.5cqw; width:50.3%; padding-left:12cqw; }
+    .poster .m-nav a.nav-item:nth-of-type(3){ left:26%; top:33cqw;   width:57%;   height:10cqw; padding-left:15cqw; }
+
+    /* ---------- riquadri sfumati ---------- */
+    .poster .proj{
+      display:block; position:relative; z-index:2;
+      margin:7cqw 4% 0; padding:6cqw 6% 7cqw 5%;
+    }
+    .poster .proj::after{ content:""; display:table; clear:both; }
+    .poster .proj .proj-card{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
+    .poster .proj h2{
+      z-index:1; white-space:normal; margin:0 0 4cqw;
+      font-size:min(8cqw, 40px); line-height:1.15;
+    }
+    .poster .proj img[class*="thumb"]{
+      float:left; width:34%; height:auto; margin:1cqw 5% 3cqw -6%; z-index:1;
+    }
+    .poster .proj div[class*="text"]{ z-index:1; }
+    .poster .proj div[class*="text"] p{ font-size:clamp(14px, 3.9cqw, 16px); line-height:1.5; }
+    .poster .proj div[class*="text"] p.book-stat{ font-size:clamp(12px, 3.3cqw, 14px); }
+    .poster .proj .book-link{ display:inline-block; z-index:1; font-size:clamp(14px, 4cqw, 16px); }
+    .poster .proj img[class*="divider"]{ display:none; }
+
+    /* ---------- footer ---------- */
+    .site-footer{ justify-content:center; text-align:center; }
+    .footer-menu{ justify-content:center; }
+  }
+</style>
 </head>
 <body>
 
 <div class="poster-frame"><div class="poster">
 
-  <img class="abs hero-photo" src="assets/progetti/hero-mac.jpg" alt="">
-  <div class="abs hero-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
+  <!-- testata -->
+  <div class="m-top">
+    <img class="abs hero-photo" src="assets/progetti/hero-mac.jpg" alt="">
+    <a class="abs home-logo" href="index.html" title="Torna alla home">
+      <img src="assets/logo.png" alt="mng crea" style="width:100%;height:100%;object-fit:contain;">
+    </a>
+    <img class="abs title-brush" src="assets/progetti/title-stroke.png" alt="">
+    <h1 class="abs page-title">progetti</h1>
+  </div>
 
-  <a class="abs home-logo" href="index.html" title="Torna alla home">
-    <img src="assets/logo.png" alt="mng crea" style="width:100%;height:100%;object-fit:contain;">
-  </a>
-
-  <img class="abs title-brush" src="assets/progetti/title-stroke.png" alt="">
-  <h1 class="abs page-title">progetti</h1>
-
-  <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
-
-  <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
-    <img src="assets/nav-blu.png" alt="">
-    <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
-  </a>
-  <a class="abs nav-item nav-scrittura" href="scrittura.html">
-    <img src="assets/nav-giallo.png" alt="">
-    <span class="nav-text">scrittura</span>
-  </a>
-  <a class="abs nav-item nav-ai" href="ai.html">
-    <img src="assets/nav-grigio.png" alt="">
-    <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
-  </a>
+  <!-- nome, menu, barca -->
+  <div class="m-nav">
+    <div class="abs hero-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
+    <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
+    <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
+      <img src="assets/nav-blu.png" alt="">
+      <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
+    </a>
+    <a class="abs nav-item nav-scrittura" href="scrittura.html">
+      <img src="assets/nav-giallo.png" alt="">
+      <span class="nav-text">scrittura</span>
+    </a>
+    <a class="abs nav-item nav-ai" href="ai.html">
+      <img src="assets/nav-grigio.png" alt="">
+      <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
+    </a>
+  </div>
 
   <!-- 1 — Stramba -->
-  <img class="abs project-thumb p1-thumb" src="assets/progetti/stramba.jpg" alt="Stramba">
-  <h2 class="abs project-title p1-title">STRAMBA</h2>
-  <div class="abs project-text p1-text">
-    <p>La creatività ha bisogno di argini. Come per un fiume, <b>consentono alle idee di scorrere più veloci</b> e nella direzione giusta.</p>
-    <p>Uno di questi argini sono i linguaggi e le norme antichissime che li governano.</p>
-    <p><b>Solidità linguistica significa solidità di pensiero</b>, la cosa più efficace per trasmettere sempre il giusto messaggio.</p>
-  </div>
-  <img class="abs project-divider p1-div" src="assets/divider.png" alt="">
+  <article class="proj tone-a">
+    <div class="abs proj-card c1"></div>
+    <h2 class="abs project-title p1-title">STRAMBA</h2>
+    <img class="abs project-thumb p1-thumb" src="assets/progetti/stramba.jpg" alt="Stramba">
+    <div class="abs project-text p1-text">
+      <p>La creatività ha bisogno di argini. Come per un fiume, <b>consentono alle idee di scorrere più veloci</b> e nella direzione giusta.</p>
+      <p>Uno di questi argini sono i linguaggi e le norme antichissime che li governano.</p>
+      <p><b>Solidità linguistica significa solidità di pensiero</b>, la cosa più efficace per trasmettere sempre il giusto messaggio.</p>
+    </div>
+    <img class="abs project-divider p1-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- 2 — Traspality -->
-  <img class="abs project-thumb p2-thumb" src="assets/progetti/traspality.jpg" alt="Traspality">
-  <h2 class="abs project-title p2-title">TRASPALITY</h2>
-  <div class="abs project-text p2-text">
-    <p>Traspality.com esiste già, in beta, online, tutta pronta e funzionante. <b>Trasparenza + qualità</b>, l'idea è questa, per mettere insieme due necessità: quella di <b>raccontare</b>, quella di <b>dimostrare la qualità</b> del proprio operato.</p>
-    <p>La trasparenza è un tool, non un valore, non un di più: <b>raccontando, certifichiamo</b>. E viceversa. Non solo: il tema più importante è l'identità.</p>
-    <p>Già, perché "qualità" viene da "qualis" che è il contrario esatto di uno standard uguale per tutti. Quindi certificare e insieme mettere al centro i <b>propri valori, le proprie capacità, la vera unicità</b> che ci caratterizza.</p>
-    <p><a href="https://www.traspality.com" style="color:var(--purple);">www.traspality.com</a></p>
-  </div>
-  <img class="abs project-divider p2-div" src="assets/divider.png" alt="">
+  <article class="proj tone-b">
+    <div class="abs proj-card c2"></div>
+    <h2 class="abs project-title p2-title">TRASPALITY</h2>
+    <img class="abs project-thumb p2-thumb" src="assets/progetti/traspality.jpg" alt="Traspality">
+    <div class="abs project-text p2-text">
+      <p>Traspality.com esiste già, in beta, online, tutta pronta e funzionante. <b>Trasparenza + qualità</b>, l'idea è questa, per mettere insieme due necessità: quella di <b>raccontare</b>, quella di <b>dimostrare la qualità</b> del proprio operato.</p>
+      <p>La trasparenza è un tool, non un valore, non un di più: <b>raccontando, certifichiamo</b>. E viceversa. Non solo: il tema più importante è l'identità.</p>
+      <p>Già, perché "qualità" viene da "qualis" che è il contrario esatto di uno standard uguale per tutti. Quindi certificare e insieme mettere al centro i <b>propri valori, le proprie capacità, la vera unicità</b> che ci caratterizza.</p>
+      <p><a href="https://www.traspality.com" style="color:var(--purple);">www.traspality.com</a></p>
+    </div>
+    <img class="abs project-divider p2-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- 3 — Books121 -->
-  <img class="abs project-thumb p3-thumb" src="assets/progetti/books121.png" alt="Books121">
-  <h2 class="abs project-title p3-title">BOOKS121</h2>
-  <div class="abs project-text p3-text">
-    <p>Progetto 2019, archiviato per costi e tempi di sviluppo. Ma ora ci sono Claude, Gemini e i loro amici super performanti. Quindi Books121 è online!</p>
-    <p>Pagare la lettura e non il possesso, favorire lo scambio di libri, il passaggio di mano. Con vantaggi per tutti, soprattutto per chi li scrive e per chi li pubblica, i libri, perché potranno iniziare a conoscere davvero i propri lettori, uno a uno, vedendo chi legge, quanto legge, dove, in quanto tempo.</p>
-    <p>E per chi ha montagne di libri chiusi in casa a prender polvere, la possibilità di dar loro nuova vita mettendoli in circolo. E per chi ama leggere, poterlo fare sulla carta ai prezzi del digitale. Un mondo nuovo... radicato nella tradizione.</p>
-    <p><a href="https://www.book121.com" style="color:var(--purple);">www.book121.com</a></p>
-  </div>
-  <img class="abs project-divider p3-div" src="assets/divider.png" alt="">
+  <article class="proj tone-a">
+    <div class="abs proj-card c3"></div>
+    <h2 class="abs project-title p3-title">BOOKS121</h2>
+    <img class="abs project-thumb p3-thumb" src="assets/progetti/books121.png" alt="Books121">
+    <div class="abs project-text p3-text">
+      <p>Progetto 2019, archiviato per costi e tempi di sviluppo. Ma ora ci sono Claude, Gemini e i loro amici super performanti. Quindi Books121 è online!</p>
+      <p>Pagare la lettura e non il possesso, favorire lo scambio di libri, il passaggio di mano. Con vantaggi per tutti, soprattutto per chi li scrive e per chi li pubblica, i libri, perché potranno iniziare a conoscere davvero i propri lettori, uno a uno, vedendo chi legge, quanto legge, dove, in quanto tempo.</p>
+      <p>E per chi ha montagne di libri chiusi in casa a prender polvere, la possibilità di dar loro nuova vita mettendoli in circolo. E per chi ama leggere, poterlo fare sulla carta ai prezzi del digitale. Un mondo nuovo... radicato nella tradizione.</p>
+      <p><a href="https://www.book121.com" style="color:var(--purple);">www.book121.com</a></p>
+    </div>
+    <img class="abs project-divider p3-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- 4 — Porto di Riccione -->
-  <img class="abs project-thumb p4-thumb" src="assets/progetti/porto-riccione.jpg" alt="Porto di Riccione">
-  <h2 class="abs project-title p4-title">PORTO DI RICCIONE</h2>
-  <div class="abs project-text p4-text">
-    <p>Ribaltiamo Riccione, <b>puntiamo alto, altissimo</b>. Storia, tradizione, reputazione, affetto... è tutto dalla nostra parte. <b>Serve un porto. L'unico, sull'Adriatico, che porta le barche direttamente in centro</b>, a tre passi dal salotto buono, da Viale Ceccarini e direttamente su Viale Dante.</p>
-    <p>Però un porto, con tanta acqua e tanto spazio per <b>accogliere barche importanti, yacht di lusso</b>, grandi e di valore, con equipaggi e armatori.</p>
-    <p><b>Una porta d'accesso a un mondo che oggi è precluso a Riccione</b>, ma che ha il potenziale di portare nuova linfa, investimenti e <b>un redesign completo dell'identità della città</b>. C'è tutto quello che serve, il potenziale, gli spazi, le risorse. E la Bolkestein...</p>
-  </div>
-  <img class="abs project-divider p4-div" src="assets/divider.png" alt="">
+  <article class="proj tone-b">
+    <div class="abs proj-card c4"></div>
+    <h2 class="abs project-title p4-title">PORTO DI RICCIONE</h2>
+    <img class="abs project-thumb p4-thumb" src="assets/progetti/porto-riccione.jpg" alt="Porto di Riccione">
+    <div class="abs project-text p4-text">
+      <p>Ribaltiamo Riccione, <b>puntiamo alto, altissimo</b>. Storia, tradizione, reputazione, affetto... è tutto dalla nostra parte. <b>Serve un porto. L'unico, sull'Adriatico, che porta le barche direttamente in centro</b>, a tre passi dal salotto buono, da Viale Ceccarini e direttamente su Viale Dante.</p>
+      <p>Però un porto, con tanta acqua e tanto spazio per <b>accogliere barche importanti, yacht di lusso</b>, grandi e di valore, con equipaggi e armatori.</p>
+      <p><b>Una porta d'accesso a un mondo che oggi è precluso a Riccione</b>, ma che ha il potenziale di portare nuova linfa, investimenti e <b>un redesign completo dell'identità della città</b>. C'è tutto quello che serve, il potenziale, gli spazi, le risorse. E la Bolkestein...</p>
+    </div>
+    <img class="abs project-divider p4-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- 5 — Capital Units -->
-  <img class="abs project-thumb p5-thumb" src="assets/progetti/capital-units.png" alt="Capital Units">
-  <h2 class="abs project-title p5-title">CAPITAL UNITS</h2>
-  <div class="abs project-text p5-text">
-    <p>Un sogno vero, un tool quasi finanziario. Ma <b>l'obiettivo è proprio di andare oltre le unità di misura finanziarie</b>. Perché il valore non è solo quello, non sono solo soldi, ma c'è <b>impegno, talento, personalità, relazioni</b>.</p>
-    <p>Il 100% diventa 105% e in quel +5% si descrive il sistema di relazioni, la storia, le azioni compiute, la conoscenza messa in campo. È un surplus reale che va <b>oltre le stock option classiche</b> e consente alle aziende di mettere in campo e di capitalizzare anche la propria rete di valore.</p>
-    <p><a href="https://www.capitalunits.org" style="color:var(--purple);">www.capitalunits.org</a></p>
-  </div>
-  <img class="abs project-divider p5-div" src="assets/divider.png" alt="">
+  <article class="proj tone-a">
+    <div class="abs proj-card c5"></div>
+    <h2 class="abs project-title p5-title">CAPITAL UNITS</h2>
+    <img class="abs project-thumb p5-thumb" src="assets/progetti/capital-units.png" alt="Capital Units">
+    <div class="abs project-text p5-text">
+      <p>Un sogno vero, un tool quasi finanziario. Ma <b>l'obiettivo è proprio di andare oltre le unità di misura finanziarie</b>. Perché il valore non è solo quello, non sono solo soldi, ma c'è <b>impegno, talento, personalità, relazioni</b>.</p>
+      <p>Il 100% diventa 105% e in quel +5% si descrive il sistema di relazioni, la storia, le azioni compiute, la conoscenza messa in campo. È un surplus reale che va <b>oltre le stock option classiche</b> e consente alle aziende di mettere in campo e di capitalizzare anche la propria rete di valore.</p>
+      <p><a href="https://www.capitalunits.org" style="color:var(--purple);">www.capitalunits.org</a></p>
+    </div>
+    <img class="abs project-divider p5-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- 6 — Kerga -->
-  <img class="abs project-thumb p6-thumb" src="assets/progetti/kerga.jpg" alt="Kerga">
-  <h2 class="abs project-title p6-title">KERGA</h2>
-  <div class="abs project-text p6-text">
-    <p>L'elettrificazione dal basso. Che l'elettrico sia una tecnologia superiore (90% di rendimento contro un 30/40% del termico) non è in discussione. Così, mentre le grandi case sfogliano la margherita, gli utenti vengono tenuti a distanza da un solo vero problema: <b>la ricarica alla colonnina costa troppo</b>.</p>
-    <p>Ma c'è qualcun altro che ha interesse a vendere macchine e a tener vivo il mercato: <b>i concessionari</b>.</p>
-    <p>Kerga è un'idea che consente a ogni concessionario di <b>attivare la vendita di auto elettriche</b> consolidando il rapporto coi propri clienti in modo inedito. Valore per tutti: per gli utenti, per i commercianti, per gli enti di credito. E per il pianeta.</p>
-  </div>
-  <img class="abs project-divider p6-div" src="assets/divider.png" alt="">
+  <article class="proj tone-b">
+    <div class="abs proj-card c6"></div>
+    <h2 class="abs project-title p6-title">KERGA</h2>
+    <img class="abs project-thumb p6-thumb" src="assets/progetti/kerga.jpg" alt="Kerga">
+    <div class="abs project-text p6-text">
+      <p>L'elettrificazione dal basso. Che l'elettrico sia una tecnologia superiore (90% di rendimento contro un 30/40% del termico) non è in discussione. Così, mentre le grandi case sfogliano la margherita, gli utenti vengono tenuti a distanza da un solo vero problema: <b>la ricarica alla colonnina costa troppo</b>.</p>
+      <p>Ma c'è qualcun altro che ha interesse a vendere macchine e a tener vivo il mercato: <b>i concessionari</b>.</p>
+      <p>Kerga è un'idea che consente a ogni concessionario di <b>attivare la vendita di auto elettriche</b> consolidando il rapporto coi propri clienti in modo inedito. Valore per tutti: per gli utenti, per i commercianti, per gli enti di credito. E per il pianeta.</p>
+    </div>
+    <img class="abs project-divider p6-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- 7 — Up to Cinema -->
-  <img class="abs project-thumb p7-thumb" src="assets/progetti/up-to-cinema.jpg" alt="Up to Cinema">
-  <h2 class="abs project-title p7-title">UP TO CINEMA</h2>
-  <div class="abs project-text p7-text">
-    <p>Un percorso progettato per generare storie di qualità e per valorizzarle al massimo. Lo strumento è una piattaforma basata su regole chiare e sulla costituzione di team di professionisti in grado di prendere una storia - in qualunque forma si presenti - e di prepararla per il cinema, dove può davvero fare la differenza.</p>
-    <p>Le regole sono importanti, sono tutto in questo caso: in Europa il cinema non è un'industria e i percorsi per arrivare davanti alla cinepresa sono tortuosi e molto spesso opachi. Valorizzare la qualità e le professionalità, invece, consentirà di alzare l'asticella e di portare "in sala" una ventata di nuove idee.</p>
-  </div>
+  <article class="proj tone-a">
+    <div class="abs proj-card c7"></div>
+    <h2 class="abs project-title p7-title">UP TO CINEMA</h2>
+    <img class="abs project-thumb p7-thumb" src="assets/progetti/up-to-cinema.jpg" alt="Up to Cinema">
+    <div class="abs project-text p7-text">
+      <p>Un percorso progettato per generare storie di qualità e per valorizzarle al massimo. Lo strumento è una piattaforma basata su regole chiare e sulla costituzione di team di professionisti in grado di prendere una storia - in qualunque forma si presenti - e di prepararla per il cinema, dove può davvero fare la differenza.</p>
+      <p>Le regole sono importanti, sono tutto in questo caso: in Europa il cinema non è un'industria e i percorsi per arrivare davanti alla cinepresa sono tortuosi e molto spesso opachi. Valorizzare la qualità e le professionalità, invece, consentirà di alzare l'asticella e di portare "in sala" una ventata di nuove idee.</p>
+    </div>
+  </article>
 
 </div></div>
 

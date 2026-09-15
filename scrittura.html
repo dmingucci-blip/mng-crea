@@ -72,11 +72,11 @@
   .book-divider{ left:38.47%; width:40.14%; height:2px; z-index:2; background:linear-gradient(to right,#1a1a1a,rgba(0,0,0,0)); }
 
   /* posizioni per libro (top %) */
-  .b1-thumb{top:12.35%;} .b1-title{top:9.94%;} .b1-text{top:12.30%; width:33%;} .b1-stat{top:17.47%;} .b1-div{top:20.75%;}
+  .b1-thumb{top:12.35%;} .b1-title{top:9.94%;} .b1-text{top:12.30%;} .b1-stat{top:17.47%;} .b1-div{top:20.75%;}
   .b2-thumb{top:24.85%;} .b2-title{top:23.01%;} .b2-link{top:25.37%;} .b2-div{top:34.03%;}
   .b3-thumb{top:39.70%;} .b3-title{top:37.53%;} .b3-text{top:39.60%;} .b3-stat{top:45.68%;} .b3-div{top:48.56%;}
   .b4-thumb{top:53.41%;} .b4-title{top:51.22%;} .b4-link{top:53.58%;} .b4-div{top:62.25%;}
-  .b5-thumb{top:67.10%;} .b5-title{top:64.90%;} .b5-text{top:67.00%;} .b5-stat{top:73.68%;} .b5-div{top:75.94%;}
+  .b5-thumb{top:67.10%;} .b5-title{top:64.90%;} .b5-text{top:67.00%;} .b5-stat{top:73.68%;} .b5-div{top:77.10%;}
   .b6-thumb{top:80.79%;} .b6-title{top:78.59%;} .b6-text{top:80.70%;} .b6-stat{top:87.37%;} .b6-div{top:89.63%;}
 
   .site-footer{ background:#fff; border-top:1px solid #e6e1d2; padding:2.4em 4%; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.6em; max-width:1320px; margin:0 auto; }
@@ -91,90 +91,191 @@
   .footer-legal{ width:100%; text-align:center; font-size:.78rem; color:#777; border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em; }
   .footer-legal a{ color:#777; }
 </style>
+<style>
+  /* ================= riquadri sfumati + contenitori responsive ================= */
+  .m-top, .m-nav, .proj{ display:contents; }
+
+  /* foto di testata intera, nelle sue proporzioni (come nell'originale) */
+  .poster img.hero-photo{ height:auto; object-fit:initial; }
+
+  .proj-card{ z-index:2; }
+  .tone-a .proj-card{ background:linear-gradient(to right, #fff 30%, #e6f02e 100%); }   /* bianco → giallo */
+  .tone-b .proj-card{ background:linear-gradient(to left,  #fff 45%, #45c1ee 100%); }   /* azzurro → bianco */
+  .tone-c .proj-card{ background:linear-gradient(to left,  #fff 45%, #e6f02e 100%); }   /* giallo → bianco */
+  .book-text p.book-stat{ width:auto; margin-top:1.1em; color:#888; font-size:clamp(8px, 1.4cqw, 14px); }
+  .book-title{ white-space:nowrap; }
+  .proj-card{ left:22.1%; width:73.4%; }
+  .proj-card.c1{ top:8.84%; height:11.68%; }
+  .proj-card.c2{ top:21.91%; height:10.24%; }
+  .proj-card.c3{ top:36.43%; height:11.39%; }
+  .proj-card.c4{ top:50.12%; height:10.59%; }
+  .proj-card.c5{ top:63.80%; height:13.12%; }
+  .proj-card.c6{ top:77.49%; height:13.23%; }
+</style>
+<style>
+  /* ================= RESPONSIVE (stessa logica della home) ================= */
+  @media (max-width: 820px){
+
+    .poster-frame::before{ display:none; }
+    .poster{ position:relative; overflow:hidden; padding-bottom:8cqw; }
+    .poster .abs{
+      position:relative; left:auto; top:auto; right:auto; bottom:auto;
+      width:auto; height:auto;
+    }
+
+    /* ---------- testata: foto + marchio + titolo ---------- */
+    .poster .m-top{ display:block; position:relative; }
+    .poster .m-top .abs{ position:absolute; }
+    .poster .m-top img.hero-photo{
+      position:relative; display:block; width:100%; height:92cqw;
+      object-fit:cover; object-position:center 38%; box-shadow:none;
+    }
+    .poster .home-logo{ left:3%; top:3cqw; width:42%; }
+    .poster .home-logo img{ height:auto !important; }
+    .poster .title-brush{ left:0; top:62cqw; width:96%; height:9cqw; }
+    .poster .page-title{ left:16%; top:57.5cqw; font-size:12cqw; }
+
+    /* ---------- nome + menu + barca ---------- */
+    .poster .m-nav{ display:block; position:relative; height:46cqw; }
+    .poster .m-nav .abs{ position:absolute; }
+    .poster .hero-boat-wrap{ left:38.5%; top:4cqw; width:61.5%; height:80cqw; }
+    .poster .name{ left:9%; top:5cqw; font-size:6.6cqw; }
+    .poster .m-nav .nav-item{ justify-content:flex-start; height:9.6cqw; }
+    .poster .m-nav .nav-text{ font-size:5cqw; }
+    .poster .m-nav a.nav-item:nth-of-type(1){ left:29%; top:14cqw;   width:52%;   padding-left:12cqw; }
+    .poster .m-nav a.nav-item:nth-of-type(2){ left:29%; top:23.5cqw; width:50.3%; padding-left:12cqw; }
+    .poster .m-nav a.nav-item:nth-of-type(3){ left:26%; top:33cqw;   width:57%;   height:10cqw; padding-left:15cqw; }
+
+    /* ---------- riquadri sfumati ---------- */
+    .poster .proj{
+      display:block; position:relative; z-index:2;
+      margin:7cqw 4% 0; padding:6cqw 6% 7cqw 5%;
+    }
+    .poster .proj::after{ content:""; display:table; clear:both; }
+    .poster .proj .proj-card{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
+    .poster .proj h2{
+      z-index:1; white-space:normal; margin:0 0 4cqw;
+      font-size:min(8cqw, 40px); line-height:1.15;
+    }
+    .poster .proj img[class*="thumb"]{
+      float:left; width:34%; height:auto; margin:1cqw 5% 3cqw -6%; z-index:1;
+    }
+    .poster .proj div[class*="text"]{ z-index:1; }
+    .poster .proj div[class*="text"] p{ font-size:clamp(14px, 3.9cqw, 16px); line-height:1.5; }
+    .poster .proj div[class*="text"] p.book-stat{ font-size:clamp(12px, 3.3cqw, 14px); }
+    .poster .proj .book-link{ display:inline-block; z-index:1; font-size:clamp(14px, 4cqw, 16px); }
+    .poster .proj img[class*="divider"]{ display:none; }
+
+    /* ---------- footer ---------- */
+    .site-footer{ justify-content:center; text-align:center; }
+    .footer-menu{ justify-content:center; }
+  }
+</style>
 </head>
 <body>
 
 <div class="poster-frame"><div class="poster">
 
-  <img class="abs hero-photo" src="assets/scrittura/typewriter.jpg" alt="">
-  <div class="abs hero-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
+  <!-- testata -->
+  <div class="m-top">
+    <img class="abs hero-photo" src="assets/scrittura/typewriter.jpg" alt="">
+    <a class="abs home-logo" href="index.html" title="Torna alla home">
+      <img src="assets/logo.png" alt="mng crea" style="width:100%;height:100%;object-fit:contain;">
+    </a>
+    <img class="abs title-brush" src="assets/scrittura/title-stroke.png" alt="">
+    <h1 class="abs page-title">scrittura</h1>
+  </div>
 
-  <a class="abs home-logo" href="index.html" title="Torna alla home">
-    <img src="assets/logo.png" alt="mng crea" style="width:100%;height:100%;object-fit:contain;">
-  </a>
-
-  <img class="abs title-brush" src="assets/scrittura/title-stroke.png" alt="">
-  <h1 class="abs page-title">scrittura</h1>
-
-  <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
-
-  <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
-    <img src="assets/nav-blu.png" alt="">
-    <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
-  </a>
-  <a class="abs nav-item nav-progetti" href="progetti.html">
-    <img src="assets/nav-rosso.png" alt="">
-    <span class="nav-text">progetti</span>
-  </a>
-  <a class="abs nav-item nav-ai" href="ai.html">
-    <img src="assets/nav-grigio.png" alt="">
-    <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
-  </a>
+  <!-- nome, menu, barca -->
+  <div class="m-nav">
+    <div class="abs hero-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
+    <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
+    <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
+      <img src="assets/nav-blu.png" alt="">
+      <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
+    </a>
+    <a class="abs nav-item nav-progetti" href="progetti.html">
+      <img src="assets/nav-rosso.png" alt="">
+      <span class="nav-text">progetti</span>
+    </a>
+    <a class="abs nav-item nav-ai" href="ai.html">
+      <img src="assets/nav-grigio.png" alt="">
+      <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
+    </a>
+  </div>
 
   <!-- libro 1 — ... di Dante -->
-  <img class="abs book-thumb b1-thumb" src="assets/scrittura/book1.png" alt="... di Dante">
-  <h2 class="abs book-title b1-title">... di Dante</h2>
-  <div class="abs book-text b1-text">
-    <p>A questo tengo molto, è una storia d'amore. Tre storie d'amore, quattro...</p>
-    <p>Mi sto mettendo alla prova, come scrittura, e sto rifinendo tanto, come non ho mai fatto. Avrei voluto finire tutto in agosto 2026, ma quella dannata barca :)))</p>
-    <p>Il titolo non lo svelo ancora, è troppo bello.</p>
-  </div>
-  <p class="abs book-stat b1-stat">Romanzo, 2026 · 512.000 battute</p>
-  <img class="abs book-divider b1-div" src="assets/divider.png" alt="">
+  <article class="proj tone-a">
+    <div class="abs proj-card c1"></div>
+    <h2 class="abs book-title b1-title">... di Dante</h2>
+    <img class="abs book-thumb b1-thumb" src="assets/scrittura/book1.png" alt="... di Dante">
+    <div class="abs book-text b1-text">
+      <p>A questo tengo molto, è una storia d'amore. Tre storie d'amore, quattro...</p>
+      <p>Mi sto mettendo alla prova, come scrittura, e sto rifinendo tanto, come non ho mai fatto. Avrei voluto finire tutto in agosto 2026, ma quella dannata barca :)))</p>
+      <p>Il titolo non lo svelo ancora, è troppo bello.</p>
+      <p class="book-stat">Romanzo, 2026 · 512.000 battute</p>
+    </div>
+    <img class="abs book-divider b1-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- libro 2 — L'amore può attendere -->
-  <img class="abs book-thumb b2-thumb" src="assets/scrittura/book2.jpg" alt="L'amore può attendere">
-  <h2 class="abs book-title b2-title">L'amore può attendere</h2>
-  <a class="abs book-link b2-link" href="https://www.amazon.it/Lamore-pu%C3%B2-attendere-Daniele-Mingucci/dp/8867265423/">Acquista su Amazon →</a>
-  <img class="abs book-divider b2-div" src="assets/divider.png" alt="">
+  <article class="proj tone-c">
+    <div class="abs proj-card c2"></div>
+    <h2 class="abs book-title b2-title">L'amore può attendere</h2>
+    <img class="abs book-thumb b2-thumb" src="assets/scrittura/book2.jpg" alt="L'amore può attendere">
+    <a class="abs book-link b2-link" href="https://www.amazon.it/Lamore-pu%C3%B2-attendere-Daniele-Mingucci/dp/8867265423/">Acquista su Amazon →</a>
+    <img class="abs book-divider b2-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- libro 3 — Fortune 2 -->
-  <img class="abs book-thumb b3-thumb" src="assets/scrittura/book3.png" alt="Fortune 2 - time issue">
-  <h2 class="abs book-title b3-title">Fortune 2 - time issue</h2>
-  <div class="abs book-text b3-text">
-    <p>È il due di Fortune. Tutta un'altra storia. Ho cambiato stile, al presente. Spero di essere migliorato. Credo sia pronto per la pubblicazione, ma Guaraldi Lab non c'è più, non c'è più Mario, il mio primo editore.</p>
-    <p>Rimane in cantina un po', poi vediamo. Probabilmente serve un'altra revisione. Ah... secondo l'AI la startup che c'è dentro si può fare.</p>
-    <p>Quasi quasi...</p>
-  </div>
-  <p class="abs book-stat b3-stat">Romanzo, 2024 · 625.000 battute</p>
-  <img class="abs book-divider b3-div" src="assets/divider.png" alt="">
+  <article class="proj tone-a">
+    <div class="abs proj-card c3"></div>
+    <h2 class="abs book-title b3-title">Fortune 2 - time issue</h2>
+    <img class="abs book-thumb b3-thumb" src="assets/scrittura/book3.png" alt="Fortune 2 - time issue">
+    <div class="abs book-text b3-text">
+      <p>È il due di Fortune. Tutta un'altra storia. Ho cambiato stile, al presente. Spero di essere migliorato. Credo sia pronto per la pubblicazione, ma Guaraldi Lab non c'è più, non c'è più Mario, il mio primo editore.</p>
+      <p>Rimane in cantina un po', poi vediamo. Probabilmente serve un'altra revisione. Ah... secondo l'AI la startup che c'è dentro si può fare.</p>
+      <p>Quasi quasi...</p>
+      <p class="book-stat">Romanzo, 2024 · 625.000 battute</p>
+    </div>
+    <img class="abs book-divider b3-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- libro 4 — Fortune anonima startup -->
-  <img class="abs book-thumb b4-thumb" src="assets/scrittura/book4.jpg" alt="Fortune - anonima startup">
-  <h2 class="abs book-title b4-title">Fortune - anonima startup</h2>
-  <a class="abs book-link b4-link" href="https://www.amazon.it/Fortune-anonima-startupper-incastri-perfezione/dp/8869272222/">Acquista su Amazon →</a>
-  <img class="abs book-divider b4-div" src="assets/divider.png" alt="">
+  <article class="proj tone-c">
+    <div class="abs proj-card c4"></div>
+    <h2 class="abs book-title b4-title">Fortune - anonima startup</h2>
+    <img class="abs book-thumb b4-thumb" src="assets/scrittura/book4.jpg" alt="Fortune - anonima startup">
+    <a class="abs book-link b4-link" href="https://www.amazon.it/Fortune-anonima-startupper-incastri-perfezione/dp/8869272222/">Acquista su Amazon →</a>
+    <img class="abs book-divider b4-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- libro 5 — Beach -->
-  <img class="abs book-thumb b5-thumb" src="assets/scrittura/book5.png" alt="Beach - D'estate al...">
-  <h2 class="abs book-title b5-title">Beach - D'estate al...</h2>
-  <div class="abs book-text b5-text">
-    <p>Me l'ha fatto scrivere e poi non l'ha voluto pubblicare. E dire che spacca... Prima o poi lo pubblico lo stesso, prima però gli diamo una sistemata.</p>
-    <p>Racconta di come è arrivato il Beach Volley in Europa. Una storia romanzata, costruita su diversi piani temporali, alla scoperta di un tesoro sepolto e del segreto - bello - di un'energia creativa indomabile.</p>
-    <p>Forse non se lo merita, il committente. Ma mia mamma dice che è bellissimo :).</p>
-  </div>
-  <p class="abs book-stat b5-stat">Romanzo, 2019 · 340.000 battute</p>
-  <img class="abs book-divider b5-div" src="assets/divider.png" alt="">
+  <article class="proj tone-a">
+    <div class="abs proj-card c5"></div>
+    <h2 class="abs book-title b5-title">Beach - D'estate al...</h2>
+    <img class="abs book-thumb b5-thumb" src="assets/scrittura/book5.png" alt="Beach - D'estate al...">
+    <div class="abs book-text b5-text">
+      <p>Me l'ha fatto scrivere e poi non l'ha voluto pubblicare. E dire che spacca... Prima o poi lo pubblico lo stesso, prima però gli diamo una sistemata.</p>
+      <p>Racconta di come è arrivato il Beach Volley in Europa. Una storia romanzata, costruita su diversi piani temporali, alla scoperta di un tesoro sepolto e del segreto - bello - di un'energia creativa indomabile.</p>
+      <p>Forse non se lo merita, il committente. Ma mia mamma dice che è bellissimo :).</p>
+      <p class="book-stat">Romanzo, 2019 · 340.000 battute</p>
+    </div>
+    <img class="abs book-divider b5-div" src="assets/divider.png" alt="">
+  </article>
 
   <!-- libro 6 — Dei talenti perduti -->
-  <img class="abs book-thumb b6-thumb" src="assets/scrittura/book6.png" alt="Dei talenti perduti">
-  <h2 class="abs book-title b6-title">Dei talenti perduti</h2>
-  <div class="abs book-text b6-text">
-    <p>Una storia strana, dark. Di rinascita. È in bozza da un po', si chiamava "Il bar dei talenti perduti" ma somiglia troppo ad altri titoli. Ci devo pensare ancora.</p>
-    <p>Secondo Gemini e Claude è il mio migliore, ma non l'ho ancora preparato per la pubblicazione. Intanto aspettiamo, è lì.</p>
-    <p>Il cattivo è un mio amico, si chiama come lui. Il buono era un mio amico, abbiamo litigato, mi raccontava un sacco di balle. Infatti è andata esattamente al contrario...</p>
-  </div>
-  <p class="abs book-stat b6-stat">Romanzo, 2020 · 265.000 battute</p>
+  <article class="proj tone-c">
+    <div class="abs proj-card c6"></div>
+    <h2 class="abs book-title b6-title">Dei talenti perduti</h2>
+    <img class="abs book-thumb b6-thumb" src="assets/scrittura/book6.png" alt="Dei talenti perduti">
+    <div class="abs book-text b6-text">
+      <p>Una storia strana, dark. Di rinascita. È in bozza da un po', si chiamava "Il bar dei talenti perduti" ma somiglia troppo ad altri titoli. Ci devo pensare ancora.</p>
+      <p>Secondo Gemini e Claude è il mio migliore, ma non l'ho ancora preparato per la pubblicazione. Intanto aspettiamo, è lì.</p>
+      <p>Il cattivo è un mio amico, si chiama come lui. Il buono era un mio amico, abbiamo litigato, mi raccontava un sacco di balle. Infatti è andata esattamente al contrario...</p>
+      <p class="book-stat">Romanzo, 2020 · 265.000 battute</p>
+    </div>
+  </article>
 
 </div></div>
 
