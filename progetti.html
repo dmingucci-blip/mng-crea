@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>progetti — daniele mingucci</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Pixelify+Sans&family=Special+Elite&family=Jost:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{ --purple:#422e7c; --pink-name:#efbcd6; --teal-name:#0086b2; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#fff;}
+  body{font-family:'Montserrat',sans-serif;}
+
+  .poster-frame{ position:relative; width:100%; max-width:1320px; margin:0 auto; }
+  .poster-frame::before{ content:""; display:block; padding-top:329.66%; }
+  .poster{ position:absolute; left:0; top:0; right:0; bottom:0; background:#fff; overflow:hidden; container-type:inline-size; }
+  .abs{position:absolute;}
+  .abs img, img.abs{display:block; object-fit:fill;}
+
+  /* ---------------- hero ---------------- */
+
+  .hero-photo{ left:2.42%; top:0.76%; width:45.89%; height:7.0%; object-fit:cover; object-position:top; z-index:1; box-shadow:0 6px 16px rgba(0,0,0,.25); }
+  .hero-boat-wrap{ left:69.52%; top:5.33%; width:27.98%; height:16.67%; z-index:1; overflow:hidden; }
+  .hero-boat-wrap img{ width:100%; height:100%; object-fit:cover; }
+  .hero-boat-wrap::after{ content:""; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 18%); }
+
+  .home-logo{ left:1.6%; top:0.25%; width:14%; height:2.59%; z-index:5; }
+
+  .title-brush{ left:4.85%; top:2.90%; width:55.29%; height:1.31%; z-index:2; }
+  .page-title{
+    left:14.09%; top:2.35%; width:35%;
+    margin:0; z-index:3; color:#fff;
+    font-family:'Jost',sans-serif; font-weight:600;
+    font-size:clamp(20px, 4.6cqw, 44px);
+  }
+
+  .name{
+    left:67.49%; top:1.05%; width:27.95%; height:0.97%;
+    margin:0; z-index:4; white-space:nowrap;
+    font-size:clamp(10px, 2.6cqw, 26px);
+    display:flex; align-items:baseline; gap:.3em;
+  }
+  .name .n1{font-family:'Pixelify Sans',sans-serif; color:var(--pink-name);}
+  .name .n2{font-family:'Special Elite',serif; color:var(--teal-name); font-size:.92em;}
+
+  .nav-item{ z-index:3; display:flex; align-items:center; justify-content:center; text-decoration:none; }
+  .nav-item img{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
+  .nav-text{ position:relative; z-index:1; font-family:'Jost',sans-serif; font-weight:600; white-space:nowrap; display:flex; align-items:baseline; gap:.3em; }
+  .nav-text .w2{font-size:.62em; font-weight:500;}
+  .nav-blog{ left:77.0%; top:2.51%; width:20.91%; height:1.04%; }
+  .nav-blog .w1{color:#f4e34a;} .nav-blog .w2{color:#fff;}
+  .nav-scrittura{ left:75.98%; top:3.92%; width:22.62%; height:1.35%; color:var(--purple); }
+  .nav-ai{ left:76.14%; top:5.37%; width:22.44%; height:1.16%; color:var(--purple); }
+
+  /* ---------------- schede progetto ---------------- */
+
+  .project-thumb{ left:10.61%; width:14.08%; z-index:3; box-shadow:0 6px 14px rgba(0,0,0,.3); }
+  .project-title{
+    left:25.36%; width:50%; margin:0; z-index:3; color:#161616; letter-spacing:.02em;
+    font-family:'Montserrat',sans-serif; font-weight:200;
+    font-size:clamp(14px, 3.7cqw, 34px);
+  }
+  .project-text{ left:32.99%; width:50%; z-index:3; }
+  .project-text p{ margin:0 0 .7em; color:#222; font-family:'Montserrat',sans-serif; font-weight:300; font-size:clamp(8px, 1.26cqw, 14px); line-height:1.5; }
+  .project-text b{font-weight:600;}
+  .project-divider{ left:38.78%; width:40.14%; height:2px; z-index:2; background:linear-gradient(to right,#1a1a1a,rgba(0,0,0,0)); }
+
+  /* posizioni (top % e altezza thumb %) */
+  .p1-thumb{top:10.52%; height:6.29%;} .p1-title{top:8.48%;} .p1-text{top:10.45%; width:33%;} .p1-div{top:17.62%;}
+  .p2-thumb{top:21.36%; height:5.58%;} .p2-title{top:19.52%;} .p2-text{top:21.30%;} .p2-div{top:28.84%;}
+  .p3-thumb{top:33.92%; height:5.57%;} .p3-title{top:31.79%;} .p3-text{top:33.85%;} .p3-div{top:41.10%;}
+  .p4-thumb{top:45.75%; height:5.58%;} .p4-title{top:43.62%;} .p4-text{top:45.68%;} .p4-div{top:52.90%;}
+  .p5-thumb{top:57.98%; height:5.56%;} .p5-title{top:55.85%;} .p5-text{top:57.91%;} .p5-div{top:65.16%;}
+  .p6-thumb{top:70.96%; height:3.92%;} .p6-title{top:68.83%;} .p6-text{top:70.89%;} .p6-div{top:78.14%;}
+  .p7-thumb{top:82.80%; height:5.57%;} .p7-title{top:80.66%;} .p7-text{top:82.73%;}
+
+  .site-footer{ background:#fff; border-top:1px solid #e6e1d2; padding:2.4em 4%; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.6em; max-width:1320px; margin:0 auto; }
+  .footer-menu{ display:flex; flex-wrap:wrap; gap:1.6em; list-style:none; margin:0; padding:0; }
+  .footer-menu li{ margin-right:1.6em; } .footer-menu li:last-child{ margin-right:0; }
+  .footer-menu a{ color:var(--purple); text-decoration:none; font-weight:600; font-family:'Jost',sans-serif; font-size:1rem; }
+  .footer-menu a:hover{ text-decoration:underline; }
+  .footer-social{ display:flex; gap:1em; align-items:center; }
+  .footer-social a{ color:var(--purple); display:flex; }
+  .footer-social svg{ width:22px; height:22px; fill:currentColor; }
+  .footer-social a:hover{ color:#cc3922; }
+  .footer-legal{ width:100%; text-align:center; font-size:.78rem; color:#777; border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em; }
+  .footer-legal a{ color:#777; }
+</style>
+</head>
+<body>
+
+<div class="poster-frame"><div class="poster">
+
+  <img class="abs hero-photo" src="assets/progetti/hero-mac.jpg" alt="">
+  <div class="abs hero-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
+
+  <a class="abs home-logo" href="index.html" title="Torna alla home">
+    <img src="assets/logo.png" alt="mng crea" style="width:100%;height:100%;object-fit:contain;">
+  </a>
+
+  <img class="abs title-brush" src="assets/progetti/title-stroke.png" alt="">
+  <h1 class="abs page-title">progetti</h1>
+
+  <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
+
+  <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
+    <img src="assets/nav-blu.png" alt="">
+    <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
+  </a>
+  <a class="abs nav-item nav-scrittura" href="scrittura.html">
+    <img src="assets/nav-giallo.png" alt="">
+    <span class="nav-text">scrittura</span>
+  </a>
+  <a class="abs nav-item nav-ai" href="ai.html">
+    <img src="assets/nav-grigio.png" alt="">
+    <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
+  </a>
+
+  <!-- 1 — Stramba -->
+  <img class="abs project-thumb p1-thumb" src="assets/progetti/stramba.jpg" alt="Stramba">
+  <h2 class="abs project-title p1-title">STRAMBA</h2>
+  <div class="abs project-text p1-text">
+    <p>La creatività ha bisogno di argini. Come per un fiume, <b>consentono alle idee di scorrere più veloci</b> e nella direzione giusta.</p>
+    <p>Uno di questi argini sono i linguaggi e le norme antichissime che li governano.</p>
+    <p><b>Solidità linguistica significa solidità di pensiero</b>, la cosa più efficace per trasmettere sempre il giusto messaggio.</p>
+  </div>
+  <img class="abs project-divider p1-div" src="assets/divider.png" alt="">
+
+  <!-- 2 — Traspality -->
+  <img class="abs project-thumb p2-thumb" src="assets/progetti/traspality.jpg" alt="Traspality">
+  <h2 class="abs project-title p2-title">TRASPALITY</h2>
+  <div class="abs project-text p2-text">
+    <p>Traspality.com esiste già, in beta, online, tutta pronta e funzionante. <b>Trasparenza + qualità</b>, l'idea è questa, per mettere insieme due necessità: quella di <b>raccontare</b>, quella di <b>dimostrare la qualità</b> del proprio operato.</p>
+    <p>La trasparenza è un tool, non un valore, non un di più: <b>raccontando, certifichiamo</b>. E viceversa. Non solo: il tema più importante è l'identità.</p>
+    <p>Già, perché "qualità" viene da "qualis" che è il contrario esatto di uno standard uguale per tutti. Quindi certificare e insieme mettere al centro i <b>propri valori, le proprie capacità, la vera unicità</b> che ci caratterizza.</p>
+    <p><a href="https://www.traspality.com" style="color:var(--purple);">www.traspality.com</a></p>
+  </div>
+  <img class="abs project-divider p2-div" src="assets/divider.png" alt="">
+
+  <!-- 3 — Books121 -->
+  <img class="abs project-thumb p3-thumb" src="assets/progetti/books121.png" alt="Books121">
+  <h2 class="abs project-title p3-title">BOOKS121</h2>
+  <div class="abs project-text p3-text">
+    <p>Progetto 2019, archiviato per costi e tempi di sviluppo. Ma ora ci sono Claude, Gemini e i loro amici super performanti. Quindi Books121 è online!</p>
+    <p>Pagare la lettura e non il possesso, favorire lo scambio di libri, il passaggio di mano. Con vantaggi per tutti, soprattutto per chi li scrive e per chi li pubblica, i libri, perché potranno iniziare a conoscere davvero i propri lettori, uno a uno, vedendo chi legge, quanto legge, dove, in quanto tempo.</p>
+    <p>E per chi ha montagne di libri chiusi in casa a prender polvere, la possibilità di dar loro nuova vita mettendoli in circolo. E per chi ama leggere, poterlo fare sulla carta ai prezzi del digitale. Un mondo nuovo... radicato nella tradizione.</p>
+    <p><a href="https://www.book121.com" style="color:var(--purple);">www.book121.com</a></p>
+  </div>
+  <img class="abs project-divider p3-div" src="assets/divider.png" alt="">
+
+  <!-- 4 — Porto di Riccione -->
+  <img class="abs project-thumb p4-thumb" src="assets/progetti/porto-riccione.jpg" alt="Porto di Riccione">
+  <h2 class="abs project-title p4-title">PORTO DI RICCIONE</h2>
+  <div class="abs project-text p4-text">
+    <p>Ribaltiamo Riccione, <b>puntiamo alto, altissimo</b>. Storia, tradizione, reputazione, affetto... è tutto dalla nostra parte. <b>Serve un porto. L'unico, sull'Adriatico, che porta le barche direttamente in centro</b>, a tre passi dal salotto buono, da Viale Ceccarini e direttamente su Viale Dante.</p>
+    <p>Però un porto, con tanta acqua e tanto spazio per <b>accogliere barche importanti, yacht di lusso</b>, grandi e di valore, con equipaggi e armatori.</p>
+    <p><b>Una porta d'accesso a un mondo che oggi è precluso a Riccione</b>, ma che ha il potenziale di portare nuova linfa, investimenti e <b>un redesign completo dell'identità della città</b>. C'è tutto quello che serve, il potenziale, gli spazi, le risorse. E la Bolkestein...</p>
+  </div>
+  <img class="abs project-divider p4-div" src="assets/divider.png" alt="">
+
+  <!-- 5 — Capital Units -->
+  <img class="abs project-thumb p5-thumb" src="assets/progetti/capital-units.png" alt="Capital Units">
+  <h2 class="abs project-title p5-title">CAPITAL UNITS</h2>
+  <div class="abs project-text p5-text">
+    <p>Un sogno vero, un tool quasi finanziario. Ma <b>l'obiettivo è proprio di andare oltre le unità di misura finanziarie</b>. Perché il valore non è solo quello, non sono solo soldi, ma c'è <b>impegno, talento, personalità, relazioni</b>.</p>
+    <p>Il 100% diventa 105% e in quel +5% si descrive il sistema di relazioni, la storia, le azioni compiute, la conoscenza messa in campo. È un surplus reale che va <b>oltre le stock option classiche</b> e consente alle aziende di mettere in campo e di capitalizzare anche la propria rete di valore.</p>
+    <p><a href="https://www.capitalunits.org" style="color:var(--purple);">www.capitalunits.org</a></p>
+  </div>
+  <img class="abs project-divider p5-div" src="assets/divider.png" alt="">
+
+  <!-- 6 — Kerga -->
+  <img class="abs project-thumb p6-thumb" src="assets/progetti/kerga.jpg" alt="Kerga">
+  <h2 class="abs project-title p6-title">KERGA</h2>
+  <div class="abs project-text p6-text">
+    <p>L'elettrificazione dal basso. Che l'elettrico sia una tecnologia superiore (90% di rendimento contro un 30/40% del termico) non è in discussione. Così, mentre le grandi case sfogliano la margherita, gli utenti vengono tenuti a distanza da un solo vero problema: <b>la ricarica alla colonnina costa troppo</b>.</p>
+    <p>Ma c'è qualcun altro che ha interesse a vendere macchine e a tener vivo il mercato: <b>i concessionari</b>.</p>
+    <p>Kerga è un'idea che consente a ogni concessionario di <b>attivare la vendita di auto elettriche</b> consolidando il rapporto coi propri clienti in modo inedito. Valore per tutti: per gli utenti, per i commercianti, per gli enti di credito. E per il pianeta.</p>
+  </div>
+  <img class="abs project-divider p6-div" src="assets/divider.png" alt="">
+
+  <!-- 7 — Up to Cinema -->
+  <img class="abs project-thumb p7-thumb" src="assets/progetti/up-to-cinema.jpg" alt="Up to Cinema">
+  <h2 class="abs project-title p7-title">UP TO CINEMA</h2>
+  <div class="abs project-text p7-text">
+    <p>Un percorso progettato per generare storie di qualità e per valorizzarle al massimo. Lo strumento è una piattaforma basata su regole chiare e sulla costituzione di team di professionisti in grado di prendere una storia - in qualunque forma si presenti - e di prepararla per il cinema, dove può davvero fare la differenza.</p>
+    <p>Le regole sono importanti, sono tutto in questo caso: in Europa il cinema non è un'industria e i percorsi per arrivare davanti alla cinepresa sono tortuosi e molto spesso opachi. Valorizzare la qualità e le professionalità, invece, consentirà di alzare l'asticella e di portare "in sala" una ventata di nuove idee.</p>
+  </div>
+
+</div></div>
+
+<footer class="site-footer">
+  <ul class="footer-menu">
+    <li><a href="https://dacco1971.tumblr.com">blog</a></li>
+    <li><a href="progetti.html">progetti</a></li>
+    <li><a href="scrittura.html">scrittura</a></li>
+    <li><a href="ai.html">AI</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="#" aria-label="LinkedIn" title="LinkedIn — inserisci il tuo link"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.9 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21H9z"/></svg></a>
+    <a href="https://dacco1971.tumblr.com" aria-label="Tumblr"><svg viewBox="0 0 24 24"><path d="M14.5 3v4.2h4V11h-4v5.2c0 1.5.75 2 1.9 2 .7 0 1.4-.15 2-.4l.6 3.3c-.85.4-2.1.7-3.4.7-3.3 0-5.1-1.9-5.1-5.2V11H8v-3.6c2.4-.6 3.7-2.6 4-4.4h2.5z"/></svg></a>
+  </div>
+  <p class="footer-legal">© 2026 mng·crea — Daniele Mingucci · [P.IVA e sede da inserire] · <a href="#">Privacy</a> · <a href="#">Cookie policy</a></p>
+</footer>
+
+</body>
+</html>

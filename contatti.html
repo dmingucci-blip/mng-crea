@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>contatti — daniele mingucci</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Pixelify+Sans&family=Special+Elite&family=Jost:wght@500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+  :root{ --purple:#422e7c; --pink-name:#efbcd6; --teal-name:#0086b2; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#fff;}
+  body{font-family:'Montserrat',sans-serif;}
+
+  .top-bar{ max-width:1320px; margin:0 auto; padding:1.6em 4%; display:flex; align-items:center; justify-content:space-between; gap:1em; flex-wrap:wrap; }
+  .top-bar .logo{ display:block; width:90px; }
+  .top-bar .logo img{ width:100%; display:block; }
+  .top-nav{ display:flex; gap:1.4em; flex-wrap:wrap; }
+  .top-nav a{ font-family:'Jost',sans-serif; font-weight:600; color:var(--purple); text-decoration:none; }
+  .top-nav a:hover{ text-decoration:underline; }
+
+  main{ max-width:640px; margin:0 auto; padding:1em 4% 4em; }
+  h1{
+    font-family:'Montserrat',sans-serif; font-weight:200; color:#161616;
+    font-size:clamp(28px,5vw,44px); margin:0 0 .3em;
+  }
+  main > p.lede{ color:#444; font-weight:300; margin:0 0 2em; line-height:1.5; }
+
+  label{ display:block; font-family:'Jost',sans-serif; font-weight:600; color:#161616; margin:1.2em 0 .4em; }
+  input, textarea{
+    width:100%; font-family:'Montserrat',sans-serif; font-weight:300; font-size:16px;
+    padding:.7em .8em; border:1px solid #ccc; border-radius:4px; background:#fafafa;
+  }
+  input:focus, textarea:focus{ outline:2px solid var(--purple); border-color:var(--purple); }
+  textarea{ min-height:160px; resize:vertical; }
+
+  button{
+    margin-top:1.6em; font-family:'Jost',sans-serif; font-weight:600; font-size:16px;
+    background:var(--purple); color:#fff; border:none; border-radius:4px;
+    padding:.8em 2em; cursor:pointer;
+  }
+  button:hover{ background:#301f5c; }
+
+  .note{ margin-top:1em; font-size:.85em; color:#888; }
+
+  .site-footer{ background:#fff; border-top:1px solid #e6e1d2; padding:2.4em 4%; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.6em; max-width:1320px; margin:0 auto; }
+  .footer-menu{ display:flex; flex-wrap:wrap; gap:1.6em; list-style:none; margin:0; padding:0; }
+  .footer-menu li{ margin-right:1.6em; } .footer-menu li:last-child{ margin-right:0; }
+  .footer-menu a{ color:var(--purple); text-decoration:none; font-weight:600; font-family:'Jost',sans-serif; font-size:1rem; }
+  .footer-menu a:hover{ text-decoration:underline; }
+  .footer-social{ display:flex; gap:1em; align-items:center; }
+  .footer-social a{ color:var(--purple); display:flex; }
+  .footer-social svg{ width:22px; height:22px; fill:currentColor; }
+  .footer-social a:hover{ color:#cc3922; }
+  .footer-legal{ width:100%; text-align:center; font-size:.78rem; color:#777; border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em; }
+  .footer-legal a{ color:#777; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a class="logo" href="index.html" title="Torna alla home"><img src="assets/logo.png" alt="mng crea"></a>
+  <nav class="top-nav">
+    <a href="https://dacco1971.tumblr.com">blog</a>
+    <a href="progetti.html">progetti</a>
+    <a href="scrittura.html">scrittura</a>
+    <a href="ai.html">AI</a>
+  </nav>
+</div>
+
+<main>
+  <h1>scopri cosa possiamo fare insieme</h1>
+  <p class="lede">Scrivimi due righe — progetto, idea, curiosità — e ti rispondo io, Daniele.</p>
+
+  <form action="mailto:dacco@mng-crea.com" method="post" enctype="text/plain">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="Nome" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="Email" required>
+
+    <label for="messaggio">Messaggio</label>
+    <textarea id="messaggio" name="Messaggio" required></textarea>
+
+    <button type="submit">Invia</button>
+    <p class="note">Il pulsante apre il tuo programma di posta con il messaggio già pronto verso dacco@mng-crea.com.</p>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <ul class="footer-menu">
+    <li><a href="https://dacco1971.tumblr.com">blog</a></li>
+    <li><a href="progetti.html">progetti</a></li>
+    <li><a href="scrittura.html">scrittura</a></li>
+    <li><a href="ai.html">AI</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="#" aria-label="LinkedIn" title="LinkedIn — inserisci il tuo link"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.9 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21H9z"/></svg></a>
+    <a href="https://dacco1971.tumblr.com" aria-label="Tumblr"><svg viewBox="0 0 24 24"><path d="M14.5 3v4.2h4V11h-4v5.2c0 1.5.75 2 1.9 2 .7 0 1.4-.15 2-.4l.6 3.3c-.85.4-2.1.7-3.4.7-3.3 0-5.1-1.9-5.1-5.2V11H8v-3.6c2.4-.6 3.7-2.6 4-4.4h2.5z"/></svg></a>
+  </div>
+  <p class="footer-legal">© 2026 mng·crea — Daniele Mingucci · [P.IVA e sede da inserire] · <a href="#">Privacy</a> · <a href="#">Cookie policy</a></p>
+</footer>
+
+</body>
+</html>
