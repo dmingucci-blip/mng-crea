@@ -130,7 +130,7 @@
   .paragraph-bg{ left:0; top:53.5%; width:66%; height:46.5%; background:#fff; z-index:2; }
 
   .paragraph{
-    left:19.14%; top:56.6%; width:44%; height:20.5%;
+    left:19.14%; top:56.6%; width:44%; height:auto;
     z-index:5; color:#111;
     font-family:'Montserrat',sans-serif; font-weight:300;
     font-size:clamp(10px, 1.55cqw, 17px);
@@ -139,9 +139,10 @@
   .paragraph b{font-weight:600;}
   .paragraph i{font-style:italic; font-weight:300;}
   .paragraph p{margin:0 0 .85em;}
-  .paragraph p:last-child{margin-bottom:0;}
+  .paragraph p:last-of-type{margin-bottom:0;}
 
-  .divider{ left:16.04%; top:81.4%; width:40.13%; height:.56%; z-index:5; }
+  /* la linea sta dentro .paragraph: segue sempre la fine del testo */
+  .paragraph .divider{ left:-7.05%; top:calc(100% + 1.5em); width:91.2%; height:.48cqw; z-index:5; }
 
   .cta{
     left:21.30%; top:84.4%; width:40%; height:3.2%;
@@ -260,7 +261,7 @@
       font-size:clamp(14px, 3.9cqw, 17px); line-height:1.5;
     }
     .poster .divider{
-      position:absolute; left:9.8%; bottom:8cqw; width:72.7%; height:.9cqw; z-index:3;
+      position:absolute; left:.9%; bottom:8cqw; width:79.9%; height:.9cqw; z-index:3;
     }
 
     /* ---------- blocco 2: nome + menu + barca ---------- */
@@ -335,8 +336,8 @@
       <p>Poi vale tutto.</p>
       <p>I <i>tool</i> sono i linguaggi, tutti i linguaggi, in sinergia con i media e in funzione del pubblico di riferimento.</p>
       <p><b>L'approccio è linguistico e narrativo</b>: prima l'alfabeto, poi le parole. E infine le storie. Da scrivere, da interpretare e... da vivere.</p>
+      <img class="abs divider" src="assets/divider.png" alt="">
     </div>
-    <img class="abs divider" src="assets/divider.png" alt="">
   </div>
 
   <!-- mobile: blocco 2 — nome, menu, barca -->
