@@ -28,17 +28,16 @@
     width:100%;
     max-width:1320px;
     margin:0 auto;
-    /* la parte bassa del poster (sotto la barca) è vuota: il blocco LINGUAGGI sale a coprirla */
-    margin-bottom:-9.5%;
   }
   .poster-frame::before{
     content:"";
     display:block;
-    padding-top:85.686%; /* 599.017 / 699.104 — mantiene le proporzioni esatte della pagina originale */
+    padding-top:76.1%; /* il riquadro finisce poco sotto la barca: la fascia vuota in fondo al poster non occupa spazio */
   }
   .poster{
     position:absolute;
-    left:0; top:0; right:0; bottom:0;
+    left:0; top:0; right:0;
+    aspect-ratio:699.104 / 599.017; /* proporzioni esatte della pagina originale (85.686%) */
     background:#ffffff;
     overflow:hidden;
     container-type:inline-size;
@@ -228,7 +227,7 @@
   @media (max-width: 820px){
 
     .poster-frame::before, .poster-frame2::before{ display:none; }
-    .poster-frame{ margin-bottom:0; }
+    .poster{ aspect-ratio:auto; }
     .poster, .poster2{ position:relative; overflow:hidden; }
 
     /* reset delle posizioni del poster desktop */
