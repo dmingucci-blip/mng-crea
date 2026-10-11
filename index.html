@@ -170,18 +170,22 @@
     background:transparent; overflow:hidden; container-type:inline-size;
   }
 
-  .b2-bw{ left:2.63%; top:0; width:30.87%; height:100%; object-fit:cover; z-index:1; }
+  /* foto b/n: ritagliata in alto (meno cielo, stessa scala) e sfumata in basso */
+  .poster2 .b2-bw{ left:2.63%; top:19%; width:30.87%; height:81%; object-fit:cover; object-position:center bottom; z-index:1; }
+  @media (min-width:821px){
+    .poster2 .b2-bw{ -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); }
+  }
   .b2-color{ left:18.92%; top:26.72%; width:18.37%; height:46.38%; z-index:2; }
 
   .b2-heading{
-    left:40.6%; top:27%; width:50%; line-height:1;
+    left:2.63%; top:7%; width:34%; line-height:1;
     margin:0; z-index:2; color:#111;
     font-family:'Montserrat',sans-serif; font-weight:200; letter-spacing:.03em;
     font-size:clamp(30px, 5.4cqw, 70px);
   }
 
   .b2-paragraph{
-    left:40.34%; top:47.3%; width:46.5%;
+    left:40.34%; top:30%; width:46.5%;
     z-index:2; color:#111;
     font-family:'Montserrat',sans-serif; font-weight:300;
     font-size:clamp(10px, 1.55cqw, 17px);
