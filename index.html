@@ -304,15 +304,17 @@
     .poster2 .b2-bw{ left:0; top:0; width:67.8%; height:110cqw; object-fit:cover; }
     .poster2 .b2-color{ left:37.4%; top:30.4cqw; width:37%; height:auto; z-index:3; }
     .poster2 .m-cta-box{
-      display:block; position:absolute; left:9%; right:0; top:0; height:29cqw;
+      display:block; position:absolute; left:9%; right:0; top:0; height:27cqw;
       background:#fff; z-index:2;
     }
     .m-cta-divider{ position:absolute; left:0; top:5.8cqw; width:73%; height:.9cqw; }
     .m-cta{
-      position:absolute; right:13%; top:8.5cqw; white-space:normal;
+      position:absolute; right:13%; top:9cqw; white-space:normal;
       font-family:'Caveat',cursive; font-weight:500; color:var(--rust-cta); text-decoration:none;
-      font-size:4.3cqw; letter-spacing:.04em; white-space:normal; text-align:right; line-height:1.2; width:78%; text-wrap:balance;
+      font-size:5.4cqw; letter-spacing:.06em; white-space:normal; text-align:right; line-height:1.2; width:78%;
     }
+    .m-cta .cta-caps{ font-size:2.9cqw; letter-spacing:.1em; margin-bottom:1.2cqw; }
+    .m-cta .cta-script{ border-bottom:0; font-size:.9em; }
 
     .cta-bottom{ display:none; }
 
@@ -357,6 +359,11 @@
   @media (min-width:821px){
     .web-bw{ -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); }
   }
+  .sec-web .sw-family-photos{ grid-column:1; grid-row:2; position:relative; aspect-ratio:1/.84; margin-top:3%; }
+  .fp{ position:absolute; width:58%; aspect-ratio:1/1; object-fit:cover; display:block;
+       border:clamp(6px,.8vw,10px) solid #fff; box-shadow:0 4px 18px rgba(0,0,0,.28); }
+  .fp1{ left:0; top:0; }
+  .fp2{ right:0; bottom:0; }
   .txt-link{ color:inherit; font-weight:600; text-decoration:underline; text-underline-offset:.2em; }
   .txt-link:hover{ color:var(--rust-cta); }
   .rule-web{ display:block; width:60%; height:auto; margin:0 0 4%; }
@@ -370,6 +377,7 @@
     .rule-web{ width:80%; margin-bottom:6vw; }
     .sec-web .sw-staff{ margin-top:6vw; }
     .sec-web .sw-stafftext{ grid-column:1; grid-row:3; margin-top:0; }
+    .sec-web .sw-family-photos{ grid-row:4; margin-top:4vw; }
     .sec-web .sec-h{ white-space:normal; font-size:9.6vw; line-height:1.1; }
     .web-media{ margin-bottom:2vw; }
   }
@@ -443,7 +451,7 @@
     <img class="abs b2-color" src="assets/fiume-color.png" alt="">
     <div class="m-cta-box">
       <img class="m-cta-divider" src="assets/divider.png" alt="">
-      <a class="m-cta" href="contatti.html">ATTITUDE BRANDING - WEB &amp; NEW MEDIA - AGENTI A.I. : scopri cosa possiamo fare insieme</a>
+      <a class="m-cta" href="contatti.html"><span class="cta-caps">ATTITUDE BRANDING - WEB &amp; NEW MEDIA - AGENTI A.I.</span><span class="cta-script">scopri cosa possiamo fare insieme</span></a>
     </div>
   </div>
 
@@ -469,6 +477,10 @@
       <div class="web-bw"></div>
     </div>
   </div>
+  <div class="sw-family-photos">
+    <img class="fp fp1" src="assets/family-1.jpg" alt="Daniele">
+    <img class="fp fp2" src="assets/family-2.jpg" alt="Andrea">
+  </div>
   <div class="sw-stafftext">
     <div class="sec-p">
       <p>Gestione familiare? Un po' sì e un po' no, perché oltre a Daniele (senior suo malgrado) e Andrea abbiamo uno stuolo di agenti AI (da noi A.I. sta per "Amici Immaginari") che ci supportano in modo straordinario e - non ci crederete - umano.</p>
@@ -479,7 +491,7 @@
 
 
 
-<p class="cta-bottom"><a href="contatti.html">ATTITUDE BRANDING - WEB &amp; NEW MEDIA - AGENTI A.I. : scopri cosa possiamo fare insieme</a></p>
+<p class="cta-bottom"><a href="contatti.html"><span class="cta-caps">ATTITUDE BRANDING - WEB &amp; NEW MEDIA - AGENTI A.I.</span><span class="cta-script">scopri cosa possiamo fare insieme</span></a></p>
 
 <style>
   .cta-bottom{
@@ -489,10 +501,11 @@
     font-family:'Caveat',cursive; font-weight:500; letter-spacing:.05em;
     color:#cc3922; text-decoration:none;
     font-size:clamp(22px, 3.25vw, 38px);
-    border-bottom:1px dashed #cc3922;
   }
-  .cta-bottom a{ display:inline-block; line-height:1.25; text-wrap:balance; }
-  .cta-bottom a:hover{ color:#8a3226; border-color:#8a3226; }
+  .cta-bottom a{ display:inline-block; line-height:1.25; }
+  .cta-caps{ display:block; font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:.14em; color:#111; font-size:clamp(11px, 1.25vw, 16px); margin-bottom:.6em; }
+  .cta-script{ display:inline-block; border-bottom:1px dashed #cc3922; }
+  .cta-bottom a:hover .cta-script{ color:#8a3226; border-color:#8a3226; }
 </style>
 <!-- ================= BLOCCO 3 — footer ================= -->
 <footer class="site-footer">
