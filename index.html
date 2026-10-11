@@ -135,7 +135,7 @@
     left:19.14%; top:56.6%; width:44%; height:auto;
     z-index:5; color:#111;
     font-family:'Montserrat',sans-serif; font-weight:300;
-    font-size:clamp(10px, 1.55cqw, 17px);
+    font-size:clamp(10px, 1.288cqw, 17px); /* proporzionale: il testo va a capo sempre allo stesso punto, a qualsiasi larghezza */
     line-height:1.45;
   }
   .paragraph b{font-weight:600;}
@@ -359,13 +359,14 @@
   @media (min-width:821px){
     .web-bw{ -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); }
   }
-  .sec-web .sw-family-photos{ grid-column:1; grid-row:2; position:relative; aspect-ratio:1/.84; margin-top:3%; }
+  .sec-web .sw-family-photos{ grid-column:1; grid-row:2; position:relative; aspect-ratio:1/.84; margin-top:7%; }
   .fp{ position:absolute; width:58%; aspect-ratio:1/1; object-fit:cover; display:block;
        border:clamp(6px,.8vw,10px) solid #fff; box-shadow:0 4px 18px rgba(0,0,0,.28); }
   .fp1{ left:0; top:0; }
   .fp2{ right:0; bottom:0; }
   .txt-link{ color:inherit; font-weight:600; text-decoration:underline; text-underline-offset:.2em; }
   .txt-link:hover{ color:var(--rust-cta); }
+  .sec-web .sec-h.sec-h-fam{ white-space:normal; }
   .rule-web{ display:block; width:60%; height:auto; margin:0 0 calc(var(--w) * .0417); }
   .sw-staff .rule{ display:block; width:100%; height:auto; margin:0 0 calc(var(--w) * .0417); }
 
@@ -467,7 +468,7 @@
   </div>
   <div class="sw-staff" id="family">
     <img class="rule" src="assets/divider.png" alt="">
-    <h2 class="sec-h">FAMILY</h2>
+    <h2 class="sec-h sec-h-fam">FAMILY STAFF</h2>
   </div>
   </div>
   <div class="sw-right">
