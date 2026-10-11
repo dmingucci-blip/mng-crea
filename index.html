@@ -349,18 +349,12 @@
   .sec-web .sw-text{ margin-top:19%; }
   .sec-web .sw-right{ grid-column:2; grid-row:1; }
   .sec-web .sw-staff{ margin-top:8%; }
-  .sec-web .sw-stafftext{ grid-column:2; grid-row:2; margin-top:2.5%; }
+  .sec-web .sw-stafftext{ grid-column:2; grid-row:2; margin-top:-1%; }
   .sec-web .sec-h{ white-space:nowrap; font-size:clamp(28px, 4.8vw, 62px); }
   .web-media{ position:relative; aspect-ratio:16/9; margin-top:3.5%; margin-bottom:4%; }
   .web-bw{ position:absolute; inset:0; background:url(assets/web-main.jpg) center/cover no-repeat; }
   @media (min-width:821px){
     .web-bw{ -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); }
-  }
-  .web-color{
-    position:absolute; left:-4%; top:44%; width:21%; aspect-ratio:9/16;
-    background:url(assets/web-riquadro.jpg) center/cover no-repeat;
-    border:clamp(8px,1.1vw,14px) solid #fff;
-    box-shadow:0 4px 18px rgba(0,0,0,.28);
   }
   .sw-staff .rule{ display:block; width:100%; height:auto; margin:0 0 7%; }
 
@@ -372,8 +366,7 @@
     .sec-web .sw-staff{ margin-top:6vw; }
     .sec-web .sw-stafftext{ grid-column:1; grid-row:3; margin-top:0; }
     .sec-web .sec-h{ white-space:normal; font-size:9.6vw; line-height:1.1; }
-    .web-media{ margin-bottom:42vw; }
-    .web-color{ left:2%; width:30%; top:50%; }
+    .web-media{ margin-bottom:2vw; }
   }
 </style>
 </head>
@@ -468,7 +461,6 @@
     <h2 class="sec-h">WEB <small>e</small> NEW MEDIA</h2>
     <div class="web-media" role="img" aria-label="Rivista WIRED, smartphone, tastiera e mouse sulla scrivania">
       <div class="web-bw"></div>
-      <div class="web-color"></div>
     </div>
   </div>
   <div class="sw-stafftext">
@@ -514,7 +506,7 @@
   </div>
 
   <p class="footer-legal">
-    © 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a>
+    © 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a><br>Sito web realizzato con il contributo di AI — <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>
   </p>
 </footer>
 
