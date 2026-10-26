@@ -116,6 +116,23 @@ figcaption{font:.82rem/1.4 var(--type);color:var(--muted);margin-top:.45rem}
 .msubj{font:700 1rem/1.35 var(--type);overflow-wrap:anywhere}
 .mbody{font-size:.95rem;color:var(--muted);font-style:italic;overflow-wrap:anywhere}
 .mnote{font-size:1rem}
+.tally li span:last-child{white-space:nowrap}
+/* Carousel */
+.carousel{display:flex;flex-direction:column;gap:.8rem;min-width:0}
+.track{list-style:none;margin:0;padding:0 0 .6rem;display:grid;grid-auto-flow:column;grid-auto-columns:min(85%,21rem);gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain}
+.track:focus-visible{outline:2px solid var(--magenta);outline-offset:4px}
+.slide{scroll-snap-align:start;background:var(--sheet);border:1px solid var(--line);border-top:4px solid var(--magenta);padding:1.1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.55rem;min-width:0}
+.slide h3{font-size:1.3rem}
+.slide p{font-size:1rem}
+.sdate{font:700 .75rem/1.2 var(--type)!important;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta)}
+.slide figure{margin-top:auto}
+.slide figure img{border:1px solid var(--line);background:#111}
+.cnav{display:flex;align-items:center;justify-content:center;gap:1rem;font:700 .9rem var(--type);font-variant-numeric:tabular-nums}
+.cnav button{font:700 1.1rem var(--type);color:var(--ink);background:var(--sheet);border:1px solid var(--line);width:2.6rem;height:2.6rem;cursor:pointer}
+.cnav button:hover{border-color:var(--magenta);color:var(--magenta)}
+.cnav button:disabled{opacity:.35;cursor:default}
+@media (prefers-reduced-motion:reduce){.track{scroll-behavior:auto}}
+@media print{.track{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-columns:auto;overflow:visible}.slide{break-inside:avoid}.cnav{display:none}}
 /* Tally */
 .tally{list-style:none;margin:0;padding:0;font-family:var(--type);border-top:1px solid var(--line)}
 .tally li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
@@ -197,8 +214,8 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
 <section class="flow" aria-labelledby="s-antefatto">
   <p class="label">L'antefatto</p>
   <h2 id="s-antefatto">Tre secondi per un'idea assurda</h2>
-  <p>Immagina che sia il 2009. L'iPhone è uscito da poco e il mondo intero sta imparando a strisciare il dito su un vetro. Tu invece leggi un brief che chiede l'esatto contrario: il cellulare del 2020, senza touch screen. Il cliente? «Anonymous». Proprio così, come nei film. Si presenta solo come una «multinational company powered by the passion to invent». Premio: 15.000 dollari.</p>
-  <p>Tra le regole obbligatorie ce n'è una che mi conquista subito: <em>«Forget about technology, just imagine that everything is possible»</em>. Dimenticate la tecnologia, immaginate che tutto sia possibile. Detto a un letterato, è un invito a nozze.</p>
+  <p>Immagina che sia il 2009. L'iPhone è uscito da poco e il mondo intero sta imparando a strisciare il dito su un vetro. Tu invece leggi una gara che chiede l'esatto contrario: il cellulare del 2020, senza touch screen. Il cliente non dice chi è: si firma «Anonymous», come nei film. Premio: 15.000 dollari.</p>
+  <p>Tra le regole ce n'è una che mi conquista subito: «dimenticate la tecnologia, immaginate che tutto sia possibile». Detto a un letterato, è un invito a nozze.</p>
   <p>Immagina che in tre secondi ti venga un'idea assurda. Decisamente fuori dagli schemi. Il telefono non lo tieni più in mano: te lo metti al dito. E lo schermo te lo metti davanti agli occhi.</p>
   <p>Sei un letterato, quindi parti dall'unico attrezzo che hai, una figura retorica:</p>
   <blockquote>«Si chiama “sinestesia”… è il trasferimento di una sensazione da un senso ad un altro… è una figura retorica, e la retorica va sempre usata con cura. Anzi con garbo.»</blockquote>
@@ -213,68 +230,72 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
 </section>
 
 <section class="flow" aria-labelledby="s-verdetto">
-  <p class="label">Dalla posta e dall'archivio del web</p>
-  <h2 id="s-verdetto">Com'è andata davvero, data per data</h2>
-  <p>Sedici anni dopo, frugando nella posta, ritrovo tutto. Le mail non si aprono più, ma l'anteprima sì. E il sito di BootB, sparito da anni, è ancora lì nell'archivio di Internet: brief, domande dei concorrenti, risultato. Raccontano la storia meglio di me.</p>
-  <ol class="mails">
-    <li class="mail">
-      <p class="mdate">19 dicembre 2008</p>
-      <p class="msubj">BootB: Confirmation of registration</p>
-      <p class="mbody">«Thank you for registering with BootB, the Pitching Engine that is designed to bring you and Brands from all over the world together.»</p>
-      <p class="mnote">Mi iscrivo. I marchi di tutto il mondo mi aspettano.</p>
+  <p class="label">Com'è andata davvero</p>
+  <h2 id="s-verdetto">La gara, in otto schede</h2>
+  <p><strong>In breve:</strong> mi iscrivo a fine 2008, a maggio 2009 mando il ringPhone, vince un altro con un progetto mai mostrato, a settembre mi cancello. Il resto l'ho ritrovato nella posta e nell'archivio del web: scorri, se ti va.</p>
+  <div class="carousel">
+    <ol class="track" id="track" tabindex="0" aria-label="La gara, scheda per scheda">
+    <li class="slide" aria-roledescription="scheda" aria-label="1 di 8">
+      <p class="sdate">Dicembre 2008</p>
+      <h3>Mi iscrivo</h3>
+      <p>BootB è un sito dove le aziende lanciano gare di idee e i creativi rispondono. Mi sembra il posto giusto.</p>
+      
     </li>
-    <li class="mail mail-web">
-      <p class="mdate">23 marzo 2009 · archivio web</p>
-      <p class="msubj">Design the mobile phone of 2020!</p>
-      <figure><img src="assets/ringphone/brief-2020.jpg" alt="Scheda del brief archiviata: Design the mobile phone of 2020, budget 15.000 dollari, scadenza 24 maggio 2009, 163 proposte, vincitore Creative_Sky" loading="lazy"></figure>
-      <p class="mnote">Il brief va online. Target: chi vorrebbe essere online 24 ore su 24 «but unfortunately sometimes needs to rest». Carattere del marchio: «Delicious, hero in my pocket/bag when resting, dancing with me when partying». Prezzo previsto: circa 500 dollari, che oggi fanno circa 750.</p>
+    <li class="slide" aria-roledescription="scheda" aria-label="2 di 8">
+      <p class="sdate">23 marzo 2009</p>
+      <h3>Esce la gara</h3>
+      <p>Il telefono del 2020, senza touch screen. Cliente anonimo, premio 15.000 dollari, prezzo del telefono intorno ai 500.</p>
+      <figure><img src="assets/ringphone/brief-2020.jpg" alt="La scheda della gara nell'archivio del web" loading="lazy"></figure>
     </li>
-    <li class="mail">
-      <p class="mdate">24 marzo 2009, ore 14:40</p>
-      <p class="msubj">BootB: Gara incredibile - design del telefono cellulare del 2020!</p>
-      <p class="mnote">Arriva la newsletter. Gara incredibile, dice. Ci credo.</p>
+    <li class="slide" aria-roledescription="scheda" aria-label="3 di 8">
+      <p class="sdate">24 marzo 2009</p>
+      <h3>Arriva la newsletter</h3>
+      <p>Oggetto: «Gara incredibile». Ci credo.</p>
+      
     </li>
-    <li class="mail mail-web">
-      <p class="mdate">24–25 marzo 2009 · archivio web</p>
-      <p class="msubj">Le domande dei concorrenti</p>
-      <figure><img src="assets/ringphone/brief-commento.jpg" alt="Commento archiviato: un concorrente chiede se nel 2020 useremo ancora il telefono, BootB risponde a nome del marchio" loading="lazy"></figure>
-      <p class="mnote">Un concorrente chiede: «Do you really think that we'll use object like the mobile phone in 2020?». Risposta a nome del marchio: «If you prefer don't call it mobile phone. What is key is that this "equipment/accessory" should be mobile and able to connect with others». Un accessorio. Un anello, per dire.</p>
+    <li class="slide" aria-roledescription="scheda" aria-label="4 di 8">
+      <p class="sdate">25 marzo 2009</p>
+      <h3>La domanda giusta</h3>
+      <p>Un concorrente chiede: nel 2020 useremo ancora il telefono? Il cliente risponde: chiamatelo come volete, basta che sia un accessorio che ti tiene connesso. Un anello, per dire.</p>
+      <figure><img src="assets/ringphone/brief-commento.jpg" alt="La domanda e la risposta, nell'archivio del web" loading="lazy"></figure>
     </li>
-    <li class="mail">
-      <p class="mdate">12 maggio 2009, ore 9:53</p>
-      <p class="msubj">BootB: Your Solution was published successfully</p>
-      <p class="mbody">«Your Creative Solution "ringPhone" to the Pitch "Design the mobile phone of 2020!" called by Anonymous is successfully published. We hope you've enjoyed the creative process :) Check your Solution regularly if you want to see whether Anonymous keeps it or trashes it.»</p>
-      <p class="mnote">Il cliente si chiama Anonymous. Deciderà se tenerlo o buttarlo. Sedici anni dopo, ancora non so quale delle due.</p>
+    <li class="slide" aria-roledescription="scheda" aria-label="5 di 8">
+      <p class="sdate">12 maggio 2009</p>
+      <h3>Mando il ringPhone</h3>
+      <p>Pubblicato. Il cliente deciderà se tenerlo o buttarlo. Sedici anni dopo, ancora non so quale delle due.</p>
+      
     </li>
-    <li class="mail mail-web">
-      <p class="mdate">21 maggio 2009 · archivio web</p>
-      <p class="msubj">!!! Update as of May 21st, 2009 !!!</p>
-      <figure><img src="assets/ringphone/brief-update.jpg" alt="Aggiornamento del brief: per no touchscreen si intendeva un telefono non comandato solo dal touchscreen" loading="lazy"></figure>
-      <p class="mnote">Nove giorni dopo il mio invio, e tre prima della scadenza, il cliente precisa: con «no touchscreen» intendeva un telefono che non si usi <em>solo</em> con il touchscreen. Ah. Grazie.</p>
+    <li class="slide" aria-roledescription="scheda" aria-label="6 di 8">
+      <p class="sdate">21 maggio 2009</p>
+      <h3>Cambiano le regole</h3>
+      <p>Tre giorni prima della scadenza precisano: «senza touch screen» voleva dire «non solo touch screen». Ah. Grazie.</p>
+      <figure><img src="assets/ringphone/brief-update.jpg" alt="L'aggiornamento del 21 maggio, nell'archivio del web" loading="lazy"></figure>
     </li>
-    <li class="mail mail-quiet">
-      <p class="mdate">24 maggio 2009 · gara chiusa</p>
-      <p class="msubj">Il verdetto</p>
-      <p class="mnote">163 proposte da tutto il mondo. Vince un certo <strong>Creative_Sky</strong>. Con cosa? Non si sa: la proposta vincente non la vede nessuno. Per chi? Nemmeno: il cliente resta Anonymous. Poteva vincere Panda_reale ed era lo stesso. Il ringPhone, in ogni caso, no. In compenso mi arriva una bella mail di complimenti.</p>
+    <li class="slide" aria-roledescription="scheda" aria-label="7 di 8">
+      <p class="sdate">24 maggio 2009</p>
+      <h3>Il verdetto</h3>
+      <p>163 proposte. Vince un certo Creative_Sky, con un progetto che nessuno ha mai visto, per un cliente che nessuno conosce. Poteva vincere Panda_reale ed era lo stesso. A me arriva una bella mail di complimenti.</p>
+      
     </li>
-    <li class="mail">
-      <p class="mdate">2 settembre 2009</p>
-      <p class="msubj">RE: Termination of my account</p>
-      <p class="mbody">«Dear Daniele, thank you for contacting us! It's your right to terminate your account if you'd like to. But we'd really appreciate if you can expand your reasons: what do you mean by saying that our platform asks more than gives?»</p>
-      <p class="mnote">Mi cancello. Motivazione: la piattaforma chiede più di quanto dà. Loro, gentilissimi, mi chiedono di spiegarmi meglio. Diciamo che il ringPhone era la spiegazione.</p>
+    <li class="slide" aria-roledescription="scheda" aria-label="8 di 8">
+      <p class="sdate">2 settembre 2009</p>
+      <h3>Mi cancello</h3>
+      <p>Motivo: il sito chiede più di quanto dà. Gentilissimi, mi chiedono di spiegarmi meglio. Il ringPhone era la spiegazione.</p>
+      
     </li>
-  </ol>
+    </ol>
+    <div class="cnav">
+      <button type="button" id="cprev" aria-label="Scheda precedente">←</button>
+      <span id="ccount" aria-live="polite">1 / 8</span>
+      <button type="button" id="cnext" aria-label="Scheda successiva">→</button>
+    </div>
+  </div>
   <ul class="tally" aria-label="Bilancio">
-    <li><span>Anelli prodotti</span><span>0</span></li>
-    <li><span>Occhiali prodotti</span><span>0</span></li>
     <li><span>Proposte in gara</span><span>163</span></li>
-    <li><span>Proposte vincenti mostrate al pubblico</span><span>0</span></li>
     <li><span>Premi vinti</span><span>0</span></li>
     <li><span>Dollari del premio finiti a me</span><span>0 su 15.000</span></li>
     <li><span>Mail di complimenti</span><span>1</span></li>
-    <li><span>Mail di BootB ritrovate sedici anni dopo</span><span>5</span></li>
   </ul>
-  <p>Molti grandi inventori sono morti senza nemmeno la mail. Chiudo la cartella e torno a fare il letterato.</p>
 </section>
 
 <section class="flow" aria-labelledby="s-rounds">
@@ -460,6 +481,19 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
   <button class="lb-btn lb-next" id="lb-next" type="button">Succ. →</button>
 </div>
 
+<script>
+(function(){
+  var t=document.getElementById('track'); if(!t) return;
+  var slides=t.querySelectorAll('.slide'), n=slides.length, prev=document.getElementById('cprev'), next=document.getElementById('cnext'), cnt=document.getElementById('ccount');
+  function idx(){var x=t.scrollLeft, best=0, d=1e9; slides.forEach(function(s,i){var dd=Math.abs(s.offsetLeft-t.offsetLeft-x); if(dd<d){d=dd;best=i}}); return best}
+  function upd(){var i=idx(); if(t.scrollLeft+t.clientWidth>=t.scrollWidth-4) i=n-1; cnt.textContent=(i+1)+' / '+n; prev.disabled=i===0; next.disabled=i===n-1}
+  function go(i){i=Math.max(0,Math.min(n-1,i)); t.scrollTo({left:slides[i].offsetLeft-t.offsetLeft})}
+  prev.onclick=function(){go(idx()-1)}; next.onclick=function(){go(idx()+1)};
+  t.addEventListener('scroll',function(){window.requestAnimationFrame(upd)},{passive:true});
+  t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(idx()+1)} if(e.key==='ArrowLeft'){e.preventDefault();go(idx()-1)}});
+  upd();
+})();
+</script>
 <script>
 (function(){
   var N=15, strip=document.getElementById('strip'), lb=document.getElementById('lb'), img=document.getElementById('lb-img'), cur=0, last=null;
