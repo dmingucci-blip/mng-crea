@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ringPhone contro il futuro — daniele mingucci</title>
-<meta name="description" content="Nel 2008 ho inventato un telefono da mettere al dito e degli occhiali che leggono le mail. Poi è arrivato il futuro: 6-0.">
+<meta name="description" content="Nel 2009 ho inventato il telefono del 2020: un anello e degli occhiali che leggono le mail. Poi è arrivato il futuro: 6-0.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Jost:wght@500;600&display=swap">
@@ -12,9 +12,8 @@
 [hidden]{display:none!important}
 img{max-width:100%}
 :root{--purple:#422e7c}
-html{margin:0}
 
-/* Layout: una colonna da "presentazione 2008" — fogli bianchi, macchina da scrivere, magenta delle frecce originali; ogni round è un confronto a due colonne chiuso da un timbro "MA ERA IL 2008!" */
+/* Layout: una colonna da "presentazione 2009" — fogli bianchi, macchina da scrivere, magenta delle frecce originali; ogni round è un confronto a due colonne chiuso da un timbro "MA ERA IL 2009!" */
 :root{
   --paper:#f6f6f4;
   --sheet:#ffffff;
@@ -105,6 +104,18 @@ figcaption{font:.82rem/1.4 var(--type);color:var(--muted);margin-top:.45rem}
 .big{font-family:var(--display);font-size:clamp(2.2rem,8vw,3.2rem);line-height:1.05;color:var(--magenta)}
 .board .grid.ai{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr)}
 .board .grid.ai .g,.board .grid.ai .h{text-align:left}
+/* Mails */
+.mails{list-style:none;margin:0;padding:0 0 0 1.2rem;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:1rem}
+.mail{background:var(--sheet);border:1px solid var(--line);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.45rem;position:relative;min-width:0}
+.mail::before{content:"";position:absolute;left:calc(-1.2rem - 7px);top:1.15rem;width:12px;height:12px;border-radius:50%;background:var(--magenta)}
+.mail-web{border-color:color-mix(in srgb,var(--magenta) 35%,var(--line))}
+.mail figure img{border:1px solid var(--line);background:#111;width:auto;max-width:min(100%,30rem)}
+.mail-quiet{background:transparent;border-style:dashed}
+.mail-quiet::before{background:var(--paper);border:2px solid var(--magenta);width:8px;height:8px}
+.mdate{font:700 .75rem/1.2 var(--type);letter-spacing:.1em;text-transform:uppercase;color:var(--magenta)}
+.msubj{font:700 1rem/1.35 var(--type);overflow-wrap:anywhere}
+.mbody{font-size:.95rem;color:var(--muted);font-style:italic;overflow-wrap:anywhere}
+.mnote{font-size:1rem}
 /* Tally */
 .tally{list-style:none;margin:0;padding:0;font-family:var(--type);border-top:1px solid var(--line)}
 .tally li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
@@ -137,7 +148,6 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
   .round:hover .stamp{transform:rotate(-8deg) scale(1.05)}
 }
 
-/* header del sito */
 .site-head{max-width:46rem;margin:0 auto;padding-top:1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .site-head .logo img{height:44px;width:auto;display:block}
 .site-head nav{display:flex;gap:1.2rem;flex-wrap:wrap}
@@ -175,7 +185,7 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
   <div>
     <p class="label">Un'idea fuori dagli schemi, by Dacco</p>
     <h1>ringPhone contro <em>il futuro</em></h1>
-    <p class="sub">Immagina di trovare un brief online: «Inventate il telefono del futuro. E che non abbia il touch screen!»</p>
+    <p class="sub">Immagina di trovare nella posta una newsletter: «Gara incredibile: design del telefono cellulare del 2020!». E che non abbia il touch screen!</p>
   </div>
   <div class="postit" aria-hidden="true">
     <p>Ad un tratto il telefono squillò…</p>
@@ -187,7 +197,8 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
 <section class="flow" aria-labelledby="s-antefatto">
   <p class="label">L'antefatto</p>
   <h2 id="s-antefatto">Tre secondi per un'idea assurda</h2>
-  <p>Immagina che sia più o meno il 2008. L'iPhone è appena uscito e il mondo intero sta imparando a strisciare il dito su un vetro. Tu invece leggi un brief che chiede l'esatto contrario: un cellulare senza touch screen. Cliente segreto.</p>
+  <p>Immagina che sia il 2009. L'iPhone è uscito da poco e il mondo intero sta imparando a strisciare il dito su un vetro. Tu invece leggi un brief che chiede l'esatto contrario: il cellulare del 2020, senza touch screen. Il cliente? «Anonymous». Proprio così, come nei film. Si presenta solo come una «multinational company powered by the passion to invent». Premio: 15.000 dollari.</p>
+  <p>Tra le regole obbligatorie ce n'è una che mi conquista subito: <em>«Forget about technology, just imagine that everything is possible»</em>. Dimenticate la tecnologia, immaginate che tutto sia possibile. Detto a un letterato, è un invito a nozze.</p>
   <p>Immagina che in tre secondi ti venga un'idea assurda. Decisamente fuori dagli schemi. Il telefono non lo tieni più in mano: te lo metti al dito. E lo schermo te lo metti davanti agli occhi.</p>
   <p>Sei un letterato, quindi parti dall'unico attrezzo che hai, una figura retorica:</p>
   <blockquote>«Si chiama “sinestesia”… è il trasferimento di una sensazione da un senso ad un altro… è una figura retorica, e la retorica va sempre usata con cura. Anzi con garbo.»</blockquote>
@@ -202,14 +213,66 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
 </section>
 
 <section class="flow" aria-labelledby="s-verdetto">
-  <p class="label">Com'è finita la gara</p>
-  <h2 id="s-verdetto">Il verdetto del 2008</h2>
-  <p>Mando il PDF. Chiudo con la sobrietà che mi contraddistingue: «Spero vi piaccia, ma se non vi piace ci fermiamo qui». Il brief si chiude. Verdetto: <strong>nessun vincitore</strong>. In compenso arriva una bella mail di complimenti.</p>
+  <p class="label">Dalla posta e dall'archivio del web</p>
+  <h2 id="s-verdetto">Com'è andata davvero, data per data</h2>
+  <p>Sedici anni dopo, frugando nella posta, ritrovo tutto. Le mail non si aprono più, ma l'anteprima sì. E il sito di BootB, sparito da anni, è ancora lì nell'archivio di Internet: brief, domande dei concorrenti, risultato. Raccontano la storia meglio di me.</p>
+  <ol class="mails">
+    <li class="mail">
+      <p class="mdate">19 dicembre 2008</p>
+      <p class="msubj">BootB: Confirmation of registration</p>
+      <p class="mbody">«Thank you for registering with BootB, the Pitching Engine that is designed to bring you and Brands from all over the world together.»</p>
+      <p class="mnote">Mi iscrivo. I marchi di tutto il mondo mi aspettano.</p>
+    </li>
+    <li class="mail mail-web">
+      <p class="mdate">23 marzo 2009 · archivio web</p>
+      <p class="msubj">Design the mobile phone of 2020!</p>
+      <figure><img src="assets/ringphone/brief-2020.jpg" alt="Scheda del brief archiviata: Design the mobile phone of 2020, budget 15.000 dollari, scadenza 24 maggio 2009, 163 proposte, vincitore Creative_Sky" loading="lazy"></figure>
+      <p class="mnote">Il brief va online. Target: chi vorrebbe essere online 24 ore su 24 «but unfortunately sometimes needs to rest». Carattere del marchio: «Delicious, hero in my pocket/bag when resting, dancing with me when partying». Prezzo previsto: circa 500 dollari, che oggi fanno circa 750.</p>
+    </li>
+    <li class="mail">
+      <p class="mdate">24 marzo 2009, ore 14:40</p>
+      <p class="msubj">BootB: Gara incredibile - design del telefono cellulare del 2020!</p>
+      <p class="mnote">Arriva la newsletter. Gara incredibile, dice. Ci credo.</p>
+    </li>
+    <li class="mail mail-web">
+      <p class="mdate">24–25 marzo 2009 · archivio web</p>
+      <p class="msubj">Le domande dei concorrenti</p>
+      <figure><img src="assets/ringphone/brief-commento.jpg" alt="Commento archiviato: un concorrente chiede se nel 2020 useremo ancora il telefono, BootB risponde a nome del marchio" loading="lazy"></figure>
+      <p class="mnote">Un concorrente chiede: «Do you really think that we'll use object like the mobile phone in 2020?». Risposta a nome del marchio: «If you prefer don't call it mobile phone. What is key is that this "equipment/accessory" should be mobile and able to connect with others». Un accessorio. Un anello, per dire.</p>
+    </li>
+    <li class="mail">
+      <p class="mdate">12 maggio 2009, ore 9:53</p>
+      <p class="msubj">BootB: Your Solution was published successfully</p>
+      <p class="mbody">«Your Creative Solution "ringPhone" to the Pitch "Design the mobile phone of 2020!" called by Anonymous is successfully published. We hope you've enjoyed the creative process :) Check your Solution regularly if you want to see whether Anonymous keeps it or trashes it.»</p>
+      <p class="mnote">Il cliente si chiama Anonymous. Deciderà se tenerlo o buttarlo. Sedici anni dopo, ancora non so quale delle due.</p>
+    </li>
+    <li class="mail mail-web">
+      <p class="mdate">21 maggio 2009 · archivio web</p>
+      <p class="msubj">!!! Update as of May 21st, 2009 !!!</p>
+      <figure><img src="assets/ringphone/brief-update.jpg" alt="Aggiornamento del brief: per no touchscreen si intendeva un telefono non comandato solo dal touchscreen" loading="lazy"></figure>
+      <p class="mnote">Nove giorni dopo il mio invio, e tre prima della scadenza, il cliente precisa: con «no touchscreen» intendeva un telefono che non si usi <em>solo</em> con il touchscreen. Ah. Grazie.</p>
+    </li>
+    <li class="mail mail-quiet">
+      <p class="mdate">24 maggio 2009 · gara chiusa</p>
+      <p class="msubj">Il verdetto</p>
+      <p class="mnote">163 proposte da tutto il mondo. Vince un certo <strong>Creative_Sky</strong>. Con cosa? Non si sa: la proposta vincente non la vede nessuno. Per chi? Nemmeno: il cliente resta Anonymous. Poteva vincere Panda_reale ed era lo stesso. Il ringPhone, in ogni caso, no. In compenso mi arriva una bella mail di complimenti.</p>
+    </li>
+    <li class="mail">
+      <p class="mdate">2 settembre 2009</p>
+      <p class="msubj">RE: Termination of my account</p>
+      <p class="mbody">«Dear Daniele, thank you for contacting us! It's your right to terminate your account if you'd like to. But we'd really appreciate if you can expand your reasons: what do you mean by saying that our platform asks more than gives?»</p>
+      <p class="mnote">Mi cancello. Motivazione: la piattaforma chiede più di quanto dà. Loro, gentilissimi, mi chiedono di spiegarmi meglio. Diciamo che il ringPhone era la spiegazione.</p>
+    </li>
+  </ol>
   <ul class="tally" aria-label="Bilancio">
     <li><span>Anelli prodotti</span><span>0</span></li>
     <li><span>Occhiali prodotti</span><span>0</span></li>
+    <li><span>Proposte in gara</span><span>163</span></li>
+    <li><span>Proposte vincenti mostrate al pubblico</span><span>0</span></li>
     <li><span>Premi vinti</span><span>0</span></li>
+    <li><span>Dollari del premio finiti a me</span><span>0 su 15.000</span></li>
     <li><span>Mail di complimenti</span><span>1</span></li>
+    <li><span>Mail di BootB ritrovate sedici anni dopo</span><span>5</span></li>
   </ul>
   <p>Molti grandi inventori sono morti senza nemmeno la mail. Chiudo la cartella e torno a fare il letterato.</p>
 </section>
@@ -217,7 +280,7 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
 <section class="flow" aria-labelledby="s-rounds">
   <p class="label">La partita</p>
   <h2 id="s-rounds">Un set contro la Silicon Valley</h2>
-  <p>Passano quindici anni e il futuro arriva davvero. Solo che non l'ho fatto io. Da una parte il ringPhone, 15 slide in un PDF. Dall'altra quello che è arrivato nei negozi: i Meta Ray-Ban Display con la Neural Band, presentati il 17 settembre 2025, e il Vision Pro di Apple. Giudice di sedia, imparzialissimo: io. Si gioca un set, sei game.</p>
+  <p>Il brief chiedeva il telefono del 2020 e diceva di dimenticare la tecnologia. Il futuro, la tecnologia, ha dovuto inventarla davvero: è arrivato nel 2025, con cinque anni di ritardo. Solo che non l'ho fatto io. Da una parte il ringPhone, 15 slide in un PDF. Dall'altra quello che è arrivato nei negozi: i Meta Ray-Ban Display con la Neural Band, presentati il 17 settembre 2025, e il Vision Pro di Apple. Giudice di sedia, imparzialissimo: io. Si gioca un set, sei game.</p>
 
   <div class="rounds">
 
@@ -225,74 +288,74 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
     <p class="label">Game 1 · Silicon Valley 1–0</p>
     <h3>Lo schermo</h3>
     <div class="versus">
-      <div class="side me"><p class="who">ringPhone, 2008</p>
+      <div class="side me"><p class="who">ringPhone, 2009</p>
         <figure><img src="assets/ringphone/ringphone-turn-right.jpg" alt="Foto da un terrazzo con un arco bianco disegnato sopra e le scritte NEW MAIL, SHOOT PHOTO, REC VIDEO" loading="lazy"></figure>
         <p>Un arco bianco disegnato sopra la foto di un terrazzo. Tre scritte: <em>@ NEW MAIL, SHOOT PHOTO, REC VIDEO</em>. Risoluzione: quella della foto.</p></div>
       <div class="side them"><p class="who">Meta Ray-Ban Display, 2025</p>
         <p>Un display a colori da 600 × 600 pixel integrato nella lente. Notifiche, messaggi, navigazione, traduzioni.</p></div>
     </div>
-    <div class="verdict"><p>Punto a loro. Il mio schermo, a voler essere onesti, era un disegno.</p><span class="stamp">Ma era il 2008!</span></div>
+    <div class="verdict"><p>Punto a loro. Il mio schermo, a voler essere onesti, era un disegno.</p><span class="stamp">Ma era il 2009!</span></div>
   </article>
 
   <article class="round">
     <p class="label">Game 2 · Silicon Valley 2–0</p>
     <h3>Il controller</h3>
     <div class="versus">
-      <div class="side me"><p class="who">ringPhone, 2008</p>
+      <div class="side me"><p class="who">ringPhone, 2009</p>
         <p>Due anelli. Comandano lo schermo con la mano: «su giù destra sinistra e anche rotazione e profondità!». Come funzionano dentro? Lo dice la slide finale: «ci sono una marea di dettagli tutti risolvibili».</p></div>
       <div class="side them"><p class="who">Meta Neural Band, 2025</p>
         <p>Un braccialetto che legge i segnali elettrici dei muscoli del polso. Fino a 18 ore di autonomia, resistente all'acqua. Dietro, anni di ricerca e una startup comprata nel 2019.</p></div>
     </div>
-    <div class="verdict"><p>Punto a loro. Loro hanno l'elettromiografia, io avevo l'ottimismo.</p><span class="stamp">Ma era il 2008!</span></div>
+    <div class="verdict"><p>Punto a loro. Loro hanno l'elettromiografia, io avevo l'ottimismo.</p><span class="stamp">Ma era il 2009!</span></div>
   </article>
 
   <article class="round">
     <p class="label">Game 3 · Silicon Valley 3–0</p>
     <h3>Il gesto per confermare</h3>
     <div class="versus">
-      <div class="side me"><p class="who">ringPhone, 2008</p>
+      <div class="side me"><p class="who">ringPhone, 2009</p>
         <figure><img src="assets/ringphone/ringphone-select-clic.jpg" alt="Pollice e indice che si toccano, con una scintilla disegnata e la scritta CLIC, SELECT" loading="lazy"></figure>
         <p>SELECT. Pollice contro indice. Scintilla. <strong>CLIC.</strong></p></div>
       <div class="side them"><p class="who">Apple Vision Pro, 2024</p>
         <p>Dal manuale ufficiale: per selezionare, guardi l'oggetto e «unisci pollice e indice». Anche Meta usa le dita per cliccare.</p></div>
     </div>
-    <div class="verdict"><p>Punto a loro. Stesso gesto, ma il loro funziona. Il mio aveva una scintilla disegnata, e basta.</p><span class="stamp">Ma era il 2008!</span></div>
+    <div class="verdict"><p>Punto a loro. Stesso gesto, ma il loro funziona. Il mio aveva una scintilla disegnata, e basta.</p><span class="stamp">Ma era il 2009!</span></div>
   </article>
 
   <article class="round">
     <p class="label">Game 4 · Silicon Valley 4–0</p>
     <h3>L'audio</h3>
     <div class="versus">
-      <div class="side me"><p class="who">ringPhone, 2008</p>
+      <div class="side me"><p class="who">ringPhone, 2009</p>
         <p>«Telefoni o con dito o con orecchino (woman) o con le stanghe occhiali.» Tre opzioni, nessuna spiegata.</p></div>
       <div class="side them"><p class="who">Meta Ray-Ban Display, 2025</p>
         <p>Altoparlanti open-ear nelle stanghette e sei microfoni.</p></div>
     </div>
-    <div class="verdict"><p>Punto a loro. Io avevo previsto le stanghette, il dito e perfino l'orecchino. Loro ci hanno messo dentro gli altoparlanti. Io solo le parole.</p><span class="stamp">Ma era il 2008!</span></div>
+    <div class="verdict"><p>Punto a loro. Io avevo previsto le stanghette, il dito e perfino l'orecchino. Loro ci hanno messo dentro gli altoparlanti. Io solo le parole.</p><span class="stamp">Ma era il 2009!</span></div>
   </article>
 
   <article class="round">
     <p class="label">Game 5 · Silicon Valley 5–0</p>
     <h3>La presentazione</h3>
     <div class="versus">
-      <div class="side me"><p class="who">ringPhone, 2008</p>
+      <div class="side me"><p class="who">ringPhone, 2009</p>
         <p>«PICCOLO E COMODISSIMO. ECCO A VOI (rullo di tamburi)…» Il rullo di tamburi era scritto tra parentesi, in corpo piccolo, su una striscia magenta.</p></div>
       <div class="side them"><p class="who">Meta, 2025</p>
         <p>Mark Zuckerberg sul palco del Connect, davanti al mondo.</p></div>
     </div>
-    <div class="verdict"><p>Punto a loro, ma solo per i decibel. Il mio rullo di tamburi lo sentivi lo stesso. Come la vibrazione: «Tanto si sente».</p><span class="stamp">Ma era il 2008!</span></div>
+    <div class="verdict"><p>Punto a loro, ma solo per i decibel. Il mio rullo di tamburi lo sentivi lo stesso. Come la vibrazione: «Tanto si sente».</p><span class="stamp">Ma era il 2009!</span></div>
   </article>
 
   <article class="round">
     <p class="label">Game 6 · Silicon Valley 6–0</p>
     <h3>Il prezzo</h3>
     <div class="versus">
-      <div class="side me"><p class="who">ringPhone, 2008</p>
-        <p>Gratis. Anche perché non esisteva.</p></div>
+      <div class="side me"><p class="who">ringPhone, 2009</p>
+        <p>Il brief chiedeva un telefono da circa 500 dollari del 2009, cioè circa 750 di oggi. Il mio costava zero, anche perché non esisteva.</p></div>
       <div class="side them"><p class="who">Meta Ray-Ban Display, 2025</p>
-        <p>799 dollari, braccialetto incluso.</p></div>
+        <p>799 dollari, braccialetto incluso. Inflazione alla mano, il budget del brief è rispettato quasi al centesimo. Loro sì che i brief li leggono.</p></div>
     </div>
-    <div class="verdict"><p>Punto a loro. Un prodotto che si può comprare batte un prodotto che si può solo immaginare.</p><span class="stamp">Ma era il 2008!</span></div>
+    <div class="verdict"><p>Punto a loro. Un prodotto che si può comprare batte un prodotto che si può solo immaginare.</p><span class="stamp">Ma era il 2009!</span></div>
   </article>
 
   </div>
@@ -310,7 +373,7 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
     </div>
   </div>
   <p class="big">6-0!</p>
-  <p>Ma era il 2008, e in Italia il tennis era Seppi, Bolelli e Starace. Oggi c'è Sinner. Visto? Le cose cambiano: oggi vinciamo noi :)</p>
+  <p>Ma era il 2009, e in Italia il tennis era Seppi, Bolelli e Starace. Oggi c'è Sinner. Visto? Le cose cambiano: oggi vinciamo noi :)</p>
   <p>Nel tennis un 6-0 si chiama <em>bagel</em>, la ciambella: zero tondo. Io gioco a tennis e perdo sempre, quindi in casa ne ho una collezione. Questa però è la più bella.</p>
   <svg class="court" viewBox="0 0 600 300" role="img" aria-label="Un campo da tennis visto dall'alto: il colpo di Dacco finisce fuori, oltre la linea di fondo avversaria">
     <rect x="0" y="0" width="600" height="300" fill="var(--clay)"/>
@@ -328,7 +391,7 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
     <circle cx="22" cy="282" r="10" fill="#d7e64a" stroke="#8f9a22" stroke-width="2"/>
     <text x="46" y="292" fill="var(--chalk)" font-family="Special Elite, Courier New, monospace" font-size="18" text-anchor="start">OUT! (colpo di Dacco)</text>
   </svg>
-  <p><span class="stamp">Ma era il 2008!</span></p>
+  <p><span class="stamp">Ma era il 2009!</span></p>
 </section>
 
 
@@ -338,7 +401,7 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
   <h2 id="s-ai">«Sai che li ho inventati io?»</h2>
   <p>Anni dopo li vedo in vetrina e mi viene voglia di comprarli. Da uomo moderno, prima chiedo a un'intelligenza artificiale, Gemini, come sono. Poi, per scherzo, butto lì: «Sai che li ho inventati io?»</p>
   <p>Gemini non ride. Gemini indaga. Gli mando il PDF, lui lo legge e ricostruisce tutto: la piattaforma BootB, Ray-Ban tra i clienti, la vendita nel 2012 a una «big tech» americana rimasta anonima, e anni dopo Meta che si allea proprio con Ray-Ban. «Il cerchio si chiude in modo clamoroso», mi scrive, «e non è una semplice coincidenza».</p>
-  <p>Non si ferma lì. Mi prepara due dossier. Titolo: <em>Il futuro nel cassetto</em>. Capitoli: «Anatomia di un plagio concettuale», «La scatola nera: il caso BootB», «L'acquisizione fantasma». Sostiene che nel 2008 avevo descritto tutto «senza sbagliare una virgola». In fondo, centrato, in maiuscolo:</p>
+  <p>Non si ferma lì. Mi prepara due dossier. Titolo: <em>Il futuro nel cassetto</em>. Capitoli: «Anatomia di un plagio concettuale», «La scatola nera: il caso BootB», «L'acquisizione fantasma». Sostiene che nel 2008 avevo descritto tutto «senza sbagliare una virgola». Una virgola, in effetti, la sbaglia lui: era il 2009. L'ho scoperto dopo, frugando nella posta. In fondo, centrato, in maiuscolo:</p>
   <p style="font-family:var(--display);font-size:1.4rem;text-align:center">UN CASO? IO NON CREDO.</p>
   <p>Io intanto volevo solo sapere se gli occhiali erano comodi.</p>
   <p>Chiedo un secondo parere a Claude. Claude legge tutto, cerca, e mi risponde che sono balle: la vendita segreta di BootB non la trova da nessuna parte, Ray-Ban tra i clienti nemmeno. Probabilmente, dice, Gemini se l'è inventato.</p>
@@ -352,7 +415,7 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
     </div>
   </div>
   <p>Io, sul divano, guardo due intelligenze artificiali che si palleggiano il mio anello disegnato. Per una volta non perdo io: sto in tribuna.</p>
-  <p>Morale: due fatti veri, un complotto inventato e una verità molto più semplice. Il futuro, nel 2008, l'avevo immaginato anch'io. Ma cavolo, che ridere.</p>
+  <p>Morale: due fatti veri, un complotto inventato e una verità molto più semplice. Il futuro, nel 2009, l'avevo immaginato anch'io. Ma cavolo, che ridere.</p>
 </section>
 
 <section class="flow" aria-labelledby="s-pdf">
@@ -365,9 +428,9 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
 <section class="flow" aria-labelledby="s-epilogo">
   <p class="label">Epilogo</p>
   <h2 id="s-epilogo">La visione, quella sì</h2>
-  <p>Il ringPhone ha perso tutti i round, e se li è meritati uno per uno: nel 2008 era un disegno sopra una foto. Ma il punto non erano gli anelli. Il punto era l'idea che ci stava dietro.</p>
+  <p>Il ringPhone ha perso tutti i round, e se li è meritati uno per uno: nel 2009 era un disegno sopra una foto. Ma il punto non erano gli anelli. Il punto era l'idea che ci stava dietro.</p>
   <p>Mentre tutti cercavano uno schermo più grande da tenere in mano, io immaginavo un telefono che spariva. Le informazioni davanti agli occhi. La mano libera che diventa il mouse. Nessun bisogno di parlare ad alta voce in mezzo alla gente. Un telefono distribuito sul corpo invece che chiuso in tasca.</p>
-  <p>Quindici anni dopo, è la strada che hanno preso quelli che i telefoni li fanno davvero.</p>
+  <p>Sedici anni dopo, è la strada che hanno preso quelli che i telefoni li fanno davvero. Del resto lo diceva anche il cliente misterioso, nel 2009: «If you prefer don't call it mobile phone». Infatti io l'avevo chiamato anello.</p>
   <p>Nell'ultima slide, prima di premere Invia, scrivevo:</p>
   <blockquote>«Spero anche che sull'obiettivo di andare oltre siate stati soddisfatti.»</blockquote>
   <p style="font-family:var(--display);font-size:1.4rem">Se l’obiettivo era andare oltre, be’… io sono ancora là.<br><span style="color:var(--muted);font-size:1rem">(in effetti un’altra idea ce l’avrei:))</span></p>
@@ -380,11 +443,14 @@ footer{padding-top:3rem;font:.85rem var(--type);color:var(--muted)}
     <li><a href="https://www.economymagazine.it/dodici-apostoli-per-innovaredecisamente-out-of-the-box/" target="_blank" rel="noopener">«Dodici apostoli per innovare decisamente out of the box»</a>, Economy, 10 dicembre 2021, sulla vendita di BootB nel 2012</li>
     <li><a href="https://support.apple.com/en-asia/117741" target="_blank" rel="noopener">Use gestures with Apple Vision Pro</a>, Apple Support</li>
     <li><a href="https://www.androidauthority.com/meta-ray-ban-display-3598809/" target="_blank" rel="noopener">Meta Ray-Ban Display: annuncio, prezzo, Neural Band</a>, Android Authority</li>
-    <li>Il PDF originale «ringPhone by Dacco», 2008</li>
+    <li>Il PDF originale «ringPhone by Dacco», 2009</li>
+    <li>Le email di BootB nella mia casella di posta, dicembre 2008 – settembre 2009</li>
+    <li><a href="https://web.archive.org/web/20090726184212/http://www.bootb.com/en/briefs/desc/industrial/178104-design_the_mobile_phone_of_2020/info" target="_blank" rel="noopener">Il brief «Design the mobile phone of 2020!» su BootB</a>, copia del 26 luglio 2009 nell'Internet Archive</li>
+    <li><a href="https://web.archive.org/web/20090327001103/http://www.bootb.com/en/briefs/desc/industrial/178104-design_the_mobile_phone_of_2020/comments" target="_blank" rel="noopener">Le domande dei concorrenti sul brief</a>, copia del 27 marzo 2009 nell'Internet Archive</li>
   </ul>
 </section>
 
-<p class="label" style="padding-top:3rem">ringPhone by Dacco · un telefono che non squilla mai, dal 2008</p>
+<p class="label" style="padding-top:3rem">ringPhone by Dacco · un telefono che non squilla mai, dal 2009</p>
 </div>
 
 <div class="lightbox" id="lb" hidden role="dialog" aria-modal="true" aria-label="Slide ingrandita">
