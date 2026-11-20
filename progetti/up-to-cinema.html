@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Up to Cinema — mng crea</title><meta name="description" content="Un percorso e una piattaforma per portare le storie di qualità al cinema, con regole chiare."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Caveat:wght@500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Up to Cinema — mng crea</title><meta name="description" content="Un percorso e una piattaforma per portare le storie di qualità al cinema, con regole chiare."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet"><style>
 :root{--viola:#3b2a7a;--blu:#2a5ca8;--rosso:#e8476a;--giallo:#e5e34b;--ink:#17161b;--muto:#5f5e66;--carta:#f6f5f1}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;font:300 17px/1.7 Montserrat,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
@@ -11,7 +11,7 @@ img{max-width:100%;display:block}a{color:inherit}b{font-weight:600}
 .nav a:hover{background:linear-gradient(transparent 30%,#e6ff00 30%,#e6ff00 92%,transparent 92%)}
 .nav small{font-weight:400;opacity:.85}
 .rail .nome{display:none;margin-top:auto;font-size:13px;letter-spacing:.04em;color:var(--muto)}
-.rail .nome b{display:block;font:500 30px/1 Caveat;color:var(--viola);margin-bottom:6px}
+.rail .nome b{display:block;font:500 26px/1.1 "Playfair Display",Georgia,serif;color:var(--viola);margin-bottom:6px}
 .rail .nome a{color:var(--viola);text-underline-offset:5px}
 main,.piede{margin-left:0}
 .pan{position:relative;min-height:0;display:flex;align-items:center;padding:56px 6vw;background:center/cover}
@@ -21,7 +21,7 @@ main,.piede{margin-left:0}
 h1.tit{font-size:56px;color:var(--viola)}
 h2 small{font-size:.5em}
 .vetro p{margin:0 0 16px}.vetro p:last-child{margin:0}
-.eti{display:block;font:500 26px Caveat;color:var(--rosso);margin-bottom:2px}
+.eti{display:block;font:600 12px Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--rosso);margin-bottom:8px}
 .p1{padding-top:44px;padding-bottom:44px;gap:22px!important;background-image:url(../assets/ocean.jpg);background-position:center 30%;flex-direction:column;align-items:flex-start;justify-content:center;gap:34px}
 .p1 .headline{width:min(720px,100%)}
 .p1 .sotto{margin:-18px 0 0;color:#fff;letter-spacing:.55em;font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.45)}
@@ -41,10 +41,11 @@ h2 small{font-size:.5em}
 .scheda h3{margin:0 0 8px;font:600 15px/1.3 Montserrat;letter-spacing:.12em;text-transform:uppercase;color:var(--viola)}
 .scheda p{margin:0 0 14px;font-size:15px;color:var(--muto);line-height:1.6}
 .scheda .vai{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--rosso)}
-.p5{background:var(--viola) url(../assets/boat.jpg) right center/auto 100% no-repeat;color:#fff}
-.p5:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--viola) 45%,rgba(59,42,122,.55))}
-.p5 .in{position:relative;max-width:760px}.p5 .eti{color:var(--giallo)}
-.p5 h2{font-size:54px;text-transform:none;letter-spacing:0}.p5 p{color:#e6e3f4;max-width:560px}
+.p5{background:#fff;color:var(--ink);border-top:1px solid #ecebf0}
+.p5 .in{position:relative;max-width:760px}.p5 .eti{color:var(--rosso)}
+.p5 h2{font-size:48px;text-transform:none;letter-spacing:0;color:var(--viola)}.p5 p{color:var(--ink);max-width:560px}
+.p5 .bottone{color:var(--ink)}
+.socio{display:flex;align-items:center;gap:16px;margin-bottom:26px}.socio img{height:44px;width:auto}.socio span{font:600 11px Montserrat,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--muto);padding-left:16px;border-left:1px solid #d9d8de}
 .bottone{display:inline-block;margin-top:20px;padding:15px 4px;border-bottom:2px solid var(--giallo);text-decoration:none;font:600 13px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#fff}
 .bottone.scuro{color:var(--viola);border-bottom-color:var(--rosso)}
 .p6{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:var(--carta)}
@@ -59,7 +60,7 @@ h2 small{font-size:.5em}
 .riga{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start;padding:30px 0;border-top:1px solid #ecebf0}
 .riga h2{font:200 34px/1.1 Montserrat;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
 .riga .sub{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muto);margin:0 0 14px}
-.gruppo{font:500 28px Caveat;color:var(--rosso);margin:34px 0 6px;display:block}
+.gruppo{font:500 26px "Playfair Display",Georgia,serif;color:var(--rosso);margin:34px 0 6px;display:block}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
 .card{display:block;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.09);transition:transform .2s}
 .card:hover{transform:translateY(-4px)}
@@ -75,7 +76,7 @@ h2 small{font-size:.5em}
 .box>p{margin:0 0 22px;font-size:15px}
 .copertina{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:space-between;padding:22px 20px;color:#fff;box-shadow:12px 14px 28px rgba(0,0,0,.28);font-weight:200;max-width:230px}
 .copertina b{font-weight:600;letter-spacing:.14em;font-size:15px;line-height:1.25;text-transform:uppercase}
-.copertina i{font:500 22px/1 Caveat;font-style:normal;opacity:.9}
+.copertina i{font:400 13px/1.2 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;font-style:normal;opacity:.9}
 .c1{background:linear-gradient(160deg,#3b2a7a,#6a4cc2)}.c2{background:linear-gradient(160deg,#2a5ca8,#58a0d8)}.c3{background:linear-gradient(160deg,#e8476a,#f08a5d)}
 .cov{max-width:230px;box-shadow:12px 14px 28px rgba(0,0,0,.28)}
 .form .campo{margin:0 0 18px}
@@ -103,14 +104,14 @@ h2 small{font-size:.5em}
  .p2{grid-template-columns:1fr}.p2 .imm-bn{min-height:200px}.p2 .polaroid{right:16px;bottom:-40px;width:38%}.p2 .testo{padding:56px 22px 36px}
  .p3{align-items:flex-end}
  .schede{grid-template-columns:1fr}
- .p5{background-size:auto 55%;background-position:right bottom}.p5:before{background:linear-gradient(180deg,var(--viola) 55%,rgba(59,42,122,.6))}.p5 h2{font-size:34px}
+ .p5 h2{font-size:32px}.socio img{height:34px}
  .p6{grid-template-columns:1fr;gap:30px}
  .trsp-embed iframe{height:80vh!important}
  .pag{padding:44px 22px 20px}.riga{grid-template-columns:1fr;gap:26px}.pag .lead{font-size:21px}.box{padding:26px 22px}
 }
 </style></head><body>
 <aside class="rail"><a href="../index.html"><img class="logo" src="../assets/logo-nuovo.png" alt="mng crea"></a>
-<nav class="nav" aria-label="Principale"><a href="../progetti.html">progetti</a><a href="../scrittura.html">scrittura</a><a href="../ai.html">AI <small>(cervelli sintetici)</small></a><a href="../in-costruzione.html">in costruzione</a></nav>
+<nav class="nav" aria-label="Principale"><a href="../progetti.html">progetti</a><a href="../scrittura.html">scrittura</a><a href="../ai.html">AI <small>(cervelli sintetici)</small></a></nav>
 <p class="nome"><b>daniele mingucci</b><a href="../contatti.html">scrivimi</a> · <a href="../scrittura.html">libri</a><br><a href="../di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></p></aside>
 <main><div class="pag"><span class="eti"><a href="../progetti.html">← progetti</a> · in preparazione</span><h1 class="tit">Up to Cinema</h1><img class="hero-prog" src="../assets/progetti/up-to-cinema.jpg" alt="Up to Cinema"><p>Un percorso progettato per generare storie di qualità e per valorizzarle al massimo. Lo strumento è una piattaforma basata su regole chiare e sulla costituzione di team di professionisti in grado di prendere una storia - in qualunque forma si presenti - e di prepararla per il cinema, dove può davvero fare la differenza.</p><p>Le regole sono importanti, sono tutto in questo caso: in Europa il cinema non è un'industria e i percorsi per arrivare davanti alla cinepresa sono tortuosi e molto spesso opachi. Valorizzare la qualità e le professionalità, invece, consentirà di alzare l'asticella e di portare "in sala" una ventata di nuove idee.</p></div></main>
 <footer class="piede"><ul><li><a href="../progetti.html">progetti</a></li><li><a href="../scrittura.html">scrittura</a></li><li><a href="../ai.html">AI</a></li><li><a href="../contatti.html">contatti</a></li><li><a href="../di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></li><li><a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/">linkedin</a></li><li><a href="https://www.danielemingucci.com">daniele mingucci</a></li></ul>
