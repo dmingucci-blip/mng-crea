@@ -1,297 +1,148 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>scrittura — daniele mingucci</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Pixelify+Sans&family=Special+Elite&family=Jost:wght@500;600&display=swap" rel="stylesheet">
-
-<style>
-  :root{ --purple:#422e7c; --pink-name:#efbcd6; --teal-name:#0086b2; }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;background:#fff;}
-  body{font-family:'Montserrat',sans-serif;}
-
-  .poster-frame{ position:relative; width:100%; max-width:1320px; margin:0 auto; }
-  .poster-frame::before{ content:""; display:block; padding-top:278.33%; }
-  .poster{ position:absolute; left:0; top:0; right:0; bottom:0; background:#fff; overflow:hidden; container-type:inline-size; }
-  .abs{position:absolute;}
-  .abs img, img.abs{display:block; object-fit:fill;}
-
-  /* ---------------- hero ---------------- */
-
-  img.hero-photo{ left:2.02%; top:0.78%; width:46.0%; height:8.8%; object-fit:cover; object-position:center 38%; z-index:1; box-shadow:0 6px 16px rgba(0,0,0,.25); }
-  .hero-boat-wrap{ left:69.22%; top:6.20%; width:27.98%; height:19.74%; z-index:1; overflow:hidden; }
-  .hero-boat-wrap img{ width:100%; height:100%; object-fit:cover; }
-  .hero-boat-wrap::after{ content:""; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 18%); }
-
-  .home-logo{ left:0.91%; top:0.3%; width:14.69%; height:3.07%; z-index:5; }
-
-  .title-brush{ left:5.87%; top:3.65%; width:57.5%; height:1.86%; z-index:2; }
-  .page-title{
-    left:16.66%; top:3.30%; width:35%;
-    margin:0; z-index:3; color:#fff;
-    font-family:'Jost',sans-serif; font-weight:600;
-    font-size:clamp(20px, 4.6cqw, 44px);
-  }
-
-  .name{
-    left:67.19%; top:1.13%; width:27.95%; height:1.15%;
-    margin:0; z-index:4; white-space:nowrap;
-    font-size:clamp(11px, 2.6cqw, 26px);
-    display:flex; align-items:baseline; gap:.3em;
-  }
-  .name .n1{font-family:'Pixelify Sans',sans-serif; color:var(--pink-name);}
-  .name .n2{font-family:'Special Elite',serif; color:var(--teal-name); font-size:.92em;}
-
-  .nav-item{ z-index:3; display:flex; align-items:center; justify-content:center; text-decoration:none; }
-  .nav-item img{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
-  .nav-text{ position:relative; z-index:1; font-family:'Jost',sans-serif; font-weight:600; white-space:nowrap; display:flex; align-items:baseline; gap:.3em; }
-  .nav-text .w2{font-size:.62em; font-weight:500;}
-  .nav-blog{ left:76.68%; top:2.86%; width:20.91%; height:1.23%; }
-  .nav-blog .w1{color:#f4e34a;} .nav-blog .w2{color:#fff;}
-  .nav-progetti{ left:76.53%; top:4.35%; width:20.33%; height:1.26%; color:#fff; }
-  .nav-ai{ left:75.85%; top:6.25%; width:22.46%; height:1.38%; color:var(--purple); }
-
-  /* ---------------- schede libro ---------------- */
-
-  .book-thumb{ left:10.30%; width:14.09%; height:6.60%; z-index:3; box-shadow:0 6px 14px rgba(0,0,0,.3); }
-  .book-title{
-    left:25.05%; width:50%; margin:0; z-index:3; color:#161616;
-    font-family:'Montserrat',sans-serif; font-weight:200;
-    font-size:clamp(16px, 4.6cqw, 44px);
-  }
-  .book-text{ left:32.68%; width:50%; z-index:3; }
-  .book-text p{ margin:0 0 .7em; color:#222; font-family:'Montserrat',sans-serif; font-weight:300; font-size:clamp(9px, 1.57cqw, 16px); line-height:1.5; }
-  .book-stat{ left:32.68%; width:50%; z-index:3; color:#888; font-family:'Montserrat',sans-serif; font-weight:300; font-size:clamp(8px, 1.4cqw, 14px); }
-  .book-link{ left:32.68%; z-index:3; font-family:'Jost',sans-serif; font-weight:600; font-size:clamp(10px, 1.6cqw, 16px); color:var(--purple); text-decoration:none; border-bottom:1px solid var(--purple); }
-  .book-link:hover{ color:#8a3226; border-color:#8a3226; }
-  .book-divider{ left:38.47%; width:40.14%; height:2px; z-index:2; background:linear-gradient(to right,#1a1a1a,rgba(0,0,0,0)); }
-
-  /* posizioni per libro (top %) */
-  .b1-thumb{top:12.35%;} .b1-title{top:9.94%;} .b1-text{top:12.30%;} .b1-stat{top:17.47%;} .b1-div{top:20.75%;}
-  .b2-thumb{top:24.85%;} .b2-title{top:23.01%;} .b2-link{top:25.37%;} .b2-div{top:34.03%;}
-  .b3-thumb{top:39.70%;} .b3-title{top:37.53%;} .b3-text{top:39.60%;} .b3-stat{top:45.68%;} .b3-div{top:48.56%;}
-  .b4-thumb{top:53.41%;} .b4-title{top:51.22%;} .b4-link{top:53.58%;} .b4-div{top:62.25%;}
-  .b5-thumb{top:67.10%;} .b5-title{top:64.90%;} .b5-text{top:67.00%;} .b5-stat{top:73.68%;} .b5-div{top:77.10%;}
-  .b6-thumb{top:80.79%;} .b6-title{top:78.59%;} .b6-text{top:80.70%;} .b6-stat{top:87.37%;} .b6-div{top:89.63%;}
-
-  .site-footer{ background:#fff; border-top:1px solid #e6e1d2; padding:2.4em 4%; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.6em; max-width:1320px; margin:0 auto; }
-  .footer-menu{ display:flex; flex-wrap:wrap; gap:1.6em; list-style:none; margin:0; padding:0; }
-  .footer-menu li{ margin-right:1.6em; } .footer-menu li:last-child{ margin-right:0; }
-  .footer-menu a{ color:var(--purple); text-decoration:none; font-weight:600; font-family:'Jost',sans-serif; font-size:1rem; }
-  .footer-menu a:hover{ text-decoration:underline; }
-  .footer-social{ display:flex; gap:1em; align-items:center; }
-  .footer-social a{ color:var(--purple); display:flex; }
-  .footer-social svg{ width:22px; height:22px; fill:currentColor; }
-  .footer-social a:hover{ color:#cc3922; }
-  .footer-legal{ width:100%; text-align:center; font-size:.78rem; color:#777; border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em; }
-  .footer-legal a{ color:#777; }
-</style>
-<style>
-  /* ================= riquadri sfumati + contenitori responsive ================= */
-  .m-top, .m-nav, .proj{ display:contents; }
-
-  /* foto di testata intera, nelle sue proporzioni (come nell'originale) */
-  .poster img.hero-photo{ height:auto; object-fit:initial; }
-
-  .proj-card{ z-index:2; }
-  .tone-a .proj-card{ background:linear-gradient(to right, #fff 30%, #e6f02e 100%); }   /* bianco → giallo */
-  .tone-b .proj-card{ background:linear-gradient(to left,  #fff 45%, #45c1ee 100%); }   /* azzurro → bianco */
-  .tone-c .proj-card{ background:linear-gradient(to left,  #fff 45%, #e6f02e 100%); }   /* giallo → bianco */
-  .book-text p.book-stat{ width:auto; margin-top:1.1em; color:#888; font-size:clamp(8px, 1.4cqw, 14px); }
-  .book-title{ white-space:nowrap; }
-  .proj-card{ left:22.1%; width:73.4%; }
-  .proj-card.c1{ top:8.84%; height:11.68%; }
-  .proj-card.c2{ top:21.91%; height:10.24%; }
-  .proj-card.c3{ top:36.43%; height:11.39%; }
-  .proj-card.c4{ top:50.12%; height:10.59%; }
-  .proj-card.c5{ top:63.80%; height:13.12%; }
-  .proj-card.c6{ top:77.49%; height:13.23%; }
-</style>
-<style>
-  /* ================= RESPONSIVE (stessa logica della home) ================= */
-  @media (max-width: 820px){
-
-    .poster-frame::before{ display:none; }
-    .poster{ position:relative; overflow:hidden; padding-bottom:8cqw; }
-    .poster .abs{
-      position:relative; left:auto; top:auto; right:auto; bottom:auto;
-      width:auto; height:auto;
-    }
-
-    /* ---------- testata: foto + marchio + titolo ---------- */
-    .poster .m-top{ display:block; position:relative; }
-    .poster .m-top .abs{ position:absolute; }
-    .poster .m-top img.hero-photo{
-      position:relative; display:block; width:100%; height:92cqw;
-      object-fit:cover; object-position:center 38%; box-shadow:none;
-    }
-    .poster .home-logo{ left:3%; top:3cqw; width:42%; }
-    .poster .home-logo img{ height:auto !important; }
-    .poster .title-brush{ left:0; top:62cqw; width:96%; height:9cqw; }
-    .poster .page-title{ left:16%; top:57.5cqw; font-size:12cqw; }
-
-    /* ---------- nome + menu + barca ---------- */
-    .poster .m-nav{ display:block; position:relative; height:46cqw; }
-    .poster .m-nav .abs{ position:absolute; }
-    .poster .hero-boat-wrap{ left:38.5%; top:4cqw; width:61.5%; height:80cqw; }
-    .poster .name{ left:9%; top:5cqw; font-size:6.6cqw; }
-    .poster .m-nav .nav-item{ justify-content:flex-start; height:9.6cqw; }
-    .poster .m-nav .nav-text{ font-size:5cqw; }
-    .poster .m-nav a.nav-item:nth-of-type(1){ left:29%; top:14cqw;   width:52%;   padding-left:12cqw; }
-    .poster .m-nav a.nav-item:nth-of-type(2){ left:29%; top:23.5cqw; width:50.3%; padding-left:12cqw; }
-    .poster .m-nav a.nav-item:nth-of-type(3){ left:26%; top:33cqw;   width:57%;   height:10cqw; padding-left:15cqw; }
-
-    /* ---------- riquadri sfumati ---------- */
-    .poster .proj{
-      display:block; position:relative; z-index:2;
-      margin:7cqw 4% 0; padding:6cqw 6% 7cqw 5%;
-    }
-    .poster .proj::after{ content:""; display:table; clear:both; }
-    .poster .proj .proj-card{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
-    .poster .proj h2{
-      z-index:1; white-space:normal; margin:0 0 4cqw;
-      font-size:min(8cqw, 40px); line-height:1.15;
-    }
-    .poster .proj img[class*="thumb"]{
-      float:left; width:34%; height:auto; margin:1cqw 5% 3cqw -6%; z-index:1;
-    }
-    .poster .proj div[class*="text"]{ z-index:1; }
-    .poster .proj div[class*="text"] p{ font-size:clamp(14px, 3.9cqw, 16px); line-height:1.5; }
-    .poster .proj div[class*="text"] p.book-stat{ font-size:clamp(12px, 3.3cqw, 14px); }
-    .poster .proj .book-link{ display:inline-block; z-index:1; font-size:clamp(14px, 4cqw, 16px); }
-    .poster .proj img[class*="divider"]{ display:none; }
-
-    /* ---------- footer ---------- */
-    .site-footer{ justify-content:center; text-align:center; }
-    .footer-menu{ justify-content:center; }
-  }
-</style>
-</head>
-<body>
-
-<div class="poster-frame"><div class="poster">
-
-  <!-- testata -->
-  <div class="m-top">
-    <img class="abs hero-photo" src="assets/scrittura/typewriter.jpg" alt="">
-    <a class="abs home-logo" href="index.html" title="Torna alla home">
-      <img src="assets/logo.png" alt="mng crea" style="width:100%;height:100%;object-fit:contain;">
-    </a>
-    <img class="abs title-brush" src="assets/scrittura/title-stroke.png" alt="">
-    <h1 class="abs page-title">scrittura</h1>
-  </div>
-
-  <!-- nome, menu, barca -->
-  <div class="m-nav">
-    <div class="abs hero-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
-    <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
-    <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
-      <img src="assets/nav-blu.png" alt="">
-      <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
-    </a>
-    <a class="abs nav-item nav-progetti" href="progetti.html">
-      <img src="assets/nav-rosso.png" alt="">
-      <span class="nav-text">progetti</span>
-    </a>
-    <a class="abs nav-item nav-ai" href="ai.html">
-      <img src="assets/nav-grigio.png" alt="">
-      <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
-    </a>
-  </div>
-
-  <!-- libro 1 — ... di Dante -->
-  <article class="proj tone-a">
-    <div class="abs proj-card c1"></div>
-    <h2 class="abs book-title b1-title">... di Dante</h2>
-    <img class="abs book-thumb b1-thumb" src="assets/scrittura/book1.png" alt="... di Dante">
-    <div class="abs book-text b1-text">
-      <p>A questo tengo molto, è una storia d'amore. Tre storie d'amore, quattro...</p>
-      <p>Mi sto mettendo alla prova, come scrittura, e sto rifinendo tanto, come non ho mai fatto. Avrei voluto finire tutto in agosto 2026, ma quella dannata barca :)))</p>
-      <p>Il titolo non lo svelo ancora, è troppo bello.</p>
-      <p class="book-stat">Romanzo, 2026 · 512.000 battute</p>
-    </div>
-    <img class="abs book-divider b1-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- libro 2 — L'amore può attendere -->
-  <article class="proj tone-c">
-    <div class="abs proj-card c2"></div>
-    <h2 class="abs book-title b2-title">L'amore può attendere</h2>
-    <img class="abs book-thumb b2-thumb" src="assets/scrittura/book2.jpg" alt="L'amore può attendere">
-    <a class="abs book-link b2-link" href="https://www.amazon.it/Lamore-pu%C3%B2-attendere-Daniele-Mingucci/dp/8867265423/">Acquista su Amazon →</a>
-    <img class="abs book-divider b2-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- libro 3 — Fortune 2 -->
-  <article class="proj tone-a">
-    <div class="abs proj-card c3"></div>
-    <h2 class="abs book-title b3-title">Fortune 2 - time issue</h2>
-    <img class="abs book-thumb b3-thumb" src="assets/scrittura/book3.png" alt="Fortune 2 - time issue">
-    <div class="abs book-text b3-text">
-      <p>È il due di Fortune. Tutta un'altra storia. Ho cambiato stile, al presente. Spero di essere migliorato. Credo sia pronto per la pubblicazione, ma Guaraldi Lab non c'è più, non c'è più Mario, il mio primo editore.</p>
-      <p>Rimane in cantina un po', poi vediamo. Probabilmente serve un'altra revisione. Ah... secondo l'AI la startup che c'è dentro si può fare.</p>
-      <p>Quasi quasi...</p>
-      <p class="book-stat">Romanzo, 2024 · 625.000 battute</p>
-    </div>
-    <img class="abs book-divider b3-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- libro 4 — Fortune anonima startup -->
-  <article class="proj tone-c">
-    <div class="abs proj-card c4"></div>
-    <h2 class="abs book-title b4-title">Fortune - anonima startup</h2>
-    <img class="abs book-thumb b4-thumb" src="assets/scrittura/book4.jpg" alt="Fortune - anonima startup">
-    <a class="abs book-link b4-link" href="https://www.amazon.it/Fortune-anonima-startupper-incastri-perfezione/dp/8869272222/">Acquista su Amazon →</a>
-    <img class="abs book-divider b4-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- libro 5 — Beach -->
-  <article class="proj tone-a">
-    <div class="abs proj-card c5"></div>
-    <h2 class="abs book-title b5-title">Beach - D'estate al...</h2>
-    <img class="abs book-thumb b5-thumb" src="assets/scrittura/book5.png" alt="Beach - D'estate al...">
-    <div class="abs book-text b5-text">
-      <p>Me l'ha fatto scrivere e poi non l'ha voluto pubblicare. E dire che spacca... Prima o poi lo pubblico lo stesso, magari dopo un'altra sistemata.</p>
-      <p>Racconta di come è arrivato il Beach Volley in Europa. Una storia romanzata, costruita su diversi piani temporali, alla scoperta di un tesoro sepolto e del segreto - bello - di un'energia creativa indomabile.</p>
-      <p>Forse non se lo meritava, il committente... ma la mia mamma dice che è bellissimo :).</p>
-      <p class="book-stat">Romanzo, 2019 · 340.000 battute</p>
-    </div>
-    <img class="abs book-divider b5-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- libro 6 — Dei talenti perduti -->
-  <article class="proj tone-c">
-    <div class="abs proj-card c6"></div>
-    <h2 class="abs book-title b6-title">Dei talenti perduti</h2>
-    <img class="abs book-thumb b6-thumb" src="assets/scrittura/book6.png" alt="Dei talenti perduti">
-    <div class="abs book-text b6-text">
-      <p>Una storia strana, dark. Di rinascita. È in bozza da un po', si chiamava "Il bar dei talenti perduti" ma somiglia troppo ad altri titoli. Ci devo pensare ancora.</p>
-      <p>Secondo Gemini e Claude è il mio migliore, ma non l'ho ancora preparato per la pubblicazione. Aspetto ancora un po', è lì.</p>
-      <p>Il cattivo è un mio amico, si chiama come lui. Il buono era un mio amico, abbiamo litigato, mi raccontava un sacco di balle. Infatti è andata esattamente al contrario...</p>
-      <p class="book-stat">Romanzo, 2020 · 265.000 battute</p>
-    </div>
-  </article>
-
-</div></div>
-
-<footer class="site-footer">
-  <ul class="footer-menu">
-    <li><a href="https://dacco1971.tumblr.com">blog</a></li>
-    <li><a href="progetti.html">progetti</a></li>
-    <li><a href="scrittura.html">scrittura</a></li>
-    <li><a href="ai.html">AI</a></li>
-  </ul>
-  <div class="footer-social">
-    <a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.9 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21H9z"/></svg></a>
-    <a href="https://dacco1971.tumblr.com" aria-label="Tumblr"><svg viewBox="0 0 24 24"><path d="M14.5 3v4.2h4V11h-4v5.2c0 1.5.75 2 1.9 2 .7 0 1.4-.15 2-.4l.6 3.3c-.85.4-2.1.7-3.4.7-3.3 0-5.1-1.9-5.1-5.2V11H8v-3.6c2.4-.6 3.7-2.6 4-4.4h2.5z"/></svg></a>
-  </div>
-  <p class="footer-legal">© 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a></p>
-</footer>
-
-</body>
-</html>
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scrittura — mng crea</title><meta name="description" content="Romanzi, racconti ed e-book di Daniele Mingucci."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Caveat:wght@500&display=swap" rel="stylesheet"><style>
+:root{--viola:#3b2a7a;--blu:#2a5ca8;--rosso:#e8476a;--giallo:#e5e34b;--ink:#17161b;--muto:#5f5e66;--carta:#f6f5f1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:300 17px/1.7 Montserrat,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}b{font-weight:600}
+.pennellata{display:inline-block;border:0;cursor:pointer;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:15px 34px;background:var(--rosso) url(assets/nav-rosso.png) center/100% 100% no-repeat;color:#fff}
+.rail{position:sticky;top:0;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;padding:14px 6vw;background:#fff;border-bottom:1px solid #ecebf0;z-index:30}
+.rail .logo{width:112px}
+.nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 30px;align-items:center;margin-left:auto}
+.nav a{display:block;padding:4px 2px;font:400 15px/1.3 Montserrat,sans-serif;letter-spacing:.04em;text-decoration:none;color:var(--ink);background:linear-gradient(transparent 58%,#e6ff00 58%,#e6ff00 92%,transparent 92%)}
+.nav a:hover{background:linear-gradient(transparent 30%,#e6ff00 30%,#e6ff00 92%,transparent 92%)}
+.nav small{font-weight:400;opacity:.85}
+.rail .nome{display:none;margin-top:auto;font-size:13px;letter-spacing:.04em;color:var(--muto)}
+.rail .nome b{display:block;font:500 30px/1 Caveat;color:var(--viola);margin-bottom:6px}
+.rail .nome a{color:var(--viola);text-underline-offset:5px}
+main,.piede{margin-left:0}
+.pan{position:relative;min-height:0;display:flex;align-items:center;padding:56px 6vw;background:center/cover}
+.pan.corto{min-height:auto}
+.vetro{background:rgba(255,255,255,.9);backdrop-filter:blur(6px);padding:44px 46px;max-width:660px}
+.vetro h2,.pan h2,h1.tit{margin:0 0 22px;font:200 50px/1.05 Montserrat;letter-spacing:.04em;text-transform:uppercase}
+h1.tit{font-size:56px;color:var(--viola)}
+h2 small{font-size:.5em}
+.vetro p{margin:0 0 16px}.vetro p:last-child{margin:0}
+.eti{display:block;font:500 26px Caveat;color:var(--rosso);margin-bottom:2px}
+.p1{padding-top:44px;padding-bottom:44px;gap:22px!important;background-image:url(assets/ocean.jpg);background-position:center 30%;flex-direction:column;align-items:flex-start;justify-content:center;gap:34px}
+.p1 .headline{width:min(720px,100%)}
+.p1 .sotto{margin:-18px 0 0;color:#fff;letter-spacing:.55em;font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.p1 .carte{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.p1 .carte img{width:118px;filter:drop-shadow(6px 8px 12px rgba(0,0,0,.35))}
+.p2{padding:0;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.p2 .imm-bn{background:url(assets/fiume-bn.jpg) center/cover;position:relative;min-height:340px}
+.p2 .polaroid{position:absolute;right:-60px;bottom:70px;width:46%;padding:0;background:none;box-shadow:none}
+.p2 .testo{display:flex;flex-direction:column;justify-content:center;padding:48px 6vw 48px 110px}
+.polaroid{background:#fff;padding:10px;box-shadow:6px 8px 22px rgba(0,0,0,.22)}
+.p3{background-image:url(assets/web-main.jpg);background-position:center 40%;padding:64px 6vw}
+.p4{background:var(--carta);display:block}
+.p4 h2{margin-bottom:34px}
+.schede{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.scheda{display:block;text-decoration:none;background:#fff;padding:26px 26px 30px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.scheda .copertina{margin-bottom:22px}
+.scheda h3{margin:0 0 8px;font:600 15px/1.3 Montserrat;letter-spacing:.12em;text-transform:uppercase;color:var(--viola)}
+.scheda p{margin:0 0 14px;font-size:15px;color:var(--muto);line-height:1.6}
+.scheda .vai{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--rosso)}
+.p5{background:var(--viola) url(assets/boat.jpg) right center/auto 100% no-repeat;color:#fff}
+.p5:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--viola) 45%,rgba(59,42,122,.55))}
+.p5 .in{position:relative;max-width:760px}.p5 .eti{color:var(--giallo)}
+.p5 h2{font-size:54px;text-transform:none;letter-spacing:0}.p5 p{color:#e6e3f4;max-width:560px}
+.bottone{display:inline-block;margin-top:20px;padding:15px 4px;border-bottom:2px solid var(--giallo);text-decoration:none;font:600 13px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.bottone.scuro{color:var(--viola);border-bottom-color:var(--rosso)}
+.p6{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:var(--carta)}
+.p6 .foto{display:flex;gap:18px;justify-content:center}.p6 .foto .polaroid{width:44%}.p6 .foto .polaroid:nth-child(2){margin-top:60px}
+.cta{padding:56px 24px;text-align:center}.cta .caps{display:block;font:600 12px Montserrat;letter-spacing:.3em;text-transform:uppercase}
+.cta a{display:inline-block;margin-top:12px;font:500 40px/1.1 Caveat;color:var(--rosso);text-decoration:none;border-bottom:2px dotted var(--rosso)}
+/* pagine interne */
+.pag{padding:44px 6vw 24px;max-width:1100px}
+.pag .eti a{text-decoration:none}
+.pag p{max-width:680px;margin:0 0 18px}
+.pag .lead{font:200 26px/1.45 Montserrat;color:var(--viola);max-width:720px}
+.riga{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start;padding:30px 0;border-top:1px solid #ecebf0}
+.riga h2{font:200 34px/1.1 Montserrat;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.riga .sub{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muto);margin:0 0 14px}
+.gruppo{font:500 28px Caveat;color:var(--rosso);margin:34px 0 6px;display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.card{display:block;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.09);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card .im{aspect-ratio:4/3;background:var(--carta) center/cover}
+.card .tx{padding:20px 22px 24px}
+.card h3{margin:0 0 6px;font:600 14px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--viola)}
+.card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--muto)}
+.trsp-embed{max-width:none}.trsp-embed p{max-width:680px}
+.hero-prog{width:100%;max-height:300px;object-fit:cover;margin:0 0 34px}
+.apri{display:inline-block;margin:6px 0 30px;font:600 13px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola);border-bottom:2px solid var(--rosso);padding:6px 0}
+.box{background:var(--carta);padding:28px 32px;margin:28px 0;max-width:640px}
+.box h3{margin:0 0 6px;font:200 28px/1.1 Montserrat;text-transform:uppercase;letter-spacing:.04em}
+.box>p{margin:0 0 22px;font-size:15px}
+.copertina{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:space-between;padding:22px 20px;color:#fff;box-shadow:12px 14px 28px rgba(0,0,0,.28);font-weight:200;max-width:230px}
+.copertina b{font-weight:600;letter-spacing:.14em;font-size:15px;line-height:1.25;text-transform:uppercase}
+.copertina i{font:500 22px/1 Caveat;font-style:normal;opacity:.9}
+.c1{background:linear-gradient(160deg,#3b2a7a,#6a4cc2)}.c2{background:linear-gradient(160deg,#2a5ca8,#58a0d8)}.c3{background:linear-gradient(160deg,#e8476a,#f08a5d)}
+.cov{max-width:230px;box-shadow:12px 14px 28px rgba(0,0,0,.28)}
+.form .campo{margin:0 0 18px}
+.form label.l{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form input[type=text],.form input[type=email],.form textarea{display:block;width:100%;padding:10px 0;border:0;border-bottom:1px solid #b9b8bf;background:transparent;font:400 18px Montserrat,sans-serif;color:var(--ink);outline:0;border-radius:0}
+.form textarea{min-height:110px;resize:vertical}
+.form input:focus,.form textarea:focus{border-bottom-color:var(--rosso)}
+.form fieldset{border:0;padding:0;margin:20px 0 6px}.form legend{padding:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form .spunta{display:flex;gap:12px;align-items:flex-start;margin:0 0 10px;font-size:15px;color:var(--ink);cursor:pointer}
+.form .spunta input{margin:4px 0 0;width:18px;height:18px;accent-color:var(--viola);flex:0 0 auto}
+.form .consenso{font-size:13px;color:var(--muto);margin:16px 0 22px}
+.esca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.esito{min-height:1.6em;margin:16px 0 0;font-size:15px}
+[aria-invalid=true]{border-bottom-color:var(--rosso)!important}
+.piede{padding:44px 24px 56px;text-align:center;border-top:1px solid #e4e3e8;color:var(--muto);font-size:12px;line-height:1.8}
+.piede ul{list-style:none;margin:0 0 22px;padding:0;display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.piede ul a{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola)}
+@media(max-width:960px){
+ .rail{position:sticky;width:auto;bottom:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:10px 16px;border-right:0;border-bottom:1px solid #ecebf0}
+ .rail .logo{width:64px}.rail .nome{display:none}
+ .nav{flex:1 1 auto;justify-content:flex-end;gap:2px 14px}.nav a{padding:4px 2px;font-size:14px}.nav small{display:none}
+ main,.piede{margin-left:0}
+ .pan{min-height:auto;padding:36px 22px}.vetro{padding:28px 24px}.vetro h2,.pan h2,.p6 h2{font-size:36px}h1.tit{font-size:38px}
+ .p1{padding-top:28px}.p1 .carte img{width:calc(33.3% - 11px)}.p1 .carte{width:100%}
+ .p2{grid-template-columns:1fr}.p2 .imm-bn{min-height:200px}.p2 .polaroid{right:16px;bottom:-40px;width:38%}.p2 .testo{padding:56px 22px 36px}
+ .p3{align-items:flex-end}
+ .schede{grid-template-columns:1fr}
+ .p5{background-size:auto 55%;background-position:right bottom}.p5:before{background:linear-gradient(180deg,var(--viola) 55%,rgba(59,42,122,.6))}.p5 h2{font-size:34px}
+ .p6{grid-template-columns:1fr;gap:30px}
+ .trsp-embed iframe{height:80vh!important}
+ .pag{padding:44px 22px 20px}.riga{grid-template-columns:1fr;gap:26px}.pag .lead{font-size:21px}.box{padding:26px 22px}
+}
+</style></head><body>
+<aside class="rail"><a href="index.html"><img class="logo" src="assets/logo-nuovo.png" alt="mng crea"></a>
+<nav class="nav" aria-label="Principale"><a href="progetti.html">progetti</a><a href="scrittura.html">scrittura</a><a href="ai.html">AI <small>(cervelli sintetici)</small></a><a href="in-costruzione.html">in costruzione</a></nav>
+<p class="nome"><b>daniele mingucci</b><a href="contatti.html">scrivimi</a> · <a href="scrittura.html">libri</a><br><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></p></aside>
+<main><div class="pag"><span class="eti">scrittura</span><h1 class="tit">Scrittura</h1><p class="lead">Lo storytelling è una cosa seria. Qui i libri: quelli usciti, quelli che si possono avere gratis e quelli che stanno arrivando.</p><span class="gruppo">Usciti</span><div class="riga"><div><img class="cov" src="assets/scrittura/book2.jpg" alt="L'amore può attendere"></div><div><h2>L'amore può attendere</h2><p class="sub">Edizione NFC Edizioni.</p><a class="apri" href="https://www.amazon.it/Lamore-pu%C3%B2-attendere-Daniele-Mingucci/dp/8867265423/" target="_blank" rel="noopener">Acquista su Amazon →</a></div></div><div class="riga"><div><img class="cov" src="assets/scrittura/book4.jpg" alt="Fortune - anonima startup"></div><div><h2>Fortune - anonima startup</h2><p class="sub">Edizione Guaraldi Lab.</p><a class="apri" href="https://www.amazon.it/Fortune-anonima-startupper-incastri-perfezione/dp/8869272222/" target="_blank" rel="noopener">Acquista su Amazon →</a></div></div><span class="gruppo">Gratis, via email</span><div class="riga"><div><div class="copertina c1"><b>Attitudine</b><i>prima edizione</i></div></div><div><h2>Attitude branding</h2><p class="sub">Il libro</p><p>ePub o PDF, gratis. Su Amazon arriverà.</p><a class="apri" href="attitude-branding.html">Vai al libro →</a></div></div><div class="riga"><div><div class="copertina c2"><b>Traspality</b><i>il libro</i></div></div><div><h2>Traspality</h2><p class="sub">Il libro</p><p>Cartaceo su Amazon. L'ePub si riceve gratis dal sito.</p><a class="apri" href="progetti/traspality.html#ebook">Chiedi l'ePub →</a></div></div><div class="riga" id="racconti"><div><div class="copertina c3"><b>Racconti</b><i>ePub gratis</i></div></div><div><h2>Racconti</h2><p class="sub">Brevi, da leggere dove vuoi</p><p>Li sto preparando in edizione cartacea per Amazon. Intanto gli ePub si ricevono gratis.</p><div class="box" style="margin:20px 0 0"><h3>Ricevi i racconti</h3><p>Nome ed email e te li mando.</p><form class="form" novalidate data-oggetto="Richiesta ePub racconti" data-ok="Ricevuto, grazie. Ti mando i racconti appena posso."><div class="campo"><label class="l" for="ran">Nome</label><input id="ran" name="nome" type="text" autocomplete="name" required></div><div class="campo"><label class="l" for="rae">Email</label><input id="rae" name="email" type="email" inputmode="email" autocomplete="email" required></div><fieldset><legend>Quale?</legend><label class="spunta"><input type="checkbox" name="scelta" value="Racconti (ePub)" checked><span>Racconti (ePub)</span></label></fieldset><label class="spunta consenso"><input type="checkbox" name="consenso"><span>Acconsento a ricevere il libro via email e a essere ricontattato per questo. I dati servono solo a questo e non li cedo a nessuno. <a href="privacy.html">Privacy</a></span></label><div class="esca" aria-hidden="true"><label>Non compilare <input type="text" name="sito" tabindex="-1" autocomplete="off"></label></div><button type="submit" class="pennellata">Mandami gli ePub</button><p class="esito" role="status" aria-live="polite"></p></form></div></div></div><span class="gruppo">Romanzi in corso</span><div class="riga"><div><img class="cov" src="assets/scrittura/book1.png" alt="... di Dante"></div><div><h2>... di Dante</h2><p class="sub">Romanzo, 2026 · 512.000 battute</p><p>A questo tengo molto, è una storia d'amore. Tre storie d'amore, quattro... Mi sto mettendo alla prova, come scrittura, e sto rifinendo tanto, come non ho mai fatto. Avrei voluto finire tutto in agosto 2026, ma quella dannata barca :))) Il titolo non lo svelo ancora, è troppo bello.</p></div></div><div class="riga"><div><img class="cov" src="assets/scrittura/book3.png" alt="Fortune 2 - time issue"></div><div><h2>Fortune 2 - time issue</h2><p class="sub">Romanzo, 2024 · 625.000 battute</p><p>È il due di Fortune. Tutta un'altra storia. Ho cambiato stile, al presente. Spero di essere migliorato. Credo sia pronto per la pubblicazione, ma Guaraldi Lab non c'è più, non c'è più Mario, il mio primo editore. Rimane in cantina un po', poi vediamo. Probabilmente serve un'altra revisione. Ah... secondo l'AI la startup che c'è dentro si può fare. Quasi quasi...</p></div></div><div class="riga"><div><img class="cov" src="assets/scrittura/book5.png" alt="Beach - D&#x27;estate al..."></div><div><h2>Beach - D&#x27;estate al...</h2><p class="sub">Romanzo, 2019 · 340.000 battute</p><p>Me l'ha fatto scrivere e poi non l'ha voluto pubblicare. E dire che spacca... Prima o poi lo pubblico lo stesso, magari dopo un'altra sistemata. Racconta di come è arrivato il Beach Volley in Europa. Una storia romanzata, costruita su diversi piani temporali, alla scoperta di un tesoro sepolto e del segreto - bello - di un'energia creativa indomabile. Forse non se lo meritava, il committente... ma la mia mamma dice che è bellissimo :).</p></div></div><div class="riga"><div><img class="cov" src="assets/scrittura/book6.png" alt="Dei talenti perduti"></div><div><h2>Dei talenti perduti</h2><p class="sub">Romanzo, 2020 · 265.000 battute</p><p>Una storia strana, dark. Di rinascita. È in bozza da un po', si chiamava "Il bar dei talenti perduti" ma somiglia troppo ad altri titoli. Ci devo pensare ancora. Secondo Gemini e Claude è il mio migliore, ma non l'ho ancora preparato per la pubblicazione. Aspetto ancora un po', è lì. Il cattivo è un mio amico, si chiama come lui. Il buono era un mio amico, abbiamo litigato, mi raccontava un sacco di balle. Infatti è andata esattamente al contrario...</p></div></div><div class="box" id="preordine"><h3>Voglio sapere quando esce</h3><p>Dimmi quale romanzo ti interessa: ti scrivo appena c'è novità, e se vuoi puoi prenotare una copia.</p><form class="form" novalidate data-oggetto="Pre-ordine / informazioni romanzi" data-ok="Ricevuto, grazie. Ti scrivo appena c&#x27;è novità."><div class="campo"><label class="l" for="prn">Nome</label><input id="prn" name="nome" type="text" autocomplete="name" required></div><div class="campo"><label class="l" for="pre">Email</label><input id="pre" name="email" type="email" inputmode="email" autocomplete="email" required></div><fieldset><legend>Quale?</legend><label class="spunta"><input type="checkbox" name="scelta" value="... di Dante"><span>... di Dante</span></label><label class="spunta"><input type="checkbox" name="scelta" value="Fortune 2 - time issue"><span>Fortune 2 - time issue</span></label><label class="spunta"><input type="checkbox" name="scelta" value="Beach - D&#x27;estate al..."><span>Beach - D&#x27;estate al...</span></label><label class="spunta"><input type="checkbox" name="scelta" value="Dei talenti perduti"><span>Dei talenti perduti</span></label></fieldset><label class="spunta consenso"><input type="checkbox" name="consenso"><span>Acconsento a ricevere aggiornamenti su questi libri. I dati servono solo a questo e non li cedo a nessuno. <a href="privacy.html">Privacy</a></span></label><div class="esca" aria-hidden="true"><label>Non compilare <input type="text" name="sito" tabindex="-1" autocomplete="off"></label></div><button type="submit" class="pennellata">Avvisami</button><p class="esito" role="status" aria-live="polite"></p></form></div></div></main>
+<footer class="piede"><ul><li><a href="progetti.html">progetti</a></li><li><a href="scrittura.html">scrittura</a></li><li><a href="ai.html">AI</a></li><li><a href="contatti.html">contatti</a></li><li><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></li><li><a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/">linkedin</a></li><li><a href="https://www.danielemingucci.com">daniele mingucci</a></li></ul>
+<p>© 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a><br>Sito web realizzato con il contributo di AI — <a href="https://claude.com/claude-code">Claude Code</a></p></footer>
+<script>
+(function(){
+  var KEY='';
+  document.querySelectorAll('form.form').forEach(function(f){
+    var out=f.querySelector('.esito');
+    function v(n){return f.elements[n]?(f.elements[n].value||'').trim():'';}
+    f.addEventListener('submit',function(e){
+      e.preventDefault(); if(v('sito')) return;
+      var scelte=[].map.call(f.querySelectorAll('input[name=scelta]:checked'),function(c){return c.value;});
+      var ok=true,msg='';
+      ['nome','email'].forEach(function(n){var b=v(n)&&(n!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v(n)));f.elements[n].setAttribute('aria-invalid',b?'false':'true');if(!b)ok=false;});
+      if(f.querySelector('input[name=scelta]')&&!scelte.length){ok=false;msg='Scegli almeno una voce.';}
+      if(f.elements.consenso&&!f.elements.consenso.checked){ok=false;msg='Serve il consenso per poterti scrivere.';}
+      if(f.elements.messaggio&&!v('messaggio')){ok=false;f.elements.messaggio.setAttribute('aria-invalid','true');}
+      if(!ok){out.textContent=msg;return;}
+      var oggetto=f.dataset.oggetto+(scelte.length?': '+scelte.join(' + '):'');
+      var corpo='Nome: '+v('nome')+'\nEmail: '+v('email')+(scelte.length?'\nVoci: '+scelte.join(', '):'')+(v('messaggio')?'\n\n'+v('messaggio'):'')+(f.elements.consenso?'\n\n(Consenso dato a ricevere il file / aggiornamenti su questo.)':'');
+      if(KEY){
+        out.textContent='Invio in corso…';
+        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:KEY,subject:oggetto,from_name:v('nome'),name:v('nome'),email:v('email'),message:corpo})})
+        .then(function(r){return r.json();}).then(function(j){out.textContent=j.success?(f.dataset.ok||'Ricevuto, grazie.'):'Qualcosa non ha funzionato. Riprova.';if(j.success)f.reset();})
+        .catch(function(){out.textContent='Qualcosa non ha funzionato. Riprova.';});
+      }else{
+        var a=['dacco','mng-crea.com'].join('@');
+        out.textContent='Si apre il tuo programma di posta con il messaggio già scritto: premi invia.';
+        location.href='mailto:'+a+'?subject='+encodeURIComponent(oggetto)+'&body='+encodeURIComponent(corpo);
+      }
+    });
+  });
+})();
+</script></body></html>

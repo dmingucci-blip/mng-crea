@@ -1,315 +1,148 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>progetti — daniele mingucci</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Pixelify+Sans&family=Special+Elite&family=Jost:wght@500;600&display=swap" rel="stylesheet">
-
-<style>
-  :root{ --purple:#422e7c; --pink-name:#efbcd6; --teal-name:#0086b2; }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;background:#fff;}
-  body{font-family:'Montserrat',sans-serif;}
-
-  .poster-frame{ position:relative; width:100%; max-width:1320px; margin:0 auto; }
-  .poster-frame::before{ content:""; display:block; padding-top:329.66%; }
-  .poster{ position:absolute; left:0; top:0; right:0; bottom:0; background:#fff; overflow:hidden; container-type:inline-size; }
-  .abs{position:absolute;}
-  .abs img, img.abs{display:block; object-fit:fill;}
-
-  /* ---------------- hero ---------------- */
-
-  img.hero-photo{ left:2.42%; top:0.76%; width:45.89%; height:7.0%; object-fit:cover; object-position:center 38%; z-index:1; box-shadow:0 6px 16px rgba(0,0,0,.25); }
-  .hero-boat-wrap{ left:69.52%; top:5.33%; width:27.98%; height:16.67%; z-index:1; overflow:hidden; }
-  .hero-boat-wrap img{ width:100%; height:100%; object-fit:cover; }
-  .hero-boat-wrap::after{ content:""; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 18%); }
-
-  .home-logo{ left:0.91%; top:0.25%; width:14.69%; height:2.59%; z-index:5; }
-
-  .title-brush{ left:4.85%; top:2.90%; width:55.29%; height:1.31%; z-index:2; }
-  .page-title{
-    left:14.09%; top:2.35%; width:35%;
-    margin:0; z-index:3; color:#fff;
-    font-family:'Jost',sans-serif; font-weight:600;
-    font-size:clamp(20px, 4.6cqw, 44px);
-  }
-
-  .name{
-    left:67.49%; top:1.05%; width:27.95%; height:0.97%;
-    margin:0; z-index:4; white-space:nowrap;
-    font-size:clamp(10px, 2.6cqw, 26px);
-    display:flex; align-items:baseline; gap:.3em;
-  }
-  .name .n1{font-family:'Pixelify Sans',sans-serif; color:var(--pink-name);}
-  .name .n2{font-family:'Special Elite',serif; color:var(--teal-name); font-size:.92em;}
-
-  .nav-item{ z-index:3; display:flex; align-items:center; justify-content:center; text-decoration:none; }
-  .nav-item img{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
-  .nav-text{ position:relative; z-index:1; font-family:'Jost',sans-serif; font-weight:600; white-space:nowrap; display:flex; align-items:baseline; gap:.3em; }
-  .nav-text .w2{font-size:.62em; font-weight:500;}
-  .nav-blog{ left:77.0%; top:2.51%; width:20.91%; height:1.04%; }
-  .nav-blog .w1{color:#f4e34a;} .nav-blog .w2{color:#fff;}
-  .nav-scrittura{ left:75.98%; top:3.92%; width:22.62%; height:1.35%; color:var(--purple); }
-  .nav-ai{ left:76.14%; top:5.37%; width:22.44%; height:1.16%; color:var(--purple); }
-
-  /* ---------------- schede progetto ---------------- */
-
-  .project-thumb{ left:10.61%; width:14.08%; z-index:3; box-shadow:0 6px 14px rgba(0,0,0,.3); }
-  .project-title{
-    left:25.36%; width:50%; margin:0; z-index:3; color:#161616; letter-spacing:.02em;
-    font-family:'Montserrat',sans-serif; font-weight:200;
-    font-size:clamp(14px, 3.7cqw, 34px);
-  }
-  .project-text{ left:32.99%; width:50%; z-index:3; }
-  .project-text p{ margin:0 0 .7em; color:#222; font-family:'Montserrat',sans-serif; font-weight:300; font-size:clamp(8px, 1.26cqw, 14px); line-height:1.5; }
-  .project-text b{font-weight:600;}
-  .project-divider{ left:38.78%; width:40.14%; height:2px; z-index:2; background:linear-gradient(to right,#1a1a1a,rgba(0,0,0,0)); }
-
-  /* posizioni (top % e altezza thumb %) */
-  .p1-thumb{top:10.52%; height:6.29%;} .p1-title{top:8.48%;} .p1-text{top:10.45%;} .p1-div{top:17.62%;}
-  .p2-thumb{top:21.36%; height:5.58%;} .p2-title{top:19.52%;} .p2-text{top:21.30%;} .p2-div{top:28.84%;}
-  .p3-thumb{top:33.92%; height:5.57%;} .p3-title{top:31.79%;} .p3-text{top:33.85%;} .p3-div{top:41.10%;}
-  .p4-thumb{top:45.75%; height:5.58%;} .p4-title{top:43.62%;} .p4-text{top:45.68%;} .p4-div{top:52.90%;}
-  .p5-thumb{top:57.98%; height:5.56%;} .p5-title{top:55.85%;} .p5-text{top:57.91%;} .p5-div{top:65.16%;}
-  .p6-thumb{top:70.96%; height:3.92%;} .p6-title{top:68.83%;} .p6-text{top:70.89%;} .p6-div{top:78.14%;}
-  .p7-thumb{top:82.80%; height:5.57%;} .p7-title{top:80.66%;} .p7-text{top:82.73%;}
-
-  .site-footer{ background:#fff; border-top:1px solid #e6e1d2; padding:2.4em 4%; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.6em; max-width:1320px; margin:0 auto; }
-  .footer-menu{ display:flex; flex-wrap:wrap; gap:1.6em; list-style:none; margin:0; padding:0; }
-  .footer-menu li{ margin-right:1.6em; } .footer-menu li:last-child{ margin-right:0; }
-  .footer-menu a{ color:var(--purple); text-decoration:none; font-weight:600; font-family:'Jost',sans-serif; font-size:1rem; }
-  .footer-menu a:hover{ text-decoration:underline; }
-  .footer-social{ display:flex; gap:1em; align-items:center; }
-  .footer-social a{ color:var(--purple); display:flex; }
-  .footer-social svg{ width:22px; height:22px; fill:currentColor; }
-  .footer-social a:hover{ color:#cc3922; }
-  .footer-legal{ width:100%; text-align:center; font-size:.78rem; color:#777; border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em; }
-  .footer-legal a{ color:#777; }
-</style>
-<style>
-  /* ================= riquadri sfumati + contenitori responsive ================= */
-  .m-top, .m-nav, .proj{ display:contents; }
-
-  /* foto di testata intera, nelle sue proporzioni (come nell'originale) */
-  .poster img.hero-photo{ height:auto; object-fit:initial; }
-
-  .proj-card{ z-index:2; }
-  .tone-a .proj-card{ background:linear-gradient(to right, #fff 30%, #e6f02e 100%); }   /* bianco → giallo */
-  .tone-b .proj-card{ background:linear-gradient(to left,  #fff 45%, #45c1ee 100%); }   /* azzurro → bianco */
-  .tone-c .proj-card{ background:linear-gradient(to left,  #fff 45%, #e6f02e 100%); }   /* giallo → bianco */
-  .project-title{ white-space:nowrap; }
-  .proj-card{ left:22.1%; width:73.4%; }
-  .proj-card.c1{ top:7.38%; height:10.04%; }
-  .proj-card.c2{ top:18.42%; height:9.81%; }
-  .proj-card.c3{ top:30.69%; height:10.21%; }
-  .proj-card.c4{ top:42.52%; height:9.82%; }
-  .proj-card.c5{ top:54.75%; height:9.49%; }
-  .proj-card.c6{ top:67.73%; height:9.82%; }
-  .proj-card.c7{ top:79.56%; height:9.61%; }
-</style>
-<style>
-  /* ================= RESPONSIVE (stessa logica della home) ================= */
-  @media (max-width: 820px){
-
-    .poster-frame::before{ display:none; }
-    .poster{ position:relative; overflow:hidden; padding-bottom:8cqw; }
-    .poster .abs{
-      position:relative; left:auto; top:auto; right:auto; bottom:auto;
-      width:auto; height:auto;
-    }
-
-    /* ---------- testata: foto + marchio + titolo ---------- */
-    .poster .m-top{ display:block; position:relative; }
-    .poster .m-top .abs{ position:absolute; }
-    .poster .m-top img.hero-photo{
-      position:relative; display:block; width:100%; height:92cqw;
-      object-fit:cover; object-position:center 38%; box-shadow:none;
-    }
-    .poster .home-logo{ left:3%; top:3cqw; width:42%; }
-    .poster .home-logo img{ height:auto !important; }
-    .poster .title-brush{ left:0; top:62cqw; width:96%; height:9cqw; }
-    .poster .page-title{ left:16%; top:57.5cqw; font-size:12cqw; }
-
-    /* ---------- nome + menu + barca ---------- */
-    .poster .m-nav{ display:block; position:relative; height:46cqw; }
-    .poster .m-nav .abs{ position:absolute; }
-    .poster .hero-boat-wrap{ left:38.5%; top:4cqw; width:61.5%; height:80cqw; }
-    .poster .name{ left:9%; top:5cqw; font-size:6.6cqw; }
-    .poster .m-nav .nav-item{ justify-content:flex-start; height:9.6cqw; }
-    .poster .m-nav .nav-text{ font-size:5cqw; }
-    .poster .m-nav a.nav-item:nth-of-type(1){ left:29%; top:14cqw;   width:52%;   padding-left:12cqw; }
-    .poster .m-nav a.nav-item:nth-of-type(2){ left:29%; top:23.5cqw; width:50.3%; padding-left:12cqw; }
-    .poster .m-nav a.nav-item:nth-of-type(3){ left:26%; top:33cqw;   width:57%;   height:10cqw; padding-left:15cqw; }
-
-    /* ---------- riquadri sfumati ---------- */
-    .poster .proj{
-      display:block; position:relative; z-index:2;
-      margin:7cqw 4% 0; padding:6cqw 6% 7cqw 5%;
-    }
-    .poster .proj::after{ content:""; display:table; clear:both; }
-    .poster .proj .proj-card{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
-    .poster .proj h2{
-      z-index:1; white-space:normal; margin:0 0 4cqw;
-      font-size:min(8cqw, 40px); line-height:1.15;
-    }
-    .poster .proj img[class*="thumb"]{
-      float:left; width:34%; height:auto; margin:1cqw 5% 3cqw -6%; z-index:1;
-    }
-    .poster .proj div[class*="text"]{ z-index:1; }
-    .poster .proj div[class*="text"] p{ font-size:clamp(14px, 3.9cqw, 16px); line-height:1.5; }
-    .poster .proj div[class*="text"] p.book-stat{ font-size:clamp(12px, 3.3cqw, 14px); }
-    .poster .proj .book-link{ display:inline-block; z-index:1; font-size:clamp(14px, 4cqw, 16px); }
-    .poster .proj img[class*="divider"]{ display:none; }
-
-    /* ---------- footer ---------- */
-    .site-footer{ justify-content:center; text-align:center; }
-    .footer-menu{ justify-content:center; }
-  }
-</style>
-</head>
-<body>
-
-<div class="poster-frame"><div class="poster">
-
-  <!-- testata -->
-  <div class="m-top">
-    <img class="abs hero-photo" src="assets/progetti/hero-mac.jpg" alt="">
-    <a class="abs home-logo" href="index.html" title="Torna alla home">
-      <img src="assets/logo.png" alt="mng crea" style="width:100%;height:100%;object-fit:contain;">
-    </a>
-    <img class="abs title-brush" src="assets/progetti/title-stroke.png" alt="">
-    <h1 class="abs page-title">progetti</h1>
-  </div>
-
-  <!-- nome, menu, barca -->
-  <div class="m-nav">
-    <div class="abs hero-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
-    <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
-    <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
-      <img src="assets/nav-blu.png" alt="">
-      <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
-    </a>
-    <a class="abs nav-item nav-scrittura" href="scrittura.html">
-      <img src="assets/nav-giallo.png" alt="">
-      <span class="nav-text">scrittura</span>
-    </a>
-    <a class="abs nav-item nav-ai" href="ai.html">
-      <img src="assets/nav-grigio.png" alt="">
-      <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
-    </a>
-  </div>
-
-  <!-- 1 — Stramba -->
-  <article class="proj tone-a">
-    <div class="abs proj-card c1"></div>
-    <h2 class="abs project-title p1-title">STRAMBA</h2>
-    <img class="abs project-thumb p1-thumb" src="assets/progetti/stramba.jpg" alt="Stramba">
-    <div class="abs project-text p1-text">
-      <p>Una storia incredibile, inaspettata, che ha ribaltato tutto. Un'invenzione pazzesca che mi è capitato di fare senza aver la minima intenzione di far chissà che. E poi una carambola di eventi, di incontri, di vere avventure.</p>
-      <p>Una montagna di brevetti, <b>un prototipo pazzesco in acqua dal 2021</b>, "quasi" pronto da un sacco di tempo. E le navi cargo, la decarbonizzazione.</p>
-      <p><b>Il design, l'invenzione continua, lo sviluppo tecnico e i test in mare</b>. Le strategie, l'organizzazione, e tutto il resto. Con la mia laurea in Lettere Classiche...</p>
-      <p><a href="https://www.stramba.it" style="color:var(--purple);">www.stramba.it</a></p>
-    </div>
-    <img class="abs project-divider p1-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- 2 — Traspality -->
-  <article class="proj tone-b">
-    <div class="abs proj-card c2"></div>
-    <h2 class="abs project-title p2-title">TRASPALITY</h2>
-    <img class="abs project-thumb p2-thumb" src="assets/progetti/traspality.jpg" alt="Traspality">
-    <div class="abs project-text p2-text">
-      <p>Traspality.com esiste già, in beta, online, tutta pronta e funzionante. <b>Trasparenza + qualità</b>, l'idea è questa, per mettere insieme due necessità: quella di <b>raccontare</b>, quella di <b>dimostrare la qualità</b> del proprio operato.</p>
-      <p>La trasparenza è un tool, non un valore, non un di più: <b>raccontando, certifichiamo</b>. E viceversa. Non solo: il tema più importante è l'identità.</p>
-      <p>Già, perché "qualità" viene da "qualis" che è il contrario esatto di uno standard uguale per tutti. Quindi certificare e insieme mettere al centro i <b>propri valori, le proprie capacità, la vera unicità</b> che ci caratterizza.</p>
-      <p><a href="https://www.traspality.com" style="color:var(--purple);">www.traspality.com</a></p>
-    </div>
-    <img class="abs project-divider p2-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- 3 — Books121 -->
-  <article class="proj tone-a">
-    <div class="abs proj-card c3"></div>
-    <h2 class="abs project-title p3-title">BOOKS121</h2>
-    <img class="abs project-thumb p3-thumb" src="assets/progetti/books121.png" alt="Books121">
-    <div class="abs project-text p3-text">
-      <p>Progetto 2019, archiviato per costi e tempi di sviluppo. Ma ora ci sono Claude, Gemini e i loro amici super performanti. Quindi Books121 è online!</p>
-      <p>Pagare la lettura e non il possesso, favorire lo scambio di libri, il passaggio di mano. Con vantaggi per tutti, soprattutto per chi li scrive e per chi li pubblica, i libri, perché potranno iniziare a conoscere davvero i propri lettori, uno a uno, vedendo chi legge, quanto legge, dove, in quanto tempo.</p>
-      <p>E per chi ha montagne di libri chiusi in casa a prender polvere, la possibilità di dar loro nuova vita mettendoli in circolo. E per chi ama leggere, poterlo fare sulla carta ai prezzi del digitale. Un mondo nuovo... radicato nella tradizione.</p>
-      <p><a href="https://www.books121.com" style="color:var(--purple);">www.books121.com</a></p>
-    </div>
-    <img class="abs project-divider p3-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- 4 — Porto di Riccione -->
-  <article class="proj tone-b">
-    <div class="abs proj-card c4"></div>
-    <h2 class="abs project-title p4-title">PORTO DI RICCIONE</h2>
-    <img class="abs project-thumb p4-thumb" src="assets/progetti/porto-riccione.jpg" alt="Porto di Riccione">
-    <div class="abs project-text p4-text">
-      <p>Ribaltiamo Riccione, <b>puntiamo alto, altissimo</b>. Storia, tradizione, reputazione, affetto... è tutto dalla nostra parte. <b>Serve un porto. L'unico, sull'Adriatico, che porta le barche direttamente in centro</b>, a tre passi dal salotto buono, da Viale Ceccarini e direttamente su Viale Dante.</p>
-      <p>Però un porto, con tanta acqua e tanto spazio per <b>accogliere barche importanti, yacht di lusso</b>, grandi e di valore, con equipaggi e armatori.</p>
-      <p><b>Una porta d'accesso a un mondo che oggi è precluso a Riccione</b>, ma che ha il potenziale di portare nuova linfa, investimenti e <b>un redesign completo dell'identità della città</b>. C'è tutto quello che serve, il potenziale, gli spazi, le risorse. E la Bolkestein...</p>
-    </div>
-    <img class="abs project-divider p4-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- 5 — Capital Units -->
-  <article class="proj tone-a">
-    <div class="abs proj-card c5"></div>
-    <h2 class="abs project-title p5-title">CAPITAL UNITS</h2>
-    <img class="abs project-thumb p5-thumb" src="assets/progetti/capital-units.png" alt="Capital Units">
-    <div class="abs project-text p5-text">
-      <p>Un sogno vero, un tool quasi finanziario. Ma <b>l'obiettivo è proprio di andare oltre le unità di misura finanziarie</b>. Perché il valore non è solo quello, non sono solo soldi, ma c'è <b>impegno, talento, personalità, relazioni</b>.</p>
-      <p>Il 100% diventa 105% e in quel +5% si descrive il sistema di relazioni, la storia, le azioni compiute, la conoscenza messa in campo. È un surplus reale che va <b>oltre le stock option classiche</b> e consente alle aziende di mettere in campo e di capitalizzare anche la propria rete di valore.</p>
-      <p><a href="https://www.capitalunits.org" style="color:var(--purple);">www.capitalunits.org</a></p>
-    </div>
-    <img class="abs project-divider p5-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- 6 — Kerga -->
-  <article class="proj tone-b">
-    <div class="abs proj-card c6"></div>
-    <h2 class="abs project-title p6-title">KERGA</h2>
-    <img class="abs project-thumb p6-thumb" src="assets/progetti/kerga.jpg" alt="Kerga">
-    <div class="abs project-text p6-text">
-      <p>L'elettrificazione dal basso. Che l'elettrico sia una tecnologia superiore (90% di rendimento contro un 30/40% del termico) non è in discussione. Così, mentre le grandi case sfogliano la margherita, gli utenti vengono tenuti a distanza da un solo vero problema: <b>la ricarica alla colonnina costa troppo</b>.</p>
-      <p>Ma c'è qualcun altro che ha interesse a vendere macchine e a tener vivo il mercato: <b>i concessionari</b>.</p>
-      <p>Kerga è un'idea che consente a ogni concessionario di <b>attivare la vendita di auto elettriche</b> consolidando il rapporto coi propri clienti in modo inedito. Valore per tutti: per gli utenti, per i commercianti, per gli enti di credito. E per il pianeta.</p>
-    </div>
-    <img class="abs project-divider p6-div" src="assets/divider.png" alt="">
-  </article>
-
-  <!-- 7 — Up to Cinema -->
-  <article class="proj tone-a">
-    <div class="abs proj-card c7"></div>
-    <h2 class="abs project-title p7-title">UP TO CINEMA</h2>
-    <img class="abs project-thumb p7-thumb" src="assets/progetti/up-to-cinema.jpg" alt="Up to Cinema">
-    <div class="abs project-text p7-text">
-      <p>Un percorso progettato per generare storie di qualità e per valorizzarle al massimo. Lo strumento è una piattaforma basata su regole chiare e sulla costituzione di team di professionisti in grado di prendere una storia - in qualunque forma si presenti - e di prepararla per il cinema, dove può davvero fare la differenza.</p>
-      <p>Le regole sono importanti, sono tutto in questo caso: in Europa il cinema non è un'industria e i percorsi per arrivare davanti alla cinepresa sono tortuosi e molto spesso opachi. Valorizzare la qualità e le professionalità, invece, consentirà di alzare l'asticella e di portare "in sala" una ventata di nuove idee.</p>
-    </div>
-  </article>
-
-</div></div>
-
-<footer class="site-footer">
-  <ul class="footer-menu">
-    <li><a href="https://dacco1971.tumblr.com">blog</a></li>
-    <li><a href="progetti.html">progetti</a></li>
-    <li><a href="scrittura.html">scrittura</a></li>
-    <li><a href="ai.html">AI</a></li>
-  </ul>
-  <div class="footer-social">
-    <a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.9 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21H9z"/></svg></a>
-    <a href="https://dacco1971.tumblr.com" aria-label="Tumblr"><svg viewBox="0 0 24 24"><path d="M14.5 3v4.2h4V11h-4v5.2c0 1.5.75 2 1.9 2 .7 0 1.4-.15 2-.4l.6 3.3c-.85.4-2.1.7-3.4.7-3.3 0-5.1-1.9-5.1-5.2V11H8v-3.6c2.4-.6 3.7-2.6 4-4.4h2.5z"/></svg></a>
-  </div>
-  <p class="footer-legal">© 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a></p>
-</footer>
-
-</body>
-</html>
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Progetti — mng crea</title><meta name="description" content="Stramba, Traspality, Books121 e gli altri progetti di MNG-crea."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Caveat:wght@500&display=swap" rel="stylesheet"><style>
+:root{--viola:#3b2a7a;--blu:#2a5ca8;--rosso:#e8476a;--giallo:#e5e34b;--ink:#17161b;--muto:#5f5e66;--carta:#f6f5f1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:300 17px/1.7 Montserrat,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}b{font-weight:600}
+.pennellata{display:inline-block;border:0;cursor:pointer;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:15px 34px;background:var(--rosso) url(assets/nav-rosso.png) center/100% 100% no-repeat;color:#fff}
+.rail{position:sticky;top:0;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;padding:14px 6vw;background:#fff;border-bottom:1px solid #ecebf0;z-index:30}
+.rail .logo{width:112px}
+.nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 30px;align-items:center;margin-left:auto}
+.nav a{display:block;padding:4px 2px;font:400 15px/1.3 Montserrat,sans-serif;letter-spacing:.04em;text-decoration:none;color:var(--ink);background:linear-gradient(transparent 58%,#e6ff00 58%,#e6ff00 92%,transparent 92%)}
+.nav a:hover{background:linear-gradient(transparent 30%,#e6ff00 30%,#e6ff00 92%,transparent 92%)}
+.nav small{font-weight:400;opacity:.85}
+.rail .nome{display:none;margin-top:auto;font-size:13px;letter-spacing:.04em;color:var(--muto)}
+.rail .nome b{display:block;font:500 30px/1 Caveat;color:var(--viola);margin-bottom:6px}
+.rail .nome a{color:var(--viola);text-underline-offset:5px}
+main,.piede{margin-left:0}
+.pan{position:relative;min-height:0;display:flex;align-items:center;padding:56px 6vw;background:center/cover}
+.pan.corto{min-height:auto}
+.vetro{background:rgba(255,255,255,.9);backdrop-filter:blur(6px);padding:44px 46px;max-width:660px}
+.vetro h2,.pan h2,h1.tit{margin:0 0 22px;font:200 50px/1.05 Montserrat;letter-spacing:.04em;text-transform:uppercase}
+h1.tit{font-size:56px;color:var(--viola)}
+h2 small{font-size:.5em}
+.vetro p{margin:0 0 16px}.vetro p:last-child{margin:0}
+.eti{display:block;font:500 26px Caveat;color:var(--rosso);margin-bottom:2px}
+.p1{padding-top:44px;padding-bottom:44px;gap:22px!important;background-image:url(assets/ocean.jpg);background-position:center 30%;flex-direction:column;align-items:flex-start;justify-content:center;gap:34px}
+.p1 .headline{width:min(720px,100%)}
+.p1 .sotto{margin:-18px 0 0;color:#fff;letter-spacing:.55em;font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.p1 .carte{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.p1 .carte img{width:118px;filter:drop-shadow(6px 8px 12px rgba(0,0,0,.35))}
+.p2{padding:0;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.p2 .imm-bn{background:url(assets/fiume-bn.jpg) center/cover;position:relative;min-height:340px}
+.p2 .polaroid{position:absolute;right:-60px;bottom:70px;width:46%;padding:0;background:none;box-shadow:none}
+.p2 .testo{display:flex;flex-direction:column;justify-content:center;padding:48px 6vw 48px 110px}
+.polaroid{background:#fff;padding:10px;box-shadow:6px 8px 22px rgba(0,0,0,.22)}
+.p3{background-image:url(assets/web-main.jpg);background-position:center 40%;padding:64px 6vw}
+.p4{background:var(--carta);display:block}
+.p4 h2{margin-bottom:34px}
+.schede{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.scheda{display:block;text-decoration:none;background:#fff;padding:26px 26px 30px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.scheda .copertina{margin-bottom:22px}
+.scheda h3{margin:0 0 8px;font:600 15px/1.3 Montserrat;letter-spacing:.12em;text-transform:uppercase;color:var(--viola)}
+.scheda p{margin:0 0 14px;font-size:15px;color:var(--muto);line-height:1.6}
+.scheda .vai{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--rosso)}
+.p5{background:var(--viola) url(assets/boat.jpg) right center/auto 100% no-repeat;color:#fff}
+.p5:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--viola) 45%,rgba(59,42,122,.55))}
+.p5 .in{position:relative;max-width:760px}.p5 .eti{color:var(--giallo)}
+.p5 h2{font-size:54px;text-transform:none;letter-spacing:0}.p5 p{color:#e6e3f4;max-width:560px}
+.bottone{display:inline-block;margin-top:20px;padding:15px 4px;border-bottom:2px solid var(--giallo);text-decoration:none;font:600 13px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.bottone.scuro{color:var(--viola);border-bottom-color:var(--rosso)}
+.p6{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:var(--carta)}
+.p6 .foto{display:flex;gap:18px;justify-content:center}.p6 .foto .polaroid{width:44%}.p6 .foto .polaroid:nth-child(2){margin-top:60px}
+.cta{padding:56px 24px;text-align:center}.cta .caps{display:block;font:600 12px Montserrat;letter-spacing:.3em;text-transform:uppercase}
+.cta a{display:inline-block;margin-top:12px;font:500 40px/1.1 Caveat;color:var(--rosso);text-decoration:none;border-bottom:2px dotted var(--rosso)}
+/* pagine interne */
+.pag{padding:44px 6vw 24px;max-width:1100px}
+.pag .eti a{text-decoration:none}
+.pag p{max-width:680px;margin:0 0 18px}
+.pag .lead{font:200 26px/1.45 Montserrat;color:var(--viola);max-width:720px}
+.riga{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start;padding:30px 0;border-top:1px solid #ecebf0}
+.riga h2{font:200 34px/1.1 Montserrat;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.riga .sub{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muto);margin:0 0 14px}
+.gruppo{font:500 28px Caveat;color:var(--rosso);margin:34px 0 6px;display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.card{display:block;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.09);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card .im{aspect-ratio:4/3;background:var(--carta) center/cover}
+.card .tx{padding:20px 22px 24px}
+.card h3{margin:0 0 6px;font:600 14px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--viola)}
+.card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--muto)}
+.trsp-embed{max-width:none}.trsp-embed p{max-width:680px}
+.hero-prog{width:100%;max-height:300px;object-fit:cover;margin:0 0 34px}
+.apri{display:inline-block;margin:6px 0 30px;font:600 13px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola);border-bottom:2px solid var(--rosso);padding:6px 0}
+.box{background:var(--carta);padding:28px 32px;margin:28px 0;max-width:640px}
+.box h3{margin:0 0 6px;font:200 28px/1.1 Montserrat;text-transform:uppercase;letter-spacing:.04em}
+.box>p{margin:0 0 22px;font-size:15px}
+.copertina{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:space-between;padding:22px 20px;color:#fff;box-shadow:12px 14px 28px rgba(0,0,0,.28);font-weight:200;max-width:230px}
+.copertina b{font-weight:600;letter-spacing:.14em;font-size:15px;line-height:1.25;text-transform:uppercase}
+.copertina i{font:500 22px/1 Caveat;font-style:normal;opacity:.9}
+.c1{background:linear-gradient(160deg,#3b2a7a,#6a4cc2)}.c2{background:linear-gradient(160deg,#2a5ca8,#58a0d8)}.c3{background:linear-gradient(160deg,#e8476a,#f08a5d)}
+.cov{max-width:230px;box-shadow:12px 14px 28px rgba(0,0,0,.28)}
+.form .campo{margin:0 0 18px}
+.form label.l{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form input[type=text],.form input[type=email],.form textarea{display:block;width:100%;padding:10px 0;border:0;border-bottom:1px solid #b9b8bf;background:transparent;font:400 18px Montserrat,sans-serif;color:var(--ink);outline:0;border-radius:0}
+.form textarea{min-height:110px;resize:vertical}
+.form input:focus,.form textarea:focus{border-bottom-color:var(--rosso)}
+.form fieldset{border:0;padding:0;margin:20px 0 6px}.form legend{padding:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form .spunta{display:flex;gap:12px;align-items:flex-start;margin:0 0 10px;font-size:15px;color:var(--ink);cursor:pointer}
+.form .spunta input{margin:4px 0 0;width:18px;height:18px;accent-color:var(--viola);flex:0 0 auto}
+.form .consenso{font-size:13px;color:var(--muto);margin:16px 0 22px}
+.esca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.esito{min-height:1.6em;margin:16px 0 0;font-size:15px}
+[aria-invalid=true]{border-bottom-color:var(--rosso)!important}
+.piede{padding:44px 24px 56px;text-align:center;border-top:1px solid #e4e3e8;color:var(--muto);font-size:12px;line-height:1.8}
+.piede ul{list-style:none;margin:0 0 22px;padding:0;display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.piede ul a{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola)}
+@media(max-width:960px){
+ .rail{position:sticky;width:auto;bottom:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:10px 16px;border-right:0;border-bottom:1px solid #ecebf0}
+ .rail .logo{width:64px}.rail .nome{display:none}
+ .nav{flex:1 1 auto;justify-content:flex-end;gap:2px 14px}.nav a{padding:4px 2px;font-size:14px}.nav small{display:none}
+ main,.piede{margin-left:0}
+ .pan{min-height:auto;padding:36px 22px}.vetro{padding:28px 24px}.vetro h2,.pan h2,.p6 h2{font-size:36px}h1.tit{font-size:38px}
+ .p1{padding-top:28px}.p1 .carte img{width:calc(33.3% - 11px)}.p1 .carte{width:100%}
+ .p2{grid-template-columns:1fr}.p2 .imm-bn{min-height:200px}.p2 .polaroid{right:16px;bottom:-40px;width:38%}.p2 .testo{padding:56px 22px 36px}
+ .p3{align-items:flex-end}
+ .schede{grid-template-columns:1fr}
+ .p5{background-size:auto 55%;background-position:right bottom}.p5:before{background:linear-gradient(180deg,var(--viola) 55%,rgba(59,42,122,.6))}.p5 h2{font-size:34px}
+ .p6{grid-template-columns:1fr;gap:30px}
+ .trsp-embed iframe{height:80vh!important}
+ .pag{padding:44px 22px 20px}.riga{grid-template-columns:1fr;gap:26px}.pag .lead{font-size:21px}.box{padding:26px 22px}
+}
+</style></head><body>
+<aside class="rail"><a href="index.html"><img class="logo" src="assets/logo-nuovo.png" alt="mng crea"></a>
+<nav class="nav" aria-label="Principale"><a href="progetti.html">progetti</a><a href="scrittura.html">scrittura</a><a href="ai.html">AI <small>(cervelli sintetici)</small></a><a href="in-costruzione.html">in costruzione</a></nav>
+<p class="nome"><b>daniele mingucci</b><a href="contatti.html">scrivimi</a> · <a href="scrittura.html">libri</a><br><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></p></aside>
+<main><div class="pag"><span class="eti">progetti</span><h1 class="tit">Progetti</h1><p class="lead">Idee che aspettavano gli strumenti giusti. Adesso ci sono.</p><span class="gruppo">In corso</span><div class="cards"><a class="card" href="progetti/stramba.html"><div class="im" style="background-image:url(assets/progetti/stramba.jpg)"></div><div class="tx"><h3>Stramba</h3><p>Un'invenzione pazzesca, brevetti, un prototipo in acqua dal 2021, le navi cargo e la decarbonizzazione.</p></div></a><a class="card" href="progetti/traspality.html"><div class="im" style="background-image:url(assets/progetti/traspality.jpg)"></div><div class="tx"><h3>Traspality</h3><p>Trasparenza + qualità: raccontare e dimostrare la qualità del proprio operato. Online, in beta.</p></div></a><a class="card" href="progetti/books121.html"><div class="im" style="background-image:url(assets/progetti/books121.png)"></div><div class="tx"><h3>Books121</h3><p>Pagare la lettura e non il possesso: far girare i libri di carta, a prezzi da digitale.</p></div></a></div><span class="gruppo">In preparazione</span><div class="cards"><a class="card" href="progetti/porto-di-riccione.html"><div class="im" style="background-image:url(assets/progetti/porto-riccione.jpg)"></div><div class="tx"><h3>Porto di Riccione</h3><p>Un porto che porta le barche in centro, a tre passi da Viale Ceccarini.</p></div></a><a class="card" href="progetti/capital-units.html"><div class="im" style="background-image:url(assets/progetti/capital-units.png)"></div><div class="tx"><h3>Capital Units</h3><p>Un tool quasi finanziario che va oltre le unità di misura finanziarie: il 100% diventa 105%.</p></div></a><a class="card" href="progetti/kerga.html"><div class="im" style="background-image:url(assets/progetti/kerga.jpg)"></div><div class="tx"><h3>Kerga</h3><p>L'elettrificazione dal basso: i concessionari vendono auto elettriche e consolidano il rapporto coi clienti.</p></div></a><a class="card" href="progetti/up-to-cinema.html"><div class="im" style="background-image:url(assets/progetti/up-to-cinema.jpg)"></div><div class="tx"><h3>Up to Cinema</h3><p>Un percorso e una piattaforma per portare le storie di qualità al cinema, con regole chiare.</p></div></a><a class="card" href="progetti/tennis-best-ranking.html"><div class="im" style="background:linear-gradient(160deg,#3b2a7a,#6a4cc2)"></div><div class="tx"><h3>Tennis Best Ranking</h3><p>Un progetto sul ranking del tennis.</p></div></a><a class="card" href="progetti/tandem-tennis.html"><div class="im" style="background:linear-gradient(160deg,#3b2a7a,#6a4cc2)"></div><div class="tx"><h3>Tandem Tennis</h3><p>Il tandem tennis: per ora un blog, poi un sito.</p></div></a></div></div></main>
+<footer class="piede"><ul><li><a href="progetti.html">progetti</a></li><li><a href="scrittura.html">scrittura</a></li><li><a href="ai.html">AI</a></li><li><a href="contatti.html">contatti</a></li><li><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></li><li><a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/">linkedin</a></li><li><a href="https://www.danielemingucci.com">daniele mingucci</a></li></ul>
+<p>© 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a><br>Sito web realizzato con il contributo di AI — <a href="https://claude.com/claude-code">Claude Code</a></p></footer>
+<script>
+(function(){
+  var KEY='';
+  document.querySelectorAll('form.form').forEach(function(f){
+    var out=f.querySelector('.esito');
+    function v(n){return f.elements[n]?(f.elements[n].value||'').trim():'';}
+    f.addEventListener('submit',function(e){
+      e.preventDefault(); if(v('sito')) return;
+      var scelte=[].map.call(f.querySelectorAll('input[name=scelta]:checked'),function(c){return c.value;});
+      var ok=true,msg='';
+      ['nome','email'].forEach(function(n){var b=v(n)&&(n!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v(n)));f.elements[n].setAttribute('aria-invalid',b?'false':'true');if(!b)ok=false;});
+      if(f.querySelector('input[name=scelta]')&&!scelte.length){ok=false;msg='Scegli almeno una voce.';}
+      if(f.elements.consenso&&!f.elements.consenso.checked){ok=false;msg='Serve il consenso per poterti scrivere.';}
+      if(f.elements.messaggio&&!v('messaggio')){ok=false;f.elements.messaggio.setAttribute('aria-invalid','true');}
+      if(!ok){out.textContent=msg;return;}
+      var oggetto=f.dataset.oggetto+(scelte.length?': '+scelte.join(' + '):'');
+      var corpo='Nome: '+v('nome')+'\nEmail: '+v('email')+(scelte.length?'\nVoci: '+scelte.join(', '):'')+(v('messaggio')?'\n\n'+v('messaggio'):'')+(f.elements.consenso?'\n\n(Consenso dato a ricevere il file / aggiornamenti su questo.)':'');
+      if(KEY){
+        out.textContent='Invio in corso…';
+        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:KEY,subject:oggetto,from_name:v('nome'),name:v('nome'),email:v('email'),message:corpo})})
+        .then(function(r){return r.json();}).then(function(j){out.textContent=j.success?(f.dataset.ok||'Ricevuto, grazie.'):'Qualcosa non ha funzionato. Riprova.';if(j.success)f.reset();})
+        .catch(function(){out.textContent='Qualcosa non ha funzionato. Riprova.';});
+      }else{
+        var a=['dacco','mng-crea.com'].join('@');
+        out.textContent='Si apre il tuo programma di posta con il messaggio già scritto: premi invia.';
+        location.href='mailto:'+a+'?subject='+encodeURIComponent(oggetto)+'&body='+encodeURIComponent(corpo);
+      }
+    });
+  });
+})();
+</script></body></html>

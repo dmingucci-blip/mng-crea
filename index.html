@@ -1,535 +1,158 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>mng crea — attitude branding</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;1,300&family=Pixelify+Sans&family=Special+Elite&family=Jost:wght@500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --w:min(100vw,1320px); /* larghezza utile: i margini in % sul body crescerebbero oltre 1320px */
-    --purple:#422e7c;
-    --pink-name:#efbcd6;
-    --teal-name:#0086b2;
-    --navy-subtitle:#004b54;
-    --rust-cta:#cc3922;
-    --gold:#f4e34a;
-  }
-
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;background:#fff;}
-  body{font-family:'Montserrat',sans-serif;}
-
-  .poster-frame{
-    position:relative;
-    width:100%;
-    max-width:1320px;
-    margin:0 auto;
-  }
-  .poster-frame::before{
-    content:"";
-    display:block;
-    padding-top:76.1%; /* il riquadro finisce poco sotto la barca: la fascia vuota in fondo al poster non occupa spazio */
-  }
-  .poster{
-    position:absolute;
-    left:0; top:0; right:0;
-    aspect-ratio:699.104 / 599.017; /* proporzioni esatte della pagina originale (85.686%) */
-    background:#ffffff;
-    overflow:hidden;
-    container-type:inline-size;
-  }
-
-  .abs{position:absolute;}
-  .abs img, img.abs{display:block; object-fit:fill;}
-
-  /* ---------- foto di sfondo ---------- */
-
-  .bg-ocean{ left:2.42%; top:2.90%; width:45.88%; height:66.94%; object-fit:cover; z-index:1; }
-
-  .bg-boat-wrap{ left:69.60%; top:20.50%; width:27.98%; height:64.13%; z-index:1; overflow:hidden; }
-  .bg-boat-wrap img{ width:100%; height:100%; object-fit:cover; }
-  .bg-boat-wrap::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(to bottom, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 18%);
-  }
-
-  /* ---------- headline (pezzo originale) ---------- */
-
-  .headline{ left:4.91%; top:19.50%; width:70.72%; height:14.78%; z-index:3; }
-
-  /* ---------- logo (pezzo originale) ---------- */
-
-  .logo{ left:6.13%; top:4.07%; width:21.82%; height:14.83%; z-index:3; }
-
-  /* ---------- nome ---------- */
-
-  .name{
-    left:57.86%; top:2.55%; width:39.45%; height:6.58%;
-    margin:0; z-index:4;
-    font-size:clamp(16px, 3.2cqw, 32px);
-    white-space:nowrap;
-    display:flex; align-items:baseline; gap:.3em;
-  }
-  .name .n1{font-family:'Pixelify Sans',sans-serif; color:#000;}
-  .name .n2{font-family:'Special Elite',serif; color:#000; font-size:.92em;}
-
-  /* ---------- nav (pennellate originali) ---------- */
-
-  .nav-item{
-    z-index:3; display:flex; align-items:center; justify-content:center;
-    text-decoration:none;
-  }
-  .nav-item img{ position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; }
-  .nav-text{
-    position:relative; z-index:1;
-    display:flex; align-items:baseline; gap:.35em;
-    font-family:'Jost',sans-serif; font-weight:600;
-    white-space:nowrap;
-  }
-  .nav-blog{ left:76.5%; top:9.3%; width:22.50%; height:4.95%; }
-  .nav-rosso{ left:76.4%; top:14.2%; width:22.00%; height:4.94%; color:#fff; }
-  .nav-giallo{ left:75.3%; top:18.3%; width:24.50%; height:6.12%; color:var(--purple); }
-  .nav-grigio{ left:74.9%; top:24.6%; width:24.30%; height:6.03%; color:var(--purple); }
-
-  .nav-text .w1{font-size:1.15em;}
-  .nav-text .w2{font-size:.62em; font-weight:600;}
-  .nav-blog .w1{color:var(--gold);}
-  .nav-blog .w2{color:#fff;}
-
-  /* ---------- subtitle ---------- */
-
-  .subtitle{
-    left:15.22%; top:37.3%; width:34%; height:1.8%;
-    z-index:2; color:var(--navy-subtitle);
-    font-family:Georgia,'Times New Roman',serif; font-style:italic;
-    font-size:clamp(7px, 1.15cqw, 13px);
-    letter-spacing:.35em;
-    white-space:nowrap;
-  }
-
-  /* ---------- card collage (pezzi originali) ---------- */
-
-  .card{ z-index:5; }
-  .card-mission{ left:5.42%; top:33.51%; width:11.60%; height:16.69%; }
-  .card-vision{ left:20.21%; top:32.89%; width:11.75%; height:16.91%; }
-  .card-purpose{ left:34.05%; top:33.26%; width:11.61%; height:16.67%; }
-  .card-q1{ left:46.06%; top:33.22%; width:7.29%; height:10.08%; }
-  .card-q2{ left:52.64%; top:33.03%; width:7.28%; height:10.11%; }
-  .card-q3{ left:59.22%; top:32.85%; width:7.29%; height:10.09%; }
-
-  /* ---------- immaginazione libera (pezzo originale) ---------- */
-
-  .imm{ left:44.0%; top:44.9%; width:19.0%; height:1.79%; z-index:5; }
-
-  /* ---------- paragrafo ---------- */
-
-  .paragraph-bg{ left:0; top:53.5%; width:66%; height:46.5%; background:#fff; z-index:2; }
-
-  .paragraph{
-    left:19.14%; top:56.6%; width:44%; height:auto;
-    z-index:5; color:#111;
-    font-family:'Montserrat',sans-serif; font-weight:300;
-    font-size:clamp(10px, 1.288cqw, 17px); /* proporzionale: il testo va a capo sempre allo stesso punto, a qualsiasi larghezza */
-    line-height:1.45;
-  }
-  .paragraph b{font-weight:600;}
-  .paragraph i{font-style:italic; font-weight:300;}
-  .paragraph p{margin:0 0 .85em;}
-  .paragraph p:last-of-type{margin-bottom:0;}
-
-  /* la linea sta dentro .paragraph: segue sempre la fine del testo */
-  .paragraph .divider{ left:-7.05%; top:calc(100% + 1.5em); width:91.2%; height:.48cqw; z-index:5; }
-
-  .cta{
-    left:21.30%; top:84.4%; width:40%; height:3.2%;
-    margin:0; z-index:5;
-    font-family:'Caveat',cursive; font-weight:500; letter-spacing:.05em;
-    color:var(--rust-cta);
-    font-size:clamp(19px, 2.9cqw, 33px);
-    white-space:nowrap;
-  }
-
-  /* ================= BLOCCO 2 — sezione "linguaggi" ================= */
-
-  .poster-frame{ overflow:hidden; } /* la fascia vuota in fondo al poster non deve coprire la sezione sotto */
-  .poster-frame2{
-    position:relative; width:100%; max-width:1320px;
-    z-index:2; margin:calc(var(--w) * -0.06) auto 0; /* la foto del fiume sale subito sotto la linea e la barca: nessuno stacco bianco */
-  }
-  .poster-frame2::before{
-    content:""; display:block;
-    padding-top:50.264%; /* proporzioni esatte di questa sezione */
-  }
-  .poster2{
-    position:absolute; left:0; top:0; right:0; bottom:0;
-    background:transparent; overflow:hidden; container-type:inline-size;
-  }
-
-  /* foto b/n: ritagliata in alto (meno cielo, stessa scala) e sfumata in basso */
-  .poster2 .b2-bw{ left:2.63%; top:17.2%; width:30.87%; height:72.8%; object-fit:cover; object-position:center 85%; z-index:1; }
-  @media (min-width:821px){
-    .poster2 .b2-bw{ -webkit-mask-image:linear-gradient(to bottom,#000 52%,transparent 100%); mask-image:linear-gradient(to bottom,#000 52%,transparent 100%); }
-  }
-  .b2-color{ left:18.92%; top:26.72%; width:18.37%; height:46.38%; z-index:2; }
-
-  .b2-heading{
-    left:2.63%; top:2.7%; width:34%; line-height:1;
-    margin:0; z-index:2; color:#111;
-    font-family:'Montserrat',sans-serif; font-weight:200; letter-spacing:.03em;
-    font-size:clamp(30px, 5.4cqw, 70px);
-  }
-
-  .b2-paragraph{
-    left:40.34%; top:18.5%; width:46.5%;
-    z-index:2; color:#111;
-    font-family:'Montserrat',sans-serif; font-weight:300;
-    font-size:clamp(12px, 1.59cqw, 21px);
-    line-height:1.45;
-  }
-  .b2-paragraph b{font-weight:600;}
-  .b2-paragraph p{margin:0 0 1.3em;}
-  .b2-paragraph p:last-child{margin-bottom:0;}
-
-  /* ================= BLOCCO 3 — footer ================= */
-
-  .site-footer{
-    background:#fff; border-top:1px solid #e6e1d2;
-    padding:2.4em 4%;
-    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
-    gap:1.6em;
-    font-family:'Nunito',sans-serif;
-    max-width:1320px; margin:0 auto;
-  }
-  .footer-menu{ display:flex; flex-wrap:wrap; gap:1.6em; list-style:none; margin:0; padding:0; }
-  .footer-menu li{ margin-right:1.6em; }
-  .footer-menu li:last-child{ margin-right:0; }
-  .footer-menu a{ color:var(--purple); text-decoration:none; font-weight:600; font-family:'Jost',sans-serif; font-size:1rem; }
-  .footer-menu a:hover{ text-decoration:underline; }
-
-  .footer-social{ display:flex; gap:1em; align-items:center; }
-  .footer-social a{ color:var(--purple); display:flex; }
-  .footer-social svg{ width:22px; height:22px; fill:currentColor; }
-  .footer-social a:hover{ color:var(--rust-cta); }
-
-  .footer-legal{
-    width:100%; text-align:center;
-    font-size:.78rem; color:#777;
-    border-top:1px solid #eee; margin-top:.4em; padding-top:1.2em;
-  }
-  .footer-legal a{ color:#777; }
-</style>
-<style>
-  /* ================= RESPONSIVE (logica "HOME RESPONSIVE.pdf") ================= */
-
-  /* desktop: i contenitori mobile non esistono come box */
-  .m-hero, .m-nav, .m-cards, .m-photos{ display:contents; }
-  .m-cta-box{ display:none; }
-
-  @media (max-width: 820px){
-
-    .poster-frame::before, .poster-frame2::before{ display:none; }
-    .poster-frame2{ margin-top:0; }
-    .poster2{ background:#fff; }
-    .poster{ aspect-ratio:auto; }
-    .poster, .poster2{ position:relative; overflow:hidden; }
-
-    /* reset delle posizioni del poster desktop */
-    .poster .abs, .poster2 .abs{
-      position:relative; left:auto; top:auto; right:auto; bottom:auto;
-      width:auto; height:auto;
-    }
-
-    /* ---------- blocco 1: mare + marchio + attitude branding + testo ---------- */
-    .poster .m-hero{ display:block; position:relative; padding-top:5.2cqw; }
-    .poster .bg-ocean{
-      position:absolute; left:0; top:0; width:100%; height:100%;
-      object-fit:cover; object-position:center top; z-index:0;
-    }
-    .poster .logo{ display:block; width:46%; margin-left:6%; z-index:3; }
-    .poster .headline{ display:block; width:88%; margin:5cqw 0 0 8.7%; z-index:3; }
-    .poster .subtitle{ display:none; }
-
-    .poster .m-cards{ display:block; position:relative; height:16.5cqw; margin:3.5cqw 0 9cqw; z-index:5; }
-    .poster .m-cards .abs{ position:absolute; top:0; height:auto; }
-    .poster .card-mission{ left:7.3%;  width:12.3%; }
-    .poster .card-vision{  left:26.6%; width:12.5%; }
-    .poster .card-purpose{ left:44.7%; width:12.5%; }
-    .poster .card-q1{ left:60.5%; width:6.7%; }
-    .poster .card-q2{ left:69.2%; width:6.7%; }
-    .poster .card-q3{ left:78.0%; width:6.7%; }
-    .poster .m-cards .imm{ left:59.7%; top:13cqw; width:33.3%; }
-
-    .poster .paragraph-bg{ display:none; }
-    .poster .paragraph{
-      margin-left:9%; background:#fff; z-index:2;
-      padding:4.5cqw 7cqw 15cqw 7cqw;
-      font-size:clamp(14px, 3.9cqw, 17px); line-height:1.5;
-    }
-    .poster .divider{
-      position:absolute; left:.9%; bottom:8cqw; width:79.9%; height:.9cqw; z-index:3;
-    }
-
-    /* ---------- blocco 2: nome + menu + barca ---------- */
-    .poster .m-nav{ display:block; position:relative; height:110cqw; }
-    .poster .m-nav .abs{ position:absolute; }
-    .poster .bg-boat-wrap{ left:38.5%; top:7.3cqw; width:61.5%; height:103cqw; }
-    .poster .name{
-      left:11.9%; top:12.5cqw; width:auto; height:auto;
-      font-size:6.6cqw;
-    }
-    .poster .nav-item{ justify-content:flex-start; height:9.6cqw; }
-    .poster .nav-text{ font-size:5cqw; }
-    .poster .nav-blog{   left:29%; top:18.7cqw; width:52%; padding-left:12cqw; }
-    .poster .nav-rosso{  left:29%; top:28.1cqw; width:50.3%; padding-left:12cqw; }
-    .poster .nav-giallo{ left:26%; top:37.2cqw; width:57%; height:10cqw; padding-left:15cqw; }
-    .poster .nav-grigio{ left:26%; top:47.2cqw; width:57%; height:10cqw; padding-left:15cqw; }
-
-    /* ---------- blocco 3: linguaggi ---------- */
-    .poster2 .b2-heading{ margin:4cqw 0 0 12.9%; font-size:9.6cqw; line-height:1.1; }
-    .poster2 .b2-paragraph{
-      margin:6cqw 13% 0 22%;
-      font-size:clamp(14px, 3.9cqw, 17px); line-height:1.5;
-    }
-    .poster2 .b2-paragraph p{ margin:0 0 1.1em; }
-
-    /* ---------- blocco 4: invito + foto del fiume ---------- */
-    .poster2 .m-photos{ display:block; position:relative; height:110cqw; margin-top:7.5cqw; }
-    .poster2 .m-photos .abs{ position:absolute; }
-    .poster2 .b2-bw{ left:0; top:0; width:67.8%; height:110cqw; object-fit:cover; }
-    .poster2 .b2-color{ left:37.4%; top:30.4cqw; width:37%; height:auto; z-index:3; }
-    .poster2 .m-cta-box{
-      display:block; position:absolute; left:9%; right:0; top:0; height:27cqw;
-      background:#fff; z-index:2;
-    }
-    .m-cta-divider{ position:absolute; left:0; top:5.8cqw; width:73%; height:.9cqw; }
-    .m-cta{
-      position:absolute; right:13%; top:9cqw; white-space:normal;
-      font-family:'Caveat',cursive; font-weight:500; color:var(--rust-cta); text-decoration:none;
-      font-size:5.4cqw; letter-spacing:.06em; white-space:normal; text-align:right; line-height:1.2; width:78%;
-    }
-    .m-cta .cta-caps{ font-size:2.9cqw; letter-spacing:.1em; margin-bottom:1.2cqw; }
-    .m-cta .cta-script{ border-bottom:0; font-size:.9em; }
-
-    .cta-bottom{ display:none; }
-
-    /* ---------- footer ---------- */
-    .site-footer{ justify-content:center; text-align:center; margin-top:8cqw; }
-    .footer-menu{ justify-content:center; }
-  }
-</style>
-
-<style>
-  /* ================= BLOCCHI 2b/2c — WEB e NEW MEDIA, STAFF ================= */
-  .sec{
-    max-width:1320px; margin:0 auto; padding:0 4%;
-    font-family:'Montserrat',sans-serif; color:#111;
-  }
-  .sec-h{
-    margin:0; line-height:1; font-weight:200; letter-spacing:.03em;
-    font-size:clamp(30px, 5.4vw, 70px);
-  }
-  .sec-h small{ font-size:.5em; letter-spacing:.06em; }
-  .sec-p{ font-weight:300; font-size:clamp(14px, calc(var(--w) * .0159), 21px); line-height:1.45; }
-  .sec-p b{ font-weight:600; }
-  .sec-p p{ margin:0 0 1.3em; }
-  .sec-p p:last-child{ margin-bottom:0; }
-
-  /* WEB e NEW MEDIA + STAFF: stessa griglia, nessuno stacco bianco */
-  .sec-web{
-    display:grid; grid-template-columns:34% 1fr; grid-template-rows:auto 1fr; column-gap:4%;
-    align-items:start;
-    margin-top:calc(var(--w) * -0.235); /* sale accanto alla sfumatura della foto del fiume */
-    padding-top:calc(var(--w) * 0.05); padding-bottom:calc(var(--w) * 0.05);
-    position:relative; z-index:1;
-  }
-  .sec-web .sw-left{ grid-column:1; grid-row:1; }
-  .sec-web .sw-text{ margin-top:42%; }
-  .sec-web .sw-right{ grid-column:2; grid-row:1; }
-  .sec-web .sw-staff{ margin-top:8%; }
-  .sec-web .sw-stafftext{ grid-column:2; grid-row:2; margin-top:-1%; }
-  .sec-web .sec-h{ white-space:nowrap; font-size:clamp(28px, calc(var(--w) * .047), 62px); }
-  .web-media{ position:relative; aspect-ratio:16/9; margin-top:3.5%; margin-bottom:4%; }
-  .web-bw{ position:absolute; inset:0; background:url(assets/web-main.jpg) center/cover no-repeat; }
-  @media (min-width:821px){
-    .web-bw{ -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); mask-image:linear-gradient(to bottom,#000 62%,transparent 100%); }
-  }
-  .sec-web .sw-family-photos{ grid-column:1; grid-row:2; position:relative; aspect-ratio:1/.84; margin-top:7%; }
-  .fp{ position:absolute; width:58%; aspect-ratio:1/1; object-fit:cover; display:block;
-       border:clamp(6px,.8vw,10px) solid #fff; box-shadow:0 4px 18px rgba(0,0,0,.28); }
-  .fp1{ left:0; top:0; }
-  .fp2{ right:0; bottom:0; }
-  .txt-link{ color:inherit; font-weight:600; text-decoration:underline; text-underline-offset:.2em; }
-  .txt-link:hover{ color:var(--rust-cta); }
-  .sec-web .sec-h.sec-h-fam{ white-space:normal; }
-  .rule-web{ display:block; width:60%; height:auto; margin:0 0 calc(var(--w) * .0417); }
-  .sw-staff .rule{ display:block; width:100%; height:auto; margin:0 0 calc(var(--w) * .0417); }
-
-  @media (max-width: 820px){
-    .sec-web{ grid-template-columns:1fr; grid-template-rows:none; margin-top:0; padding-top:12vw; row-gap:6vw; }
-    .sec-web .sw-right{ grid-column:1; grid-row:1; }
-    .sec-web .sw-left{ grid-row:2; }
-    .sec-web .sw-text{ margin-top:0; }
-    .rule-web{ width:80%; margin-bottom:6vw; }
-    .sec-web .sw-staff{ margin-top:6vw; }
-    .sec-web .sw-stafftext{ grid-column:1; grid-row:3; margin-top:0; }
-    .sec-web .sw-family-photos{ grid-row:4; margin-top:4vw; }
-    .sec-web .sec-h{ white-space:normal; font-size:9.6vw; line-height:1.1; }
-    .web-media{ margin-bottom:2vw; }
-  }
-</style>
-</head>
-<body>
-
-<div class="poster-frame"><div class="poster">
-
-  <!-- mobile: blocco 1 — mare, marchio, attitude branding, testo -->
-  <div class="m-hero">
-    <img class="abs bg-ocean" src="assets/ocean.jpg" alt="">
-    <img class="abs logo" src="assets/logo.png" alt="mng crea">
-    <img class="abs headline" src="assets/headline.png" alt="attitude branding">
-    <div class="abs subtitle">m a r k e t i n g&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;c o m u n i c a z i o n e</div>
-    <div class="m-cards">
-      <img class="abs card card-mission" src="assets/mission.png" alt="mission">
-      <img class="abs card card-vision" src="assets/vision.png" alt="vision">
-      <img class="abs card card-purpose" src="assets/purpose.png" alt="purpose">
-      <img class="abs card card-q1" src="assets/q1.png" alt="">
-      <img class="abs card card-q2" src="assets/q2.png" alt="">
-      <img class="abs card card-q3" src="assets/q3.png" alt="">
-      <img class="abs imm" src="assets/immaginazione.png" alt="immaginazione libera">
-    </div>
-    <div class="abs paragraph-bg"></div>
-    <div class="abs paragraph">
-      <p>MNG-crea percorsi di marketing e comunicazione. Lo scopo è dotarsi di <b>un'identità solida</b>, connotata, consapevole.</p>
-      <p>Poi vale tutto.</p>
-      <p>I <i>tool</i> sono i linguaggi, tutti i linguaggi, in sinergia con i media e in funzione del pubblico di riferimento.</p>
-      <p><b>L'approccio è linguistico e narrativo</b>: prima l'alfabeto, poi le parole. E infine le storie. Da scrivere, da interpretare e... da vivere.</p>
-      <img class="abs divider" src="assets/divider.png" alt="">
-    </div>
-  </div>
-
-  <!-- mobile: blocco 2 — nome, menu, barca -->
-  <div class="m-nav">
-    <div class="abs bg-boat-wrap"><img src="assets/boat.jpg" alt=""></div>
-    <p class="abs name"><span class="n1">daniele</span><span class="n2">mingucci</span></p>
-    <a class="abs nav-item nav-blog" href="https://dacco1971.tumblr.com">
-      <img src="assets/nav-blu.png" alt="">
-      <span class="nav-text"><span class="w1">blog</span><span class="w2">(e idee)</span></span>
-    </a>
-    <a class="abs nav-item nav-rosso" href="progetti.html">
-      <img src="assets/nav-rosso.png" alt="">
-      <span class="nav-text">progetti</span>
-    </a>
-    <a class="abs nav-item nav-giallo" href="scrittura.html">
-      <img src="assets/nav-giallo.png" alt="">
-      <span class="nav-text">scrittura</span>
-    </a>
-    <a class="abs nav-item nav-grigio" href="ai.html">
-      <img src="assets/nav-grigio.png" alt="">
-      <span class="nav-text"><span class="w1">AI</span><span class="w2">(cervelli sintetici)</span></span>
-    </a>
-  </div>
-
-</div></div>
-
-<!-- ================= BLOCCO 2 — sezione "linguaggi" ================= -->
-<div class="poster-frame2"><div class="poster2">
-
-
-  <h2 class="abs b2-heading">LINGUAGGI</h2>
-  <div class="abs b2-paragraph">
-    <p>La creatività ha bisogno di argini. Come per un fiume, <b>consentono alle idee di scorrere più veloci</b> e nella direzione giusta. Uno di questi argini sono i linguaggi e le norme antichissime che li governano.</p>
-    <p><b>Solidità linguistica significa solidità di pensiero</b>, la cosa più efficace per trasmettere sempre il giusto messaggio.</p>
-  </div>
-
-  <div class="m-photos">
-    <img class="abs b2-bw" src="assets/fiume-bn.png" alt="">
-    <img class="abs b2-color" src="assets/fiume-color.png" alt="">
-    <div class="m-cta-box">
-      <img class="m-cta-divider" src="assets/divider.png" alt="">
-      <a class="m-cta" href="contatti.html"><span class="cta-caps">ATTITUDE BRANDING - WEB &amp; NEW MEDIA - AGENTI A.I.</span><span class="cta-script">scopri cosa possiamo fare insieme</span></a>
-    </div>
-  </div>
-
-</div></div>
-
-
-<!-- ================= BLOCCO 2b — WEB e NEW MEDIA (bozza testi) ================= -->
-<section class="sec sec-web" id="web">
-  <div class="sw-left">
-  <div class="sw-text sec-p">
-    <p>Il web è il luogo dove i linguaggi si incontrano: testo, immagine, suono, codice. <b>Un sito non è una vetrina: è un sistema di interazione</b>, e come ogni sistema ha le sue regole.</p>
-    <p>I new media non sostituiscono i linguaggi, li moltiplicano. Ogni canale ha la sua grammatica: <b>prima l'identità, poi la tecnologia</b>.</p>
-  </div>
-  <div class="sw-staff" id="family">
-    <img class="rule" src="assets/divider.png" alt="">
-    <h2 class="sec-h sec-h-fam">FAMILY STAFF</h2>
-  </div>
-  </div>
-  <div class="sw-right">
-    <img class="rule rule-web" src="assets/divider.png" alt="">
-    <h2 class="sec-h">WEB <small>e</small> NEW MEDIA</h2>
-    <div class="web-media" role="img" aria-label="Rivista WIRED, smartphone, tastiera e mouse sulla scrivania">
-      <div class="web-bw"></div>
-    </div>
-  </div>
-  <div class="sw-family-photos">
-    <img class="fp fp1" src="assets/family-1.jpg" alt="Daniele">
-    <img class="fp fp2" src="assets/family-2.jpg" alt="Andrea">
-  </div>
-  <div class="sw-stafftext">
-    <div class="sec-p">
-      <p>Gestione familiare? Un po' sì e un po' no, perché oltre a Daniele (senior suo malgrado) e Andrea abbiamo uno stuolo di agenti AI (da noi A.I. sta per "Amici Immaginari") che ci supportano in modo straordinario e - non ci crederete - umano.</p>
-      <p>Sì perché l'AI made in MNG-crea è concepita come un tool che aumenta la capacità di realizzazione e di connessione, senza mai perdere il focus più importante: <b>il nesso con la visione e i bisogni delle persone</b>. Come ci hanno insegnato gli amici di <a class="txt-link" href="https://fattorcomune.com" target="_blank" rel="noopener">Fattor Comune</a> con cui collaboriamo e attraverso cui integriamo competenze e mansioni.</p>
-    </div>
-  </div>
-</section>
-
-
-
-<p class="cta-bottom"><a href="contatti.html"><span class="cta-caps">ATTITUDE BRANDING - WEB &amp; NEW MEDIA - AGENTI A.I.</span><span class="cta-script">scopri cosa possiamo fare insieme</span></a></p>
-
-<style>
-  .cta-bottom{
-    max-width:1320px; margin:0 auto; padding:1.6em 4% 2.4em; text-align:center;
-  }
-  .cta-bottom a{
-    font-family:'Caveat',cursive; font-weight:500; letter-spacing:.05em;
-    color:#cc3922; text-decoration:none;
-    font-size:clamp(22px, 3.25vw, 38px);
-  }
-  .cta-bottom a{ display:inline-block; line-height:1.25; }
-  .cta-caps{ display:block; font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:.14em; color:#111; font-size:clamp(11px, 1.25vw, 16px); margin-bottom:.6em; }
-  .cta-script{ display:inline-block; border-bottom:1px dashed #cc3922; }
-  .cta-bottom a:hover .cta-script{ color:#8a3226; border-color:#8a3226; }
-</style>
-<!-- ================= BLOCCO 3 — footer ================= -->
-<footer class="site-footer">
-  <ul class="footer-menu">
-    <li><a href="https://dacco1971.tumblr.com">blog</a></li>
-    <li><a href="progetti.html">progetti</a></li>
-    <li><a href="scrittura.html">scrittura</a></li>
-    <li><a href="ai.html">AI</a></li>
-  </ul>
-
-  <div class="footer-social">
-    <a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-      <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.9 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21H9z"/></svg>
-    </a>
-    <a href="https://dacco1971.tumblr.com" aria-label="Tumblr">
-      <svg viewBox="0 0 24 24"><path d="M14.5 3v4.2h4V11h-4v5.2c0 1.5.75 2 1.9 2 .7 0 1.4-.15 2-.4l.6 3.3c-.85.4-2.1.7-3.4.7-3.3 0-5.1-1.9-5.1-5.2V11H8v-3.6c2.4-.6 3.7-2.6 4-4.4h2.5z"/></svg>
-    </a>
-  </div>
-
-  <p class="footer-legal">
-    © 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a><br>Sito web realizzato con il contributo di AI — <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>
-  </p>
-</footer>
-
-</body>
-</html>
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mng crea — attitude branding</title><meta name="description" content="MNG-crea: attitude branding, linguaggi, web e new media, libri e progetti di Daniele Mingucci."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Caveat:wght@500&display=swap" rel="stylesheet"><style>
+:root{--viola:#3b2a7a;--blu:#2a5ca8;--rosso:#e8476a;--giallo:#e5e34b;--ink:#17161b;--muto:#5f5e66;--carta:#f6f5f1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:300 17px/1.7 Montserrat,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}b{font-weight:600}
+.pennellata{display:inline-block;border:0;cursor:pointer;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:15px 34px;background:var(--rosso) url(assets/nav-rosso.png) center/100% 100% no-repeat;color:#fff}
+.rail{position:sticky;top:0;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;padding:14px 6vw;background:#fff;border-bottom:1px solid #ecebf0;z-index:30}
+.rail .logo{width:112px}
+.nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 30px;align-items:center;margin-left:auto}
+.nav a{display:block;padding:4px 2px;font:400 15px/1.3 Montserrat,sans-serif;letter-spacing:.04em;text-decoration:none;color:var(--ink);background:linear-gradient(transparent 58%,#e6ff00 58%,#e6ff00 92%,transparent 92%)}
+.nav a:hover{background:linear-gradient(transparent 30%,#e6ff00 30%,#e6ff00 92%,transparent 92%)}
+.nav small{font-weight:400;opacity:.85}
+.rail .nome{display:none;margin-top:auto;font-size:13px;letter-spacing:.04em;color:var(--muto)}
+.rail .nome b{display:block;font:500 30px/1 Caveat;color:var(--viola);margin-bottom:6px}
+.rail .nome a{color:var(--viola);text-underline-offset:5px}
+main,.piede{margin-left:0}
+.pan{position:relative;min-height:0;display:flex;align-items:center;padding:56px 6vw;background:center/cover}
+.pan.corto{min-height:auto}
+.vetro{background:rgba(255,255,255,.9);backdrop-filter:blur(6px);padding:44px 46px;max-width:660px}
+.vetro h2,.pan h2,h1.tit{margin:0 0 22px;font:200 50px/1.05 Montserrat;letter-spacing:.04em;text-transform:uppercase}
+h1.tit{font-size:56px;color:var(--viola)}
+h2 small{font-size:.5em}
+.vetro p{margin:0 0 16px}.vetro p:last-child{margin:0}
+.eti{display:block;font:500 26px Caveat;color:var(--rosso);margin-bottom:2px}
+.p1{padding-top:44px;padding-bottom:44px;gap:22px!important;background-image:url(assets/ocean.jpg);background-position:center 30%;flex-direction:column;align-items:flex-start;justify-content:center;gap:34px}
+.p1 .headline{width:min(720px,100%)}
+.p1 .sotto{margin:-18px 0 0;color:#fff;letter-spacing:.55em;font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.p1 .carte{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.p1 .carte img{width:118px;filter:drop-shadow(6px 8px 12px rgba(0,0,0,.35))}
+.p2{padding:0;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.p2 .imm-bn{background:url(assets/fiume-bn.jpg) center/cover;position:relative;min-height:340px}
+.p2 .polaroid{position:absolute;right:-60px;bottom:70px;width:46%;padding:0;background:none;box-shadow:none}
+.p2 .testo{display:flex;flex-direction:column;justify-content:center;padding:48px 6vw 48px 110px}
+.polaroid{background:#fff;padding:10px;box-shadow:6px 8px 22px rgba(0,0,0,.22)}
+.p3{background-image:url(assets/web-main.jpg);background-position:center 40%;padding:64px 6vw}
+.p4{background:var(--carta);display:block}
+.p4 h2{margin-bottom:34px}
+.schede{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.scheda{display:block;text-decoration:none;background:#fff;padding:26px 26px 30px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.scheda .copertina{margin-bottom:22px}
+.scheda h3{margin:0 0 8px;font:600 15px/1.3 Montserrat;letter-spacing:.12em;text-transform:uppercase;color:var(--viola)}
+.scheda p{margin:0 0 14px;font-size:15px;color:var(--muto);line-height:1.6}
+.scheda .vai{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--rosso)}
+.p5{background:var(--viola) url(assets/boat.jpg) right center/auto 100% no-repeat;color:#fff}
+.p5:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--viola) 45%,rgba(59,42,122,.55))}
+.p5 .in{position:relative;max-width:760px}.p5 .eti{color:var(--giallo)}
+.p5 h2{font-size:54px;text-transform:none;letter-spacing:0}.p5 p{color:#e6e3f4;max-width:560px}
+.bottone{display:inline-block;margin-top:20px;padding:15px 4px;border-bottom:2px solid var(--giallo);text-decoration:none;font:600 13px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.bottone.scuro{color:var(--viola);border-bottom-color:var(--rosso)}
+.p6{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:var(--carta)}
+.p6 .foto{display:flex;gap:18px;justify-content:center}.p6 .foto .polaroid{width:44%}.p6 .foto .polaroid:nth-child(2){margin-top:60px}
+.cta{padding:56px 24px;text-align:center}.cta .caps{display:block;font:600 12px Montserrat;letter-spacing:.3em;text-transform:uppercase}
+.cta a{display:inline-block;margin-top:12px;font:500 40px/1.1 Caveat;color:var(--rosso);text-decoration:none;border-bottom:2px dotted var(--rosso)}
+/* pagine interne */
+.pag{padding:44px 6vw 24px;max-width:1100px}
+.pag .eti a{text-decoration:none}
+.pag p{max-width:680px;margin:0 0 18px}
+.pag .lead{font:200 26px/1.45 Montserrat;color:var(--viola);max-width:720px}
+.riga{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start;padding:30px 0;border-top:1px solid #ecebf0}
+.riga h2{font:200 34px/1.1 Montserrat;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.riga .sub{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muto);margin:0 0 14px}
+.gruppo{font:500 28px Caveat;color:var(--rosso);margin:34px 0 6px;display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.card{display:block;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.09);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card .im{aspect-ratio:4/3;background:var(--carta) center/cover}
+.card .tx{padding:20px 22px 24px}
+.card h3{margin:0 0 6px;font:600 14px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--viola)}
+.card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--muto)}
+.trsp-embed{max-width:none}.trsp-embed p{max-width:680px}
+.hero-prog{width:100%;max-height:300px;object-fit:cover;margin:0 0 34px}
+.apri{display:inline-block;margin:6px 0 30px;font:600 13px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola);border-bottom:2px solid var(--rosso);padding:6px 0}
+.box{background:var(--carta);padding:28px 32px;margin:28px 0;max-width:640px}
+.box h3{margin:0 0 6px;font:200 28px/1.1 Montserrat;text-transform:uppercase;letter-spacing:.04em}
+.box>p{margin:0 0 22px;font-size:15px}
+.copertina{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:space-between;padding:22px 20px;color:#fff;box-shadow:12px 14px 28px rgba(0,0,0,.28);font-weight:200;max-width:230px}
+.copertina b{font-weight:600;letter-spacing:.14em;font-size:15px;line-height:1.25;text-transform:uppercase}
+.copertina i{font:500 22px/1 Caveat;font-style:normal;opacity:.9}
+.c1{background:linear-gradient(160deg,#3b2a7a,#6a4cc2)}.c2{background:linear-gradient(160deg,#2a5ca8,#58a0d8)}.c3{background:linear-gradient(160deg,#e8476a,#f08a5d)}
+.cov{max-width:230px;box-shadow:12px 14px 28px rgba(0,0,0,.28)}
+.form .campo{margin:0 0 18px}
+.form label.l{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form input[type=text],.form input[type=email],.form textarea{display:block;width:100%;padding:10px 0;border:0;border-bottom:1px solid #b9b8bf;background:transparent;font:400 18px Montserrat,sans-serif;color:var(--ink);outline:0;border-radius:0}
+.form textarea{min-height:110px;resize:vertical}
+.form input:focus,.form textarea:focus{border-bottom-color:var(--rosso)}
+.form fieldset{border:0;padding:0;margin:20px 0 6px}.form legend{padding:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form .spunta{display:flex;gap:12px;align-items:flex-start;margin:0 0 10px;font-size:15px;color:var(--ink);cursor:pointer}
+.form .spunta input{margin:4px 0 0;width:18px;height:18px;accent-color:var(--viola);flex:0 0 auto}
+.form .consenso{font-size:13px;color:var(--muto);margin:16px 0 22px}
+.esca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.esito{min-height:1.6em;margin:16px 0 0;font-size:15px}
+[aria-invalid=true]{border-bottom-color:var(--rosso)!important}
+.piede{padding:44px 24px 56px;text-align:center;border-top:1px solid #e4e3e8;color:var(--muto);font-size:12px;line-height:1.8}
+.piede ul{list-style:none;margin:0 0 22px;padding:0;display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.piede ul a{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola)}
+@media(max-width:960px){
+ .rail{position:sticky;width:auto;bottom:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:10px 16px;border-right:0;border-bottom:1px solid #ecebf0}
+ .rail .logo{width:64px}.rail .nome{display:none}
+ .nav{flex:1 1 auto;justify-content:flex-end;gap:2px 14px}.nav a{padding:4px 2px;font-size:14px}.nav small{display:none}
+ main,.piede{margin-left:0}
+ .pan{min-height:auto;padding:36px 22px}.vetro{padding:28px 24px}.vetro h2,.pan h2,.p6 h2{font-size:36px}h1.tit{font-size:38px}
+ .p1{padding-top:28px}.p1 .carte img{width:calc(33.3% - 11px)}.p1 .carte{width:100%}
+ .p2{grid-template-columns:1fr}.p2 .imm-bn{min-height:200px}.p2 .polaroid{right:16px;bottom:-40px;width:38%}.p2 .testo{padding:56px 22px 36px}
+ .p3{align-items:flex-end}
+ .schede{grid-template-columns:1fr}
+ .p5{background-size:auto 55%;background-position:right bottom}.p5:before{background:linear-gradient(180deg,var(--viola) 55%,rgba(59,42,122,.6))}.p5 h2{font-size:34px}
+ .p6{grid-template-columns:1fr;gap:30px}
+ .trsp-embed iframe{height:80vh!important}
+ .pag{padding:44px 22px 20px}.riga{grid-template-columns:1fr;gap:26px}.pag .lead{font-size:21px}.box{padding:26px 22px}
+}
+</style></head><body>
+<aside class="rail"><a href="index.html"><img class="logo" src="assets/logo-nuovo.png" alt="mng crea"></a>
+<nav class="nav" aria-label="Principale"><a href="progetti.html">progetti</a><a href="scrittura.html">scrittura</a><a href="ai.html">AI <small>(cervelli sintetici)</small></a><a href="in-costruzione.html">in costruzione</a></nav>
+<p class="nome"><b>daniele mingucci</b><a href="contatti.html">scrivimi</a> · <a href="scrittura.html">libri</a><br><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></p></aside>
+<main><section class="pan p1"><img class="headline" src="assets/headline.png" alt="attitude branding"><p class="sotto">marketing e comunicazione</p>
+<div class="carte"><img src="assets/mission.png" alt="mission"><img src="assets/vision.png" alt="vision"><img src="assets/purpose.png" alt="purpose"><img src="assets/q1.png" alt=""><img src="assets/q2.png" alt=""><img src="assets/q3.png" alt=""></div>
+<div class="vetro" style="max-width:600px"><p>MNG-crea percorsi di marketing e comunicazione. Lo scopo è dotarsi di <b>un'identità solida</b>, connotata, consapevole. Poi vale tutto.</p><p>I <i>tool</i> sono i linguaggi, tutti i linguaggi. <b>L'approccio è linguistico e narrativo</b>: prima l'alfabeto, poi le parole. E infine le storie.</p></div></section>
+<section class="pan p2"><div class="imm-bn"><div class="polaroid"><img src="assets/fiume-color.png" alt=""></div></div><div class="testo"><h2>Linguaggi</h2><p>La creatività ha bisogno di argini. Come per un fiume, <b>consentono alle idee di scorrere più veloci</b> e nella direzione giusta. Uno di questi argini sono i linguaggi e le norme antichissime che li governano.</p><p><b>Solidità linguistica significa solidità di pensiero</b>, la cosa più efficace per trasmettere sempre il giusto messaggio.</p></div></section>
+<section class="pan p3"><div class="vetro"><h2>Web <small>e</small> new media</h2><p>Il web è il luogo dove i linguaggi si incontrano: testo, immagine, suono, codice. <b>Un sito non è una vetrina: è un sistema di interazione</b>, e come ogni sistema ha le sue regole.</p><p>I new media non sostituiscono i linguaggi, li moltiplicano. Ogni canale ha la sua grammatica: <b>prima l'identità, poi la tecnologia</b>.</p><a class="apri" style="margin-top:14px" href="progetti.html">guarda i progetti →</a></div></section>
+<section class="pan p5"><div class="in"><span class="eti">con Fattor Comune</span><h2>Pensare è metà del lavoro. L'altra metà è realizzare.</h2><p>Con gli amici di Fattor Comune integriamo competenze e mansioni: dall'identità al sito, dai linguaggi alla cosa fatta. MNG-crea pensa e racconta, insieme realizziamo.</p><a class="bottone" href="https://www.fattorcomune.com" target="_blank" rel="noopener">fattorcomune.com ↗</a></div></section>
+<section class="pan p6"><div class="foto"><div class="polaroid"><img src="assets/family-1.jpg" alt="Daniele"></div><div class="polaroid"><img src="assets/family-2.jpg" alt="Andrea"></div></div><div><h2>Family staff</h2><p>Gestione familiare? Un po' sì e un po' no, perché oltre a Daniele (senior suo malgrado) e Andrea abbiamo uno stuolo di agenti AI (da noi A.I. sta per "Amici Immaginari") che ci supportano in modo straordinario e - non ci crederete - umano.</p><p>Sì perché l'AI made in MNG-crea è concepita come un tool che aumenta la capacità di realizzazione e di connessione, senza mai perdere il focus più importante: <b>il nesso con la visione e i bisogni delle persone</b>.</p></div></section>
+<section class="cta"><span class="caps">Attitude branding - Web &amp; new media - Agenti A.I.</span><a href="contatti.html">scopri cosa possiamo fare insieme</a></section><script>(function(){var bx=document.querySelector('.p2 .imm-bn'),po=bx&&bx.querySelector('.polaroid'),im=po&&po.querySelector('img');
+function pos(){if(!bx||!im||!im.clientHeight)return;var W=bx.clientWidth,Hh=bx.clientHeight,r=901/1466,sc=Math.max(W/901,Hh/1466),bh=1466*sc,off=(Hh-bh)/2,ponte=off+bh*0.4707;
+var t=ponte-im.clientHeight*0.458;po.style.top=Math.max(8,t)+'px';po.style.bottom='auto';}
+if(im.complete)pos();im.addEventListener('load',pos);window.addEventListener('resize',pos);})();</script></main>
+<footer class="piede"><ul><li><a href="progetti.html">progetti</a></li><li><a href="scrittura.html">scrittura</a></li><li><a href="ai.html">AI</a></li><li><a href="contatti.html">contatti</a></li><li><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></li><li><a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/">linkedin</a></li><li><a href="https://www.danielemingucci.com">daniele mingucci</a></li></ul>
+<p>© 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a><br>Sito web realizzato con il contributo di AI — <a href="https://claude.com/claude-code">Claude Code</a></p></footer>
+<script>
+(function(){
+  var KEY='';
+  document.querySelectorAll('form.form').forEach(function(f){
+    var out=f.querySelector('.esito');
+    function v(n){return f.elements[n]?(f.elements[n].value||'').trim():'';}
+    f.addEventListener('submit',function(e){
+      e.preventDefault(); if(v('sito')) return;
+      var scelte=[].map.call(f.querySelectorAll('input[name=scelta]:checked'),function(c){return c.value;});
+      var ok=true,msg='';
+      ['nome','email'].forEach(function(n){var b=v(n)&&(n!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v(n)));f.elements[n].setAttribute('aria-invalid',b?'false':'true');if(!b)ok=false;});
+      if(f.querySelector('input[name=scelta]')&&!scelte.length){ok=false;msg='Scegli almeno una voce.';}
+      if(f.elements.consenso&&!f.elements.consenso.checked){ok=false;msg='Serve il consenso per poterti scrivere.';}
+      if(f.elements.messaggio&&!v('messaggio')){ok=false;f.elements.messaggio.setAttribute('aria-invalid','true');}
+      if(!ok){out.textContent=msg;return;}
+      var oggetto=f.dataset.oggetto+(scelte.length?': '+scelte.join(' + '):'');
+      var corpo='Nome: '+v('nome')+'\nEmail: '+v('email')+(scelte.length?'\nVoci: '+scelte.join(', '):'')+(v('messaggio')?'\n\n'+v('messaggio'):'')+(f.elements.consenso?'\n\n(Consenso dato a ricevere il file / aggiornamenti su questo.)':'');
+      if(KEY){
+        out.textContent='Invio in corso…';
+        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:KEY,subject:oggetto,from_name:v('nome'),name:v('nome'),email:v('email'),message:corpo})})
+        .then(function(r){return r.json();}).then(function(j){out.textContent=j.success?(f.dataset.ok||'Ricevuto, grazie.'):'Qualcosa non ha funzionato. Riprova.';if(j.success)f.reset();})
+        .catch(function(){out.textContent='Qualcosa non ha funzionato. Riprova.';});
+      }else{
+        var a=['dacco','mng-crea.com'].join('@');
+        out.textContent='Si apre il tuo programma di posta con il messaggio già scritto: premi invia.';
+        location.href='mailto:'+a+'?subject='+encodeURIComponent(oggetto)+'&body='+encodeURIComponent(corpo);
+      }
+    });
+  });
+})();
+</script></body></html>

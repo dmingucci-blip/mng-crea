@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI — mng crea</title><meta name="description" content="La sezione AI di MNG-crea: in arrivo."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Caveat:wght@500&display=swap" rel="stylesheet"><style>
+:root{--viola:#3b2a7a;--blu:#2a5ca8;--rosso:#e8476a;--giallo:#e5e34b;--ink:#17161b;--muto:#5f5e66;--carta:#f6f5f1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:300 17px/1.7 Montserrat,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}b{font-weight:600}
+.pennellata{display:inline-block;border:0;cursor:pointer;font:600 13px/1 Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:15px 34px;background:var(--rosso) url(assets/nav-rosso.png) center/100% 100% no-repeat;color:#fff}
+.rail{position:sticky;top:0;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;padding:14px 6vw;background:#fff;border-bottom:1px solid #ecebf0;z-index:30}
+.rail .logo{width:112px}
+.nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 30px;align-items:center;margin-left:auto}
+.nav a{display:block;padding:4px 2px;font:400 15px/1.3 Montserrat,sans-serif;letter-spacing:.04em;text-decoration:none;color:var(--ink);background:linear-gradient(transparent 58%,#e6ff00 58%,#e6ff00 92%,transparent 92%)}
+.nav a:hover{background:linear-gradient(transparent 30%,#e6ff00 30%,#e6ff00 92%,transparent 92%)}
+.nav small{font-weight:400;opacity:.85}
+.rail .nome{display:none;margin-top:auto;font-size:13px;letter-spacing:.04em;color:var(--muto)}
+.rail .nome b{display:block;font:500 30px/1 Caveat;color:var(--viola);margin-bottom:6px}
+.rail .nome a{color:var(--viola);text-underline-offset:5px}
+main,.piede{margin-left:0}
+.pan{position:relative;min-height:0;display:flex;align-items:center;padding:56px 6vw;background:center/cover}
+.pan.corto{min-height:auto}
+.vetro{background:rgba(255,255,255,.9);backdrop-filter:blur(6px);padding:44px 46px;max-width:660px}
+.vetro h2,.pan h2,h1.tit{margin:0 0 22px;font:200 50px/1.05 Montserrat;letter-spacing:.04em;text-transform:uppercase}
+h1.tit{font-size:56px;color:var(--viola)}
+h2 small{font-size:.5em}
+.vetro p{margin:0 0 16px}.vetro p:last-child{margin:0}
+.eti{display:block;font:500 26px Caveat;color:var(--rosso);margin-bottom:2px}
+.p1{padding-top:44px;padding-bottom:44px;gap:22px!important;background-image:url(assets/ocean.jpg);background-position:center 30%;flex-direction:column;align-items:flex-start;justify-content:center;gap:34px}
+.p1 .headline{width:min(720px,100%)}
+.p1 .sotto{margin:-18px 0 0;color:#fff;letter-spacing:.55em;font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.p1 .carte{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.p1 .carte img{width:118px;filter:drop-shadow(6px 8px 12px rgba(0,0,0,.35))}
+.p2{padding:0;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.p2 .imm-bn{background:url(assets/fiume-bn.jpg) center/cover;position:relative;min-height:340px}
+.p2 .polaroid{position:absolute;right:-60px;bottom:70px;width:46%;padding:0;background:none;box-shadow:none}
+.p2 .testo{display:flex;flex-direction:column;justify-content:center;padding:48px 6vw 48px 110px}
+.polaroid{background:#fff;padding:10px;box-shadow:6px 8px 22px rgba(0,0,0,.22)}
+.p3{background-image:url(assets/web-main.jpg);background-position:center 40%;padding:64px 6vw}
+.p4{background:var(--carta);display:block}
+.p4 h2{margin-bottom:34px}
+.schede{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.scheda{display:block;text-decoration:none;background:#fff;padding:26px 26px 30px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.scheda .copertina{margin-bottom:22px}
+.scheda h3{margin:0 0 8px;font:600 15px/1.3 Montserrat;letter-spacing:.12em;text-transform:uppercase;color:var(--viola)}
+.scheda p{margin:0 0 14px;font-size:15px;color:var(--muto);line-height:1.6}
+.scheda .vai{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--rosso)}
+.p5{background:var(--viola) url(assets/boat.jpg) right center/auto 100% no-repeat;color:#fff}
+.p5:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--viola) 45%,rgba(59,42,122,.55))}
+.p5 .in{position:relative;max-width:760px}.p5 .eti{color:var(--giallo)}
+.p5 h2{font-size:54px;text-transform:none;letter-spacing:0}.p5 p{color:#e6e3f4;max-width:560px}
+.bottone{display:inline-block;margin-top:20px;padding:15px 4px;border-bottom:2px solid var(--giallo);text-decoration:none;font:600 13px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.bottone.scuro{color:var(--viola);border-bottom-color:var(--rosso)}
+.p6{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:var(--carta)}
+.p6 .foto{display:flex;gap:18px;justify-content:center}.p6 .foto .polaroid{width:44%}.p6 .foto .polaroid:nth-child(2){margin-top:60px}
+.cta{padding:56px 24px;text-align:center}.cta .caps{display:block;font:600 12px Montserrat;letter-spacing:.3em;text-transform:uppercase}
+.cta a{display:inline-block;margin-top:12px;font:500 40px/1.1 Caveat;color:var(--rosso);text-decoration:none;border-bottom:2px dotted var(--rosso)}
+/* pagine interne */
+.pag{padding:44px 6vw 24px;max-width:1100px}
+.pag .eti a{text-decoration:none}
+.pag p{max-width:680px;margin:0 0 18px}
+.pag .lead{font:200 26px/1.45 Montserrat;color:var(--viola);max-width:720px}
+.riga{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start;padding:30px 0;border-top:1px solid #ecebf0}
+.riga h2{font:200 34px/1.1 Montserrat;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.riga .sub{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muto);margin:0 0 14px}
+.gruppo{font:500 28px Caveat;color:var(--rosso);margin:34px 0 6px;display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.card{display:block;text-decoration:none;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.09);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card .im{aspect-ratio:4/3;background:var(--carta) center/cover}
+.card .tx{padding:20px 22px 24px}
+.card h3{margin:0 0 6px;font:600 14px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--viola)}
+.card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--muto)}
+.trsp-embed{max-width:none}.trsp-embed p{max-width:680px}
+.hero-prog{width:100%;max-height:300px;object-fit:cover;margin:0 0 34px}
+.apri{display:inline-block;margin:6px 0 30px;font:600 13px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola);border-bottom:2px solid var(--rosso);padding:6px 0}
+.box{background:var(--carta);padding:28px 32px;margin:28px 0;max-width:640px}
+.box h3{margin:0 0 6px;font:200 28px/1.1 Montserrat;text-transform:uppercase;letter-spacing:.04em}
+.box>p{margin:0 0 22px;font-size:15px}
+.copertina{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:space-between;padding:22px 20px;color:#fff;box-shadow:12px 14px 28px rgba(0,0,0,.28);font-weight:200;max-width:230px}
+.copertina b{font-weight:600;letter-spacing:.14em;font-size:15px;line-height:1.25;text-transform:uppercase}
+.copertina i{font:500 22px/1 Caveat;font-style:normal;opacity:.9}
+.c1{background:linear-gradient(160deg,#3b2a7a,#6a4cc2)}.c2{background:linear-gradient(160deg,#2a5ca8,#58a0d8)}.c3{background:linear-gradient(160deg,#e8476a,#f08a5d)}
+.cov{max-width:230px;box-shadow:12px 14px 28px rgba(0,0,0,.28)}
+.form .campo{margin:0 0 18px}
+.form label.l{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form input[type=text],.form input[type=email],.form textarea{display:block;width:100%;padding:10px 0;border:0;border-bottom:1px solid #b9b8bf;background:transparent;font:400 18px Montserrat,sans-serif;color:var(--ink);outline:0;border-radius:0}
+.form textarea{min-height:110px;resize:vertical}
+.form input:focus,.form textarea:focus{border-bottom-color:var(--rosso)}
+.form fieldset{border:0;padding:0;margin:20px 0 6px}.form legend{padding:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muto)}
+.form .spunta{display:flex;gap:12px;align-items:flex-start;margin:0 0 10px;font-size:15px;color:var(--ink);cursor:pointer}
+.form .spunta input{margin:4px 0 0;width:18px;height:18px;accent-color:var(--viola);flex:0 0 auto}
+.form .consenso{font-size:13px;color:var(--muto);margin:16px 0 22px}
+.esca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.esito{min-height:1.6em;margin:16px 0 0;font-size:15px}
+[aria-invalid=true]{border-bottom-color:var(--rosso)!important}
+.piede{padding:44px 24px 56px;text-align:center;border-top:1px solid #e4e3e8;color:var(--muto);font-size:12px;line-height:1.8}
+.piede ul{list-style:none;margin:0 0 22px;padding:0;display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.piede ul a{font:600 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--viola)}
+@media(max-width:960px){
+ .rail{position:sticky;width:auto;bottom:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:10px 16px;border-right:0;border-bottom:1px solid #ecebf0}
+ .rail .logo{width:64px}.rail .nome{display:none}
+ .nav{flex:1 1 auto;justify-content:flex-end;gap:2px 14px}.nav a{padding:4px 2px;font-size:14px}.nav small{display:none}
+ main,.piede{margin-left:0}
+ .pan{min-height:auto;padding:36px 22px}.vetro{padding:28px 24px}.vetro h2,.pan h2,.p6 h2{font-size:36px}h1.tit{font-size:38px}
+ .p1{padding-top:28px}.p1 .carte img{width:calc(33.3% - 11px)}.p1 .carte{width:100%}
+ .p2{grid-template-columns:1fr}.p2 .imm-bn{min-height:200px}.p2 .polaroid{right:16px;bottom:-40px;width:38%}.p2 .testo{padding:56px 22px 36px}
+ .p3{align-items:flex-end}
+ .schede{grid-template-columns:1fr}
+ .p5{background-size:auto 55%;background-position:right bottom}.p5:before{background:linear-gradient(180deg,var(--viola) 55%,rgba(59,42,122,.6))}.p5 h2{font-size:34px}
+ .p6{grid-template-columns:1fr;gap:30px}
+ .trsp-embed iframe{height:80vh!important}
+ .pag{padding:44px 22px 20px}.riga{grid-template-columns:1fr;gap:26px}.pag .lead{font-size:21px}.box{padding:26px 22px}
+}
+</style></head><body>
+<aside class="rail"><a href="index.html"><img class="logo" src="assets/logo-nuovo.png" alt="mng crea"></a>
+<nav class="nav" aria-label="Principale"><a href="progetti.html">progetti</a><a href="scrittura.html">scrittura</a><a href="ai.html">AI <small>(cervelli sintetici)</small></a><a href="in-costruzione.html">in costruzione</a></nav>
+<p class="nome"><b>daniele mingucci</b><a href="contatti.html">scrivimi</a> · <a href="scrittura.html">libri</a><br><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></p></aside>
+<main><div class="pag"><span class="eti">AI</span><h1 class="tit">AI <small>(cervelli sintetici)</small></h1><p class="lead">In arrivo.</p><p>Qui racconterò come lavoro con gli agenti AI: cosa fanno bene, cosa no, e cosa succede quando li metti a lavorare insieme. Per ora, il racconto continua sul blog.</p><a class="apri" href="https://dacco1971.tumblr.com">vai al blog ↗</a></div></main>
+<footer class="piede"><ul><li><a href="progetti.html">progetti</a></li><li><a href="scrittura.html">scrittura</a></li><li><a href="ai.html">AI</a></li><li><a href="contatti.html">contatti</a></li><li><a href="di-cosa-mi-sto-occupando.html">di cosa mi sto occupando</a></li><li><a href="https://www.linkedin.com/in/daniele-mingucci-a2074868/">linkedin</a></li><li><a href="https://www.danielemingucci.com">daniele mingucci</a></li></ul>
+<p>© 2026 MNG-Crea - RICCIONE RN | ITALY · P.IVA 04615660406 · <a href="privacy.html">Privacy</a> · <a href="cookie-policy.html">Cookie policy</a><br>Sito web realizzato con il contributo di AI — <a href="https://claude.com/claude-code">Claude Code</a></p></footer>
+<script>
+(function(){
+  var KEY='';
+  document.querySelectorAll('form.form').forEach(function(f){
+    var out=f.querySelector('.esito');
+    function v(n){return f.elements[n]?(f.elements[n].value||'').trim():'';}
+    f.addEventListener('submit',function(e){
+      e.preventDefault(); if(v('sito')) return;
+      var scelte=[].map.call(f.querySelectorAll('input[name=scelta]:checked'),function(c){return c.value;});
+      var ok=true,msg='';
+      ['nome','email'].forEach(function(n){var b=v(n)&&(n!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v(n)));f.elements[n].setAttribute('aria-invalid',b?'false':'true');if(!b)ok=false;});
+      if(f.querySelector('input[name=scelta]')&&!scelte.length){ok=false;msg='Scegli almeno una voce.';}
+      if(f.elements.consenso&&!f.elements.consenso.checked){ok=false;msg='Serve il consenso per poterti scrivere.';}
+      if(f.elements.messaggio&&!v('messaggio')){ok=false;f.elements.messaggio.setAttribute('aria-invalid','true');}
+      if(!ok){out.textContent=msg;return;}
+      var oggetto=f.dataset.oggetto+(scelte.length?': '+scelte.join(' + '):'');
+      var corpo='Nome: '+v('nome')+'\nEmail: '+v('email')+(scelte.length?'\nVoci: '+scelte.join(', '):'')+(v('messaggio')?'\n\n'+v('messaggio'):'')+(f.elements.consenso?'\n\n(Consenso dato a ricevere il file / aggiornamenti su questo.)':'');
+      if(KEY){
+        out.textContent='Invio in corso…';
+        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:KEY,subject:oggetto,from_name:v('nome'),name:v('nome'),email:v('email'),message:corpo})})
+        .then(function(r){return r.json();}).then(function(j){out.textContent=j.success?(f.dataset.ok||'Ricevuto, grazie.'):'Qualcosa non ha funzionato. Riprova.';if(j.success)f.reset();})
+        .catch(function(){out.textContent='Qualcosa non ha funzionato. Riprova.';});
+      }else{
+        var a=['dacco','mng-crea.com'].join('@');
+        out.textContent='Si apre il tuo programma di posta con il messaggio già scritto: premi invia.';
+        location.href='mailto:'+a+'?subject='+encodeURIComponent(oggetto)+'&body='+encodeURIComponent(corpo);
+      }
+    });
+  });
+})();
+</script></body></html>
