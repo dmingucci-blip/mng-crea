@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light"><meta name="supported-color-schemes" content="light"><title>mng crea — attitude branding</title><meta name="description" content="MNG-crea: attitude branding, linguaggi, web e new media, libri e progetti di Daniele Mingucci.">
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark"><title>mng crea — attitude branding</title><meta name="description" content="MNG-crea: attitude branding, linguaggi, web e new media, libri e progetti di Daniele Mingucci.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:only light;--ink:#14363f;--testo:#14363f;--prugna:#8b4367;--muto:#5d6e73;--filo:#e4e8e7;--giallo:#f3ef26;--marker:rgba(243,239,38,.92)}
+:root{color-scheme:light;--ink:#14363f;--testo:#14363f;--prugna:#8b4367;--muto:#5d6e73;--filo:#e4e8e7;--giallo:#f3ef26;--marker:rgba(243,239,38,.92)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:#fff;color:var(--testo);font:400 19px/1.75 "Source Serif 4",Georgia,serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}a{color:inherit}
@@ -99,6 +99,24 @@ em{font-style:italic;color:var(--prugna)}
  .scorri{display:none}
 }
 @media(prefers-reduced-motion:reduce){.ali.sx,.ali.dx{animation:none}.nastro div{animation:none}.rv{opacity:1;transform:none;transition:none}}
+@media(prefers-color-scheme:dark){
+:root{color-scheme:dark;--ink:#f1f3ee;--testo:#d9e2e2;--prugna:#e29bc0;--muto:#9fb3b8;--filo:#24444d}
+body,.hero{background:#0b1f26}
+.rail{background:rgba(11,31,38,.94)}
+.rail .logo{background:#fff;border-radius:6px;padding:3px 6px;box-sizing:content-box}
+
+.nastro span,.cta .caps{color:#14363f}
+.cta a{color:#6b2a4f}.cta a:hover{color:#14363f}
+.nav a:hover{color:#14363f}
+.carte img,.foto2 figure{background:#fff}
+.linguaggi .foto:after{background:linear-gradient(90deg,transparent 60%,#0b1f26)}
+.web .banda:after{background:linear-gradient(transparent,#0b1f26)}
+.fattor .socio img{background:#fff;border-radius:8px;padding:10px 14px}
+.stage .corpo img{filter:drop-shadow(0 0 22px rgba(255,255,255,.22))}
+.libro img{box-shadow:0 14px 30px rgba(0,0,0,.5)}
+.libro:hover span{color:#14363f}
+}
+@media(prefers-color-scheme:dark) and (max-width:900px){.linguaggi .foto:after{background:linear-gradient(transparent 60%,#0b1f26)}}
 </style></head><body>
 <header class="rail"><a class="marchio" href="index.html"><img class="logo" src="assets/logo-nuovo.png" alt="mng crea"></a>
 <nav class="nav" aria-label="Principale"><a href="progetti.html">progetti</a><a href="scrittura.html">scrittura</a><a href="ai.html">AI <small>(cervelli sintetici)</small></a></nav></header>
